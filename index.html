@@ -515,7 +515,7 @@
         <p>Na 4G Proteção Veicular nossa missão é simplificar sua escolha. Como corretora especializada, unimos as maiores associações e seguradoras do mercado para garantir que seu patrimônio esteja sempre em segurança com total agilidade.</p>
         <div class="hero-buttons">
           <a href="#cotacao" class="btn btn-primary btn-large">Faça a sua Cotação</a>
-          <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-whatsapp btn-large">
+          <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-whatsapp btn-large">
             <i class="fab fa-whatsapp"></i> Falar no WhatsApp
           </a>
         </div>
@@ -546,7 +546,7 @@
 
             <div class="form-group">
               <label for="inline-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
-              <input type="tel" id="inline-whatsapp" required placeholder="Ex: 11999999999">
+              <input type="tel" id="inline-whatsapp" required placeholder="Ex: 11957666488">
             </div>
           </div>
 
@@ -814,7 +814,7 @@
 
         <div class="form-group">
           <label for="modal-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
-          <input type="tel" id="modal-whatsapp" required placeholder="Ex: 11999999999">
+          <input type="tel" id="modal-whatsapp" required placeholder="Ex: 11957666488">
         </div>
 
         <div class="form-group">
@@ -859,7 +859,7 @@
 
         <div class="form-group">
           <label for="cons-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
-          <input type="tel" id="cons-whatsapp" required placeholder="Ex: 11999999999">
+          <input type="tel" id="cons-whatsapp" required placeholder="Ex: 11957666488">
         </div>
 
         <div class="form-group">
@@ -886,7 +886,9 @@
   </footer>
 
   <script>
-    const SEU_NUMERO_WHATSAPP = "5511999999999"; 
+    // NÚMEROS DE TELEFONE CONFIGURADOS
+    const NUMERO_COTACAO = "5511957666488"; // Atendimento/Cotação
+    const NUMERO_SUPORTE = "5511957883108"; // Suporte
     const URL_PLANILHA_GOOGLE = "https://script.google.com/macros/s/AKfycb.../exec";
 
     function abrirModal() {
@@ -914,9 +916,14 @@
       document.getElementById('msgConsultorSucesso').style.display = 'none';
     }
 
+    function abrirAtendimento() {
+      const msg = encodeURIComponent("Olá! Gostaria de fazer uma cotação com a 4G Proteção Veicular.");
+      window.open(`https://wa.me/${NUMERO_COTACAO}?text=${msg}`, '_blank');
+    }
+
     function abrirSuporte() {
       const msg = encodeURIComponent("Olá! Gostaria de falar com o suporte da 4G Proteção Veicular.");
-      window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${msg}`, '_blank');
+      window.open(`https://wa.me/${NUMERO_SUPORTE}?text=${msg}`, '_blank');
     }
 
     // ESTRELAS DE FEEDBACK
@@ -958,7 +965,12 @@
         document.getElementById('msgInlineSucesso').style.display = 'block';
         btn.innerText = "Solicitar Cotação no WhatsApp";
         btn.disabled = false;
-        setTimeout(() => { document.getElementById('formCotacaoInline').reset(); }, 2000);
+        
+        let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+        setTimeout(() => {
+          window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
+          document.getElementById('formCotacaoInline').reset();
+        }, 1000);
       }).catch(err => {
         document.getElementById('msgInlineSucesso').style.display = 'block';
         btn.innerText = "Solicitar Cotação no WhatsApp";
@@ -989,7 +1001,13 @@
         document.getElementById('msgModalSucesso').style.display = 'block';
         btn.innerText = "Enviar Cotação";
         btn.disabled = false;
-        setTimeout(() => { fecharModal(); document.getElementById('formCotacaoModal').reset(); }, 2000);
+
+        let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+        setTimeout(() => {
+          fecharModal();
+          window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
+          document.getElementById('formCotacaoModal').reset();
+        }, 1000);
       }).catch(err => {
         document.getElementById('msgModalSucesso').style.display = 'block';
         btn.innerText = "Enviar Cotação";
@@ -1019,7 +1037,13 @@
         document.getElementById('msgConsultorSucesso').style.display = 'block';
         btn.innerText = "Enviar Cadastro de Consultor";
         btn.disabled = false;
-        setTimeout(() => { fecharModalConsultor(); document.getElementById('formConsultor').reset(); }, 2000);
+
+        let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
+        setTimeout(() => {
+          fecharModalConsultor();
+          window.open(`https://wa.me/${NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`, '_blank');
+          document.getElementById('formConsultor').reset();
+        }, 1000);
       }).catch(err => {
         document.getElementById('msgConsultorSucesso').style.display = 'block';
         btn.innerText = "Enviar Cadastro de Consultor";
