@@ -285,7 +285,7 @@
       color: var(--text-muted);
     }
 
-    /* SERVICES GRID */
+    /* SERVICES GRID COM CLIQUES QUE LEVAM À COTAÇÃO */
     .services-grid {
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
@@ -301,13 +301,20 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid #E2E8F0;
       color: var(--dark);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .service-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
     .service-item i {
       font-size: 24px;
       color: var(--primary);
     }
 
-    /* MODAL DE COTAÇÃO PROFISSIONAL */
+    /* MODAL DE COTAÇÃO COM OS NOVOS CAMPOS */
     .modal {
       display: none;
       position: fixed;
@@ -522,62 +529,56 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS 24H -->
+  <!-- SERVIÇOS 24H (AGORA CLICÁVEIS PARA ABRIR A COTAÇÃO) -->
   <section id="servicos" class="section">
     <div class="container">
       <h2>Serviços 24 horas para a sua comodidade</h2>
+      <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 35px; font-weight: 600;">Clique em qualquer serviço para solicitar sua proteção veicular agora mesmo:</p>
       <div class="grid services-grid">
-        <div class="service-item"><i class="fas fa-truck-pickup"></i> Reboque</div>
-        <div class="service-item"><i class="fas fa-car-battery"></i> Auxílio Bateria</div>
-        <div class="service-item"><i class="fas fa-car-burst"></i> Colisão</div>
-        <div class="service-item"><i class="fas fa-gas-pump"></i> Auxílio Combustível</div>
-        <div class="service-item"><i class="fas fa-key"></i> Chaveiro 24h</div>
-        <div class="service-item"><i class="fas fa-shield-cat"></i> Roubo e Furto</div>
-        <div class="service-item"><i class="fas fa-hotel"></i> Hospedagem</div>
-        <div class="service-item"><i class="fas fa-fire"></i> Incêndio</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-truck-pickup"></i> Reboque</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-car-battery"></i> Auxílio Bateria</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-car-burst"></i> Colisão</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-gas-pump"></i> Auxílio Combustível</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-key"></i> Chaveiro 24h</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-shield-cat"></i> Roubo e Furto</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-hotel"></i> Hospedagem</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-fire"></i> Incêndio</div>
       </div>
     </div>
   </section>
 
-  <!-- MODAL DE COTAÇÃO PROFISSIONAL -->
+  <!-- MODAL DE COTAÇÃO PROFISSIONAL ATUALIZADO -->
   <div id="modalCotacao" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
       <h2>Solicite sua Cotação</h2>
-      <p>Preencha os campos abaixo para iniciarmos seu atendimento personalizado no WhatsApp:</p>
+      <p>Preencha os dados abaixo para receber a melhor proposta no seu WhatsApp:</p>
       
       <form id="formCotacao" onsubmit="enviarCotacao(event)">
         <div class="form-group">
-          <label for="nome">Seu Nome:</label>
-          <input type="text" id="nome" required placeholder="Digite seu nome completo">
+          <label for="nome">Seu Nome Completo:</label>
+          <input type="text" id="nome" required placeholder="Digite seu nome">
         </div>
 
         <div class="form-group">
-          <label for="whatsapp">Seu WhatsApp (com DDD):</label>
+          <label for="whatsapp">Seu Celular / WhatsApp (com DDD):</label>
           <input type="tel" id="whatsapp" required placeholder="Ex: 11999999999">
+        </div>
+
+        <div class="form-group">
+          <label for="placa">Placa do Veículo (Opcional):</label>
+          <input type="text" id="placa" placeholder="Ex: ABC-1234">
         </div>
         
         <div class="form-group">
-          <label for="veiculo">Tipo de Plano / Veículo:</label>
-          <select id="veiculo" onchange="alternarCampos()" required>
-            <option value="Carro de Passeio (Particular)">Carro de Passeio (Particular)</option>
-            <option value="Carro de Trabalho / Aplicativo (Uber/99)">Carro de Trabalho / Aplicativo (Uber/99)</option>
+          <label for="tipoVeiculo">Tipo de Veículo:</label>
+          <select id="tipoVeiculo" required>
+            <option value="Carro de Passeio">Carro de Passeio</option>
+            <option value="Carro de Aplicativo (Uber / 99)">Carro de Aplicativo (Uber / 99)</option>
             <option value="Moto">Moto</option>
-            <option value="Frota de Veículos (Empresas)">Frota de Veículos (Empresas)</option>
-            <option value="Veículo Pesado / Caminhão">Veículo Pesado / Caminhão</option>
-            <option value="Interesse em Consórcio">Interesse em Consórcio</option>
+            <option value="Caminhão / Veículo Pesado">Caminhão / Veículo Pesado</option>
+            <option value="Frotas (Empresas)">Frotas (Empresas)</option>
           </select>
-        </div>
-
-        <!-- Campo dinâmico para frota -->
-        <div class="form-group" id="grupoQtdFrota" style="display: none;">
-          <label for="qtdFrota">Quantidade estimada de veículos na frota:</label>
-          <input type="number" id="qtdFrota" placeholder="Ex: 5, 10, 20">
-        </div>
-
-        <div class="form-group">
-          <label for="modelo">Modelo e Ano do Veículo (Opcional):</label>
-          <input type="text" id="modelo" placeholder="Ex: Onix 2022 ou Honda CG 160">
         </div>
 
         <button type="submit" class="btn btn-whatsapp btn-block btn-large">
@@ -603,18 +604,7 @@
     }
 
     function fecharModal() {
-      document.getElementById('modal-ferramenta') // segurança
       document.getElementById('modalCotacao').style.display = 'none';
-    }
-
-    function alternarCampos() {
-      const tipo = document.getElementById('veiculo').value;
-      const campoFrota = document.getElementById('grupoQtdFrota');
-      if (tipo.includes('Frota')) {
-        campoFrota.style.display = 'block';
-      } else {
-        campoFrota.style.display = 'none';
-      }
     }
 
     function abrirSuporte() {
@@ -626,17 +616,13 @@
       e.preventDefault();
       const nome = document.getElementById('nome').value;
       const whatsapp = document.getElementById('whatsapp').value;
-      const veiculo = document.getElementById('veiculo').value;
-      const qtdFrota = document.getElementById('qtdFrota').value;
-      const modelo = document.getElementById('modelo').value;
+      const placa = document.getElementById('placa').value;
+      const tipoVeiculo = document.getElementById('tipoVeiculo').value;
 
-      let texto = `Olá! Meu nome é *${nome}* (WhatsApp: ${whatsapp}).\nGostaria de cotação para:\n*Plano/Veículo:* ${veiculo}`;
+      let texto = `Olá! Vim pelo site e gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*Celular:* ${whatsapp}\n*Tipo de Veículo:* ${tipoVeiculo}`;
       
-      if (veiculo.includes('Frota') && qtdFrota) {
-        texto += `\n*Quantidade:* ${qtdFrota} veículos`;
-      }
-      if (modelo) {
-        texto += `\n*Modelo/Ano:* ${modelo}`;
+      if (placa) {
+        texto += `\n*Placa:* ${placa}`;
       }
 
       window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank');
