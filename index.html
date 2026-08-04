@@ -335,8 +335,30 @@
       color: var(--text-muted);
       margin-bottom: 16px;
     }
+    .map-container {
+      flex: 1;
+      min-width: 280px;
+      height: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
 
-    /* MODAL */
+    /* ESTRELAS FEEDBACK */
+    .star-rating {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      font-size: 28px;
+      color: #CBD5E1;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+    .star-rating i.active {
+      color: #F59E0B;
+    }
+
+    /* MODAIS */
     .modal {
       display: none;
       position: fixed;
@@ -360,6 +382,8 @@
       position: relative;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
       animation: modalUp 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
     }
     @keyframes modalUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -397,7 +421,7 @@
       margin-bottom: 6px;
       color: var(--dark);
     }
-    .form-group input, .form-group select {
+    .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       padding: 12px 16px;
       border-radius: var(--radius-md);
@@ -406,7 +430,7 @@
       outline: none;
       transition: border-color 0.2s;
     }
-    .form-group input:focus, .form-group select:focus {
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: var(--primary);
     }
 
@@ -449,9 +473,10 @@
       <nav class="nav-menu">
         <a href="#sobre">A 4G</a>
         <a href="#parceiros">Parceiros</a>
-        <a href="#diferenciais">Diferenciais</a>
+        <a href="#consultor">Trabalhe Conosco</a>
         <a href="#servicos">Assistência 24h</a>
         <a href="#localizacao">Escritório</a>
+        <a href="#feedback">Feedbacks</a>
       </nav>
       <div class="nav-actions">
         <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline">
@@ -482,6 +507,43 @@
           <h2>4G Proteção Veicular</h2>
           <p style="color:#E2E8F0; margin-top:8px;">Proteção total contra Roubo, Furto, Colisão e Assistência 24h em todo o Brasil.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO TRABALHE CONOSCO / SEJA UM CONSULTOR -->
+  <section id="consultor" class="section bg-light">
+    <div class="container">
+      <h2>Trabalhe Conosco — Seja um Consultor 4G</h2>
+      <p class="section-subtitle">Monte sua própria carteira de clientes, conquiste prêmios e tenha independência financeira!</p>
+      
+      <div class="grid grid-4" style="margin-bottom: 32px;">
+        <div class="card">
+          <i class="fas fa-sack-dollar" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Comissões Atrativas</h3>
+          <p>Ganhe por cada nova adesão efetuada e construa sua renda recorrente.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-trophy" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Prêmios & Bônus</h3>
+          <p>Premiações exclusivas por atingimento de metas de vendas.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Flexibilidade</h3>
+          <p>Trabalhe no seu próprio horário e gerencie seu próprio ritmo de trabalho.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-headset" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Suporte Completo</h3>
+          <p>Treinamentos e suporte direto da equipe da 4G para alavancar suas vendas.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button onclick="abrirModalConsultor()" class="btn btn-primary btn-large">
+          <i class="fas fa-user-plus"></i> Quero ser um Consultor 4G
+        </button>
       </div>
     </div>
   </section>
@@ -517,39 +579,8 @@
     </div>
   </section>
 
-  <!-- DIFERENCIAIS -->
-  <section id="diferenciais" class="section bg-light">
-    <div class="container">
-      <h2>Por que contratar com a 4G Corretora?</h2>
-      <p class="section-subtitle">Descubra as vantagens exclusivas que oferecemos para facilitar a proteção:</p>
-      
-      <div class="grid grid-4">
-        <div class="card feature-card" onclick="abrirModal()">
-          <i class="fas fa-building"></i>
-          <h3>Corretora Multimarcas</h3>
-          <p>Analisamos entre Capitalcar, Valecar, APVS, AGV, Suhai e KM para encontrar o preço ideal.</p>
-        </div>
-        <div class="card feature-card" onclick="abrirModal()">
-          <i class="fas fa-file-circle-check"></i>
-          <h3>Sem Burocracia</h3>
-          <p>Sem consulta a SPC/Serasa e sem análise rígida de perfil de condutor. O foco é proteger seu veículo.</p>
-        </div>
-        <div class="card feature-card" onclick="abrirModal()">
-          <i class="fas fa-user-check"></i>
-          <h3>Atendimento Humano</h3>
-          <p>Você não fala com robôs. Na 4G você tem suporte direto de especialistas.</p>
-        </div>
-        <div class="card feature-card" onclick="abrirModal()">
-          <i class="fas fa-handshake"></i>
-          <h3>Opções em Consórcio</h3>
-          <p>Ajudamos você a planejar com segurança a aquisição do seu próximo veículo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SERVIÇOS 24H -->
-  <section id="servicos" class="section">
+  <section id="servicos" class="section bg-light">
     <div class="container">
       <h2>Serviços 24 horas para a sua comodidade</h2>
       <p class="section-subtitle">Clique em qualquer serviço para solicitar sua proteção veicular agora mesmo:</p>
@@ -567,36 +598,82 @@
     </div>
   </section>
 
-  <!-- LOCALIZAÇÃO -->
-  <section id="localizacao" class="section bg-light">
+  <!-- LOCALIZAÇÃO COM GOOGLE MAPS EMBEDDED -->
+  <section id="localizacao" class="section">
     <div class="container">
-      <h2>Venha nos Conhecer</h2>
-      <p class="section-subtitle">Nosso escritório está de portas abertas para receber você:</p>
+      <h2>Onde Estamos</h2>
+      <p class="section-subtitle">Venha tomar um café conosco e conhecer nosso escritório:</p>
       
       <div class="location-box">
         <div class="location-info">
           <h3><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Escritório 4G Proteção Veicular</h3>
-          <p><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato</p>
+          <p><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170</p>
           <p>Atendimento especializado para fechamento de contratos, retirada de dúvidas e suporte presencial com toda a nossa equipe.</p>
           <button onclick="abrirModal()" class="btn btn-primary">Fazer Cotação Online</button>
         </div>
-        <div style="flex: 1; min-width: 280px; height: 240px; background: #E2E8F0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-weight: 700;">
-          <div style="text-align: center; padding: 20px;">
-            <i class="fas fa-map-marked-alt" style="font-size: 38px; color: var(--primary); margin-bottom: 8px; display: block;"></i>
-            <span style="font-size: 14px; font-weight: 800; color: var(--dark);">R. Azevedo Marques, 59</span><br>
-            <span style="font-size: 12px; color: var(--text-muted);">Jardim Prof. Francisco Morato</span>
-          </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%20-%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODAL DE COTAÇÃO INTEGRADA COM PLANILHA GOOGLE -->
+  <!-- SEÇÃO FEEDBACK -->
+  <section id="feedback" class="section bg-light">
+    <div class="container" style="max-width: 600px;">
+      <h2>Deixe seu Feedback</h2>
+      <p class="section-subtitle">Sua opinião é fundamental para continuarmos evoluindo nossos serviços:</p>
+
+      <div class="card" style="text-align: left;">
+        <form id="formFeedback" onsubmit="enviarFeedback(event)">
+          <div class="form-group">
+            <label for="fb-nome">Seu Nome:</label>
+            <input type="text" id="fb-nome" required placeholder="Digite seu nome">
+          </div>
+
+          <div class="form-group text-center" style="text-align: center;">
+            <label>Sua Avaliação:</label>
+            <div class="star-rating" id="starRating">
+              <i class="fas fa-star active" data-rating="1"></i>
+              <i class="fas fa-star active" data-rating="2"></i>
+              <i class="fas fa-star active" data-rating="3"></i>
+              <i class="fas fa-star active" data-rating="4"></i>
+              <i class="fas fa-star active" data-rating="5"></i>
+            </div>
+            <input type="hidden" id="fb-rating" value="5">
+          </div>
+
+          <div class="form-group">
+            <label for="fb-mensagem">Seu Comentário / Avaliação:</label>
+            <textarea id="fb-mensagem" rows="4" required placeholder="Conte para nós como foi sua experiência com a 4G..."></textarea>
+          </div>
+
+          <div id="msgFeedbackSucesso" style="display:none; color: var(--accent); font-weight:700; margin-bottom:12px; text-align:center;">
+            ✨ Avaliação enviada com sucesso! Muito obrigado.
+          </div>
+
+          <button type="submit" id="btnEnviarFeedback" class="btn btn-primary btn-block btn-large">
+            Envie sua Avaliação
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE COTAÇÃO -->
   <div id="modalCotacao" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
       <h2>Solicite sua Cotação</h2>
-      <p>Preencha os dados abaixo. Seus dados serão salvos e você será direcionado para o WhatsApp:</p>
+      <p>Preencha os dados abaixo para receber sua simulação:</p>
       
       <form id="formCotacao" onsubmit="enviarCotacao(event)">
         <div class="form-group">
@@ -610,23 +687,61 @@
         </div>
 
         <div class="form-group">
-          <label for="placa">Placa do Veículo (Opcional):</label>
-          <input type="text" id="placa" placeholder="Ex: ABC-1234">
+          <label for="placa">Placa do Veículo (Obrigatório):</label>
+          <input type="text" id="placa" required placeholder="Ex: ABC-1234 ou ABC1D23">
         </div>
         
         <div class="form-group">
           <label for="tipoVeiculo">Tipo de Veículo:</label>
           <select id="tipoVeiculo" required>
-            <option value="Carro">Carro de Passeio</option>
-            <option value="Carro de Aplicativo">Carro de Aplicativo (Uber / 99)</option>
+            <option value="Carro de Passeio">Carro de Passeio</option>
+            <option value="Carro de Trabalho / Aplicativo">Carro de Trabalho / Aplicativo</option>
             <option value="Moto">Moto</option>
-            <option value="Caminhão / Pesado">Caminhão / Veículo Pesado</option>
-            <option value="Frota">Frotas (Empresas)</option>
+            <option value="Veículos Pesados / Caminhões">Veículos Pesados / Caminhões</option>
+            <option value="Frota / Van">Frota / Van</option>
           </select>
         </div>
 
+        <div id="msgCotacaoSucesso" style="display:none; color: var(--accent); font-weight:700; margin-bottom:12px; text-align:center;">
+          ✨ Cotação enviada com sucesso! Em breve entraremos em contato.
+        </div>
+
         <button type="submit" id="btnEnviarCotacao" class="btn btn-whatsapp btn-block btn-large">
-          <i class="fab fa-whatsapp"></i> Receber Cotação no WhatsApp
+          <i class="fab fa-whatsapp"></i> Enviar Cotação
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL SEJA CONSULTOR -->
+  <div id="modalConsultor" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
+      <h2>Seja um Consultor 4G</h2>
+      <p>Preencha seus dados para entrar na nossa equipe de consultores:</p>
+      
+      <form id="formConsultor" onsubmit="enviarConsultor(event)">
+        <div class="form-group">
+          <label for="cons-nome">Seu Nome Completo:</label>
+          <input type="text" id="cons-nome" required placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+          <label for="cons-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
+          <input type="tel" id="cons-whatsapp" required placeholder="Ex: 11999999999">
+        </div>
+
+        <div class="form-group">
+          <label for="cons-cidade">Sua Cidade / Região:</label>
+          <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP">
+        </div>
+
+        <div id="msgConsultorSucesso" style="display:none; color: var(--accent); font-weight:700; margin-bottom:12px; text-align:center;">
+          ✨ Cadastro enviado com sucesso! Entraremos em contato.
+        </div>
+
+        <button type="submit" id="btnEnviarConsultor" class="btn btn-primary btn-block btn-large">
+          Enviar Cadastro de Consultor
         </button>
       </form>
     </div>
@@ -640,15 +755,23 @@
   </footer>
 
   <script>
-    const SEU_NUMERO_WHATSAPP = "5511999999999"; // Substitua pelo seu número real
-    const URL_PLANILHA_GOOGLE = "COLOQUE_AQUI_O_LINK_DO_WEB_APP_DO_GOOGLE";
+    const SEU_NUMERO_WHATSAPP = "5511999999999"; 
+    const URL_PLANILHA_GOOGLE = "https://script.google.com/macros/s/AKfycb.../exec"; // Substitua com sua URL do Apps Script
 
     function abrirModal() {
       document.getElementById('modalCotacao').style.display = 'flex';
     }
-
     function fecharModal() {
       document.getElementById('modalCotacao').style.display = 'none';
+      document.getElementById('msgCotacaoSucesso').style.display = 'none';
+    }
+
+    function abrirModalConsultor() {
+      document.getElementById('modalConsultor').style.display = 'flex';
+    }
+    function fecharModalConsultor() {
+      document.getElementById('modalConsultor').style.display = 'none';
+      document.getElementById('msgConsultorSucesso').style.display = 'none';
     }
 
     function abrirSuporte() {
@@ -656,6 +779,23 @@
       window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${msg}`, '_blank');
     }
 
+    // LÓGICA DAS ESTRELAS DE FEEDBACK
+    const stars = document.querySelectorAll('#starRating i');
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const rating = parseInt(this.getAttribute('data-rating'));
+        document.getElementById('fb-rating').value = rating;
+        stars.forEach((s, idx) => {
+          if (idx < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // 1. DISPARO COTAÇÃO
     function enviarCotacao(e) {
       e.preventDefault();
       const nome = document.getElementById('nome').value;
@@ -664,13 +804,14 @@
       const tipoVeiculo = document.getElementById('tipoVeiculo').value;
 
       const btn = document.getElementById('btnEnviarCotacao');
-      btn.innerHTML = "Enviando e abrindo WhatsApp...";
+      btn.innerText = "Enviando dados...";
       btn.disabled = true;
 
       const dadosLead = {
+        tipo: "Cotação",
         nome: nome,
         whatsapp: whatsapp,
-        placa: placa || "Não informada",
+        placa: placa,
         tipoVeiculo: tipoVeiculo
       };
 
@@ -679,26 +820,107 @@
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dadosLead)
-      }).catch(err => console.log("Erro ao salvar na planilha:", err));
-
-      let texto = `Olá! Vim pelo site e gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*Celular:* ${whatsapp}\n*Tipo de Veículo:* ${tipoVeiculo}`;
-      if (placa) {
-        texto += `\n*Placa:* ${placa}`;
-      }
-
-      setTimeout(() => {
-        window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank');
-        btn.innerHTML = '<i class="fab fa-whatsapp"></i> Receber Cotação no WhatsApp';
+      }).then(() => {
+        document.getElementById('msgCotacaoSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cotação";
         btn.disabled = false;
-        fecharModal();
-      }, 800);
+        setTimeout(() => {
+          fecharModal();
+          document.getElementById('formCotacao').reset();
+        }, 2000);
+      }).catch(err => {
+        console.log("Erro ao enviar:", err);
+        document.getElementById('msgCotacaoSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cotação";
+        btn.disabled = false;
+        setTimeout(() => { fecharModal(); }, 2000);
+      });
+    }
+
+    // 2. DISPARO CONSULTOR
+    function enviarConsultor(e) {
+      e.preventDefault();
+      const nome = document.getElementById('cons-nome').value;
+      const whatsapp = document.getElementById('cons-whatsapp').value;
+      const cidade = document.getElementById('cons-cidade').value;
+
+      const btn = document.getElementById('btnEnviarConsultor');
+      btn.innerText = "Enviando cadastro...";
+      btn.disabled = true;
+
+      const dadosConsultor = {
+        tipo: "Consultor",
+        nome: nome,
+        whatsapp: whatsapp,
+        cidade: cidade
+      };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosConsultor)
+      }).then(() => {
+        document.getElementById('msgConsultorSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cadastro de Consultor";
+        btn.disabled = false;
+        setTimeout(() => {
+          fecharModalConsultor();
+          document.getElementById('formConsultor').reset();
+        }, 2000);
+      }).catch(err => {
+        console.log("Erro ao enviar:", err);
+        document.getElementById('msgConsultorSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cadastro de Consultor";
+        btn.disabled = false;
+        setTimeout(() => { fecharModalConsultor(); }, 2000);
+      });
+    }
+
+    // 3. DISPARO FEEDBACK
+    function enviarFeedback(e) {
+      e.preventDefault();
+      const nome = document.getElementById('fb-nome').value;
+      const rating = document.getElementById('fb-rating').value;
+      const mensagem = document.getElementById('fb-mensagem').value;
+
+      const btn = document.getElementById('btnEnviarFeedback');
+      btn.innerText = "Enviando avaliação...";
+      btn.disabled = true;
+
+      const dadosFeedback = {
+        tipo: "Feedback",
+        nome: nome,
+        rating: rating,
+        mensagem: mensagem
+      };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosFeedback)
+      }).then(() => {
+        document.getElementById('msgFeedbackSucesso').style.display = 'block';
+        btn.innerText = "Envie sua Avaliação";
+        btn.disabled = false;
+        setTimeout(() => {
+          document.getElementById('msgFeedbackSucesso').style.display = 'none';
+          document.getElementById('formFeedback').reset();
+        }, 3000);
+      }).catch(err => {
+        console.log("Erro ao enviar:", err);
+        document.getElementById('msgFeedbackSucesso').style.display = 'block';
+        btn.innerText = "Envie sua Avaliação";
+        btn.disabled = false;
+      });
     }
 
     window.onclick = function(event) {
-      const modal = document.getElementById('modalCotacao');
-      if (event.target == modal) {
-        fecharModal();
-      }
+      const modalCotacao = document.getElementById('modalCotacao');
+      const modalConsultor = document.getElementById('modalConsultor');
+      if (event.target == modalCotacao) { fecharModal(); }
+      if (event.target == modalConsultor) { fecharModalConsultor(); }
     }
   </script>
 </body>
