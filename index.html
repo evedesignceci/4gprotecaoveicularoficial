@@ -229,13 +229,20 @@
       font-size: 32px;
       font-weight: 800;
       color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 600;
       margin-bottom: 48px;
     }
     .bg-light {
       background-color: #F1F5F9;
     }
 
-    /* GRIDS & CARDS */
+    /* GRIDS & CARDS CLICÁVEIS */
     .grid {
       display: grid;
       gap: 24px;
@@ -250,42 +257,28 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid #E2E8F0;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
     .card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-md);
+      border-color: var(--primary);
     }
 
-    /* PARTNERS */
-    .partner-card h3 {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-    .partner-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    /* FEATURE CARDS */
-    .feature-card i {
-      font-size: 40px;
-      color: var(--primary);
-      margin-bottom: 18px;
-    }
-    .feature-card h3 {
+    /* PARTNERS & FEATURES */
+    .partner-card h3, .feature-card h3 {
       font-size: 18px;
       font-weight: 800;
+      color: var(--primary-dark);
       margin-bottom: 10px;
     }
-    .feature-card p {
+    .partner-card p, .feature-card p {
       font-size: 14px;
       color: var(--text-muted);
     }
 
-    /* SERVICES GRID COM CLIQUES QUE LEVAM À COTAÇÃO */
+    /* SERVICES GRID */
     .services-grid {
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
@@ -314,7 +307,65 @@
       color: var(--primary);
     }
 
-    /* MODAL DE COTAÇÃO COM OS NOVOS CAMPOS */
+    /* FEEDBACKS / DEPOIMENTOS */
+    .feedback-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .feedback-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .feedback-author {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--primary-dark);
+    }
+    .stars {
+      color: #F59E0B;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    /* LOCALIZAÇÃO DO ESCRITÓRIO */
+    .location-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .location-info {
+      flex: 1;
+      min-width: 280px;
+      text-align: left;
+    }
+    .location-info h3 {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .location-info p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* MODAL DE COTAÇÃO */
     .modal {
       display: none;
       position: fixed;
@@ -414,6 +465,13 @@
       .nav-menu {
         display: none;
       }
+      .location-box {
+        flex-direction: column;
+        text-align: center;
+      }
+      .location-info {
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -437,6 +495,7 @@
         <a href="#parceiros">Parceiros</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#servicos">Assistência 24h</a>
+        <a href="#localizacao">Escritório</a>
       </nav>
       <div class="nav-actions">
         <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline">
@@ -453,7 +512,7 @@
       <div class="hero-text">
         <h1>Seu carro protegido, sua família tranquila</h1>
         <p class="subtitle">Sua proteção sob medida com as maiores do Brasil.</p>
-        <p>Na 4G Proteção Veicular nossa missão é simplificar sua escolha. Como uma corretora especializada, selecionamos criteriosamente as melhores associações (APVS, Capitalcar, Valecar, AGV, KM) e seguradoras (Suhai) para garantir que seu patrimônio esteja em boas mãos.</p>
+        <p>Na 4G Proteção Veicular nossa missão é simplificar sua escolha. Como corretora especializada, unimos as maiores associações e seguradoras do mercado para garantir que seu patrimônio esteja sempre em segurança com total agilidade.</p>
         <div class="hero-buttons">
           <button onclick="abrirModal()" class="btn btn-primary btn-large">Faça a sua Cotação</button>
           <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-whatsapp btn-large">
@@ -471,69 +530,74 @@
     </div>
   </section>
 
-  <!-- PARCEIROS -->
+  <!-- PARCEIROS (COM EXPLICAÇÃO E DIRECIONAMENTO PARA COTAÇÃO) -->
   <section id="parceiros" class="section partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
+      <p class="section-subtitle">Trabalhamos com os melhores nomes do setor para garantir o plano ideal para o seu perfil. Clique em qualquer parceiro para cotar:</p>
+      
       <div class="grid grid-4">
-        <div class="card partner-card">
+        <div class="card partner-card" onclick="abrirModal()">
           <i class="fas fa-car-burst" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Capitalcar</h3>
-          <p>Referência em agilidade e suporte completo.</p>
+          <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
         </div>
-        <div class="card partner-card">
+        <div class="card partner-card" onclick="abrirModal()">
           <i class="fas fa-hand-holding-hand" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Valecar</h3>
-          <p>Tradição e confiança em assistência 24h.</p>
+          <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
         </div>
-        <div class="card partner-card">
+        <div class="card partner-card" onclick="abrirModal()">
           <i class="fas fa-shield-cat" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Suhai</h3>
-          <p>Especialista em furto e roubo sem burocracia.</p>
+          <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
         </div>
-        <div class="card partner-card">
+        <div class="card partner-card" onclick="abrirModal()">
           <i class="fas fa-award" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>APVS</h3>
-          <p>A maior proteção veicular da América Latina ao seu alcance.</p>
+          <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIFERENCIAIS -->
+  <!-- DIFERENCIAIS (COM EXPLICAÇÃO E DIRECIONAMENTO PARA COTAÇÃO) -->
   <section id="diferenciais" class="section bg-light">
     <div class="container">
       <h2>Por que contratar com a 4G Corretora?</h2>
+      <p class="section-subtitle">Descubra as vantagens exclusivas que oferecemos para facilitar a proteção do seu bem:</p>
+      
       <div class="grid grid-4">
-        <div class="card feature-card">
+        <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-building"></i>
           <h3>Corretora Multimarcas</h3>
-          <p>Analisamos entre Capitalcar, Valecar, APVS, AGV, Suhai e KM para encontrar o preço ideal.</p>
+          <p>Analisamos entre Capitalcar, Valecar, APVS, AGV, Suhai e KM para encontrar o preço ideal para o seu bolso.</p>
         </div>
-        <div class="card feature-card">
+        <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-file-circle-check"></i>
           <h3>Sem Burocracia</h3>
-          <p>Sem consulta a SPC/Serasa e sem análise de perfil de condutor. O foco é proteger seu veículo.</p>
+          <p>Sem consulta a SPC/Serasa e sem análise de perfil de condutor rigorosa. O foco é proteger seu veículo com rapidez.</p>
         </div>
-        <div class="card feature-card">
+        <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-user-check"></i>
           <h3>Atendimento Humano</h3>
-          <p>Você não fala com máquinas. Na 4G você tem suporte direto de especialistas.</p>
+          <p>Você não fala com robôs. Na 4G você tem suporte direto de especialistas prontos para ajudar em qualquer situação.</p>
         </div>
-        <div class="card feature-card">
+        <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-handshake"></i>
           <h3>Opções em Consórcio</h3>
-          <p>Além da proteção, ajudamos você a planejar a aquisição do seu próximo bem!</p>
+          <p>Além da proteção veicular completa, ajudamos você a planejar com segurança a aquisição do seu próximo veículo.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVIÇOS 24H (AGORA CLICÁVEIS PARA ABRIR A COTAÇÃO) -->
+  <!-- SERVIÇOS 24H (CLICÁVEIS PARA COTAÇÃO) -->
   <section id="servicos" class="section">
     <div class="container">
       <h2>Serviços 24 horas para a sua comodidade</h2>
-      <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 35px; font-weight: 600;">Clique em qualquer serviço para solicitar sua proteção veicular agora mesmo:</p>
+      <p class="section-subtitle">Clique em qualquer serviço para solicitar sua proteção veicular agora mesmo:</p>
+      
       <div class="grid services-grid">
         <div class="service-item" onclick="abrirModal()"><i class="fas fa-truck-pickup"></i> Reboque</div>
         <div class="service-item" onclick="abrirModal()"><i class="fas fa-car-battery"></i> Auxílio Bateria</div>
@@ -547,7 +611,72 @@
     </div>
   </section>
 
-  <!-- MODAL DE COTAÇÃO PROFISSIONAL ATUALIZADO -->
+  <!-- SEÇÃO DE FEEDBACKS / DEPOIMENTOS -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>O que dizem nossos clientes</h2>
+      <p class="section-subtitle">Confira a experiência de quem confia na proteção da 4G:</p>
+      
+      <div class="grid grid-4">
+        <div class="feedback-card">
+          <div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="feedback-text">"Atendimento impecável! Precisei de reboque na rodovia e fui atendido super rápido. Sem burocracia nenhuma. Recomendo demais a 4G!"</p>
+          </div>
+          <div class="feedback-author">— Marcos Silva (Motorista de Aplicativo)</div>
+        </div>
+
+        <div class="feedback-card">
+          <div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="feedback-text">"Fui muito bem orientada sobre qual seguradora/associação cabia no meu orçamento. Suporte humanizado de verdade."</p>
+          </div>
+          <div class="feedback-author">— Juliana Mendes (Particular)</div>
+        </div>
+
+        <div class="feedback-card">
+          <div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="feedback-text">"Protegi a frota da minha empresa com eles e a economia foi excelente comparado às seguradoras tradicionais. Nota 10!"</p>
+          </div>
+          <div class="feedback-author">— Carlos Eduardo (Empresário)</div>
+        </div>
+
+        <div class="feedback-card">
+          <div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="feedback-text">"Muito ágil! Fiz a cotação pelo site e em poucos minutos já fechei a proteção da minha moto. Excelente corretora."</p>
+          </div>
+          <div class="feedback-author">— Rafael Souza (Motociclista)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE LOCALIZAÇÃO DO ESCRITÓRIO -->
+  <section id="localizacao" class="section">
+    <div class="container">
+      <h2>Venha nos Conhecer</h2>
+      <p class="section-subtitle">Nosso escritório está de portas abertas para receber você com total conforto:</p>
+      
+      <div class="location-box">
+        <div class="location-info">
+          <h3><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Escritório 4G Proteção Veicular</h3>
+          <p><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato</p>
+          <p>Atendimento especializado para fechamento de contratos, retirada de dúvidas e suporte presencial com toda a nossa equipe.</p>
+          <button onclick="abrirModal()" class="btn btn-primary">Fazer Cotação Presencial / Online</button>
+        </div>
+        <div style="flex: 1; min-width: 280px; height: 260px; background: #E2E8F0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-weight: 700;">
+          <div style="text-align: center; padding: 20px;">
+            <i class="fas fa-map-marked-alt" style="font-size: 40px; color: var(--primary); margin-bottom: 10px; display: block;"><span>R. Azevedo Marques, 59</span></i>
+            <span style="font-size: 13px;">Jardim Prof. Francisco Morato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE COTAÇÃO PROFISSIONAL -->
   <div id="modalCotacao" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
@@ -573,11 +702,11 @@
         <div class="form-group">
           <label for="tipoVeiculo">Tipo de Veículo:</label>
           <select id="tipoVeiculo" required>
-            <option value="Carro de Passeio">Carro de Passeio</option>
-            <option value="Carro de Aplicativo (Uber / 99)">Carro de Aplicativo (Uber / 99)</option>
+            <option value="Carro">Carro de Passeio</option>
+            <option value="Carro de Aplicativo">Carro de Aplicativo (Uber / 99)</option>
             <option value="Moto">Moto</option>
-            <option value="Caminhão / Veículo Pesado">Caminhão / Veículo Pesado</option>
-            <option value="Frotas (Empresas)">Frotas (Empresas)</option>
+            <option value="Caminhão / Pesado">Caminhão / Veículo Pesado</option>
+            <option value="Frota">Frotas (Empresas)</option>
           </select>
         </div>
 
@@ -596,7 +725,6 @@
   </footer>
 
   <script>
-    // SEU NÚMERO DO WHATSAPP COM DDD
     const SEU_NUMERO_WHATSAPP = "5511999999999"; // Substitua pelo seu número real
 
     function abrirModal() {
