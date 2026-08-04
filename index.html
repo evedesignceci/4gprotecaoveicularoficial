@@ -242,7 +242,7 @@
       background-color: #F1F5F9;
     }
 
-    /* GRIDS & CARDS CLICÁVEIS */
+    /* GRIDS & CARDS */
     .grid {
       display: grid;
       gap: 24px;
@@ -307,36 +307,7 @@
       color: var(--primary);
     }
 
-    /* FEEDBACKS / DEPOIMENTOS */
-    .feedback-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #E2E8F0;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .feedback-text {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-bottom: 16px;
-    }
-    .feedback-author {
-      font-weight: 800;
-      font-size: 15px;
-      color: var(--primary-dark);
-    }
-    .stars {
-      color: #F59E0B;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    /* LOCALIZAÇÃO DO ESCRITÓRIO */
+    /* LOCALIZAÇÃO */
     .location-box {
       background: #FFFFFF;
       border-radius: var(--radius-lg);
@@ -365,7 +336,7 @@
       margin-bottom: 16px;
     }
 
-    /* MODAL DE COTAÇÃO */
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -439,7 +410,6 @@
       border-color: var(--primary);
     }
 
-    /* FOOTER */
     footer {
       background: var(--dark);
       color: #94A3B8;
@@ -452,26 +422,12 @@
     }
 
     @media (max-width: 900px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-text h1 {
-        font-size: 32px;
-      }
-      .hero-buttons {
-        justify-content: center;
-      }
-      .nav-menu {
-        display: none;
-      }
-      .location-box {
-        flex-direction: column;
-        text-align: center;
-      }
-      .location-info {
-        text-align: center;
-      }
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-text h1 { font-size: 32px; }
+      .hero-buttons { justify-content: center; }
+      .nav-menu { display: none; }
+      .location-box { flex-direction: column; text-align: center; }
+      .location-info { text-align: center; }
     }
   </style>
 </head>
@@ -530,11 +486,11 @@
     </div>
   </section>
 
-  <!-- PARCEIROS (COM EXPLICAÇÃO E DIRECIONAMENTO PARA COTAÇÃO) -->
+  <!-- PARCEIROS -->
   <section id="parceiros" class="section partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
-      <p class="section-subtitle">Trabalhamos com os melhores nomes do setor para garantir o plano ideal para o seu perfil. Clique em qualquer parceiro para cotar:</p>
+      <p class="section-subtitle">Trabalhamos com os melhores nomes do setor. Clique em qualquer parceiro para cotar:</p>
       
       <div class="grid grid-4">
         <div class="card partner-card" onclick="abrirModal()">
@@ -561,38 +517,38 @@
     </div>
   </section>
 
-  <!-- DIFERENCIAIS (COM EXPLICAÇÃO E DIRECIONAMENTO PARA COTAÇÃO) -->
+  <!-- DIFERENCIAIS -->
   <section id="diferenciais" class="section bg-light">
     <div class="container">
       <h2>Por que contratar com a 4G Corretora?</h2>
-      <p class="section-subtitle">Descubra as vantagens exclusivas que oferecemos para facilitar a proteção do seu bem:</p>
+      <p class="section-subtitle">Descubra as vantagens exclusivas que oferecemos para facilitar a proteção:</p>
       
       <div class="grid grid-4">
         <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-building"></i>
           <h3>Corretora Multimarcas</h3>
-          <p>Analisamos entre Capitalcar, Valecar, APVS, AGV, Suhai e KM para encontrar o preço ideal para o seu bolso.</p>
+          <p>Analisamos entre Capitalcar, Valecar, APVS, AGV, Suhai e KM para encontrar o preço ideal.</p>
         </div>
         <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-file-circle-check"></i>
           <h3>Sem Burocracia</h3>
-          <p>Sem consulta a SPC/Serasa e sem análise de perfil de condutor rigorosa. O foco é proteger seu veículo com rapidez.</p>
+          <p>Sem consulta a SPC/Serasa e sem análise rígida de perfil de condutor. O foco é proteger seu veículo.</p>
         </div>
         <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-user-check"></i>
           <h3>Atendimento Humano</h3>
-          <p>Você não fala com robôs. Na 4G você tem suporte direto de especialistas prontos para ajudar em qualquer situação.</p>
+          <p>Você não fala com robôs. Na 4G você tem suporte direto de especialistas.</p>
         </div>
         <div class="card feature-card" onclick="abrirModal()">
           <i class="fas fa-handshake"></i>
           <h3>Opções em Consórcio</h3>
-          <p>Além da proteção veicular completa, ajudamos você a planejar com segurança a aquisição do seu próximo veículo.</p>
+          <p>Ajudamos você a planejar com segurança a aquisição do seu próximo veículo.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVIÇOS 24H (CLICÁVEIS PARA COTAÇÃO) -->
+  <!-- SERVIÇOS 24H -->
   <section id="servicos" class="section">
     <div class="container">
       <h2>Serviços 24 horas para a sua comodidade</h2>
@@ -611,77 +567,36 @@
     </div>
   </section>
 
-  <!-- SEÇÃO DE FEEDBACKS / DEPOIMENTOS -->
-  <section class="section bg-light">
-    <div class="container">
-      <h2>O que dizem nossos clientes</h2>
-      <p class="section-subtitle">Confira a experiência de quem confia na proteção da 4G:</p>
-      
-      <div class="grid grid-4">
-        <div class="feedback-card">
-          <div>
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="feedback-text">"Atendimento impecável! Precisei de reboque na rodovia e fui atendido super rápido. Sem burocracia nenhuma. Recomendo demais a 4G!"</p>
-          </div>
-          <div class="feedback-author">— Marcos Silva (Motorista de Aplicativo)</div>
-        </div>
-
-        <div class="feedback-card">
-          <div>
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="feedback-text">"Fui muito bem orientada sobre qual seguradora/associação cabia no meu orçamento. Suporte humanizado de verdade."</p>
-          </div>
-          <div class="feedback-author">— Juliana Mendes (Particular)</div>
-        </div>
-
-        <div class="feedback-card">
-          <div>
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="feedback-text">"Protegi a frota da minha empresa com eles e a economia foi excelente comparado às seguradoras tradicionais. Nota 10!"</p>
-          </div>
-          <div class="feedback-author">— Carlos Eduardo (Empresário)</div>
-        </div>
-
-        <div class="feedback-card">
-          <div>
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="feedback-text">"Muito ágil! Fiz a cotação pelo site e em poucos minutos já fechei a proteção da minha moto. Excelente corretora."</p>
-          </div>
-          <div class="feedback-author">— Rafael Souza (Motociclista)</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO DE LOCALIZAÇÃO DO ESCRITÓRIO -->
-  <section id="localizacao" class="section">
+  <!-- LOCALIZAÇÃO -->
+  <section id="localizacao" class="section bg-light">
     <div class="container">
       <h2>Venha nos Conhecer</h2>
-      <p class="section-subtitle">Nosso escritório está de portas abertas para receber você com total conforto:</p>
+      <p class="section-subtitle">Nosso escritório está de portas abertas para receber você:</p>
       
       <div class="location-box">
         <div class="location-info">
           <h3><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Escritório 4G Proteção Veicular</h3>
           <p><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato</p>
           <p>Atendimento especializado para fechamento de contratos, retirada de dúvidas e suporte presencial com toda a nossa equipe.</p>
-          <button onclick="abrirModal()" class="btn btn-primary">Fazer Cotação Presencial / Online</button>
+          <button onclick="abrirModal()" class="btn btn-primary">Fazer Cotação Online</button>
         </div>
-        <div style="flex: 1; min-width: 280px; height: 260px; background: #E2E8F0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-weight: 700;">
+        <div style="flex: 1; min-width: 280px; height: 240px; background: #E2E8F0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-weight: 700;">
           <div style="text-align: center; padding: 20px;">
-            <i class="fas fa-map-marked-alt" style="font-size: 40px; color: var(--primary); margin-bottom: 10px; display: block;"><span>R. Azevedo Marques, 59</span></i>
-            <span style="font-size: 13px;">Jardim Prof. Francisco Morato</span>
+            <i class="fas fa-map-marked-alt" style="font-size: 38px; color: var(--primary); margin-bottom: 8px; display: block;"></i>
+            <span style="font-size: 14px; font-weight: 800; color: var(--dark);">R. Azevedo Marques, 59</span><br>
+            <span style="font-size: 12px; color: var(--text-muted);">Jardim Prof. Francisco Morato</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODAL DE COTAÇÃO PROFISSIONAL -->
+  <!-- MODAL DE COTAÇÃO INTEGRADA COM PLANILHA GOOGLE -->
   <div id="modalCotacao" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
       <h2>Solicite sua Cotação</h2>
-      <p>Preencha os dados abaixo para receber a melhor proposta no seu WhatsApp:</p>
+      <p>Preencha os dados abaixo. Seus dados serão salvos e você será direcionado para o WhatsApp:</p>
       
       <form id="formCotacao" onsubmit="enviarCotacao(event)">
         <div class="form-group">
@@ -710,7 +625,7 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-whatsapp btn-block btn-large">
+        <button type="submit" id="btnEnviarCotacao" class="btn btn-whatsapp btn-block btn-large">
           <i class="fab fa-whatsapp"></i> Receber Cotação no WhatsApp
         </button>
       </form>
@@ -726,6 +641,7 @@
 
   <script>
     const SEU_NUMERO_WHATSAPP = "5511999999999"; // Substitua pelo seu número real
+    const URL_PLANILHA_GOOGLE = "COLOQUE_AQUI_O_LINK_DO_WEB_APP_DO_GOOGLE";
 
     function abrirModal() {
       document.getElementById('modalCotacao').style.display = 'flex';
@@ -747,14 +663,35 @@
       const placa = document.getElementById('placa').value;
       const tipoVeiculo = document.getElementById('tipoVeiculo').value;
 
+      const btn = document.getElementById('btnEnviarCotacao');
+      btn.innerHTML = "Enviando e abrindo WhatsApp...";
+      btn.disabled = true;
+
+      const dadosLead = {
+        nome: nome,
+        whatsapp: whatsapp,
+        placa: placa || "Não informada",
+        tipoVeiculo: tipoVeiculo
+      };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosLead)
+      }).catch(err => console.log("Erro ao salvar na planilha:", err));
+
       let texto = `Olá! Vim pelo site e gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*Celular:* ${whatsapp}\n*Tipo de Veículo:* ${tipoVeiculo}`;
-      
       if (placa) {
         texto += `\n*Placa:* ${placa}`;
       }
 
-      window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank');
-      fecharModal();
+      setTimeout(() => {
+        window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank');
+        btn.innerHTML = '<i class="fab fa-whatsapp"></i> Receber Cotação no WhatsApp';
+        btn.disabled = false;
+        fecharModal();
+      }, 800);
     }
 
     window.onclick = function(event) {
