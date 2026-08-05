@@ -3,1159 +3,1093 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turminha do Xexéu - Portal Oficial</title>
+  <title>4G Proteção Veicular | Sua proteção sob medida</title>
   
-  <link rel="icon" type="image/png" href="https://i.imgur.com/ANqcDjC.png">
+  <!-- Favicon / Logo -->
+  <link rel="shortcut icon" href="https://i.imgur.com/jM5wvZR.png" type="image/png">
+  
+  <!-- Fontes Google: Anton (Títulos) e Open Sans (Corpo de texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+    /* CORES & TIPOGRAFIA DA IDENTIDADE VISUAL 4G */
     :root {
-      --primary: #3B82F6;
-      --primary-dark: #1D4ED8;
-      --secondary: #F59E0B;
-      --accent: #EF4444;
-      --purple: #8B5CF6;
-      --green: #10B981;
-      --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #FAF5FF 50%, #FFF1F2 100%);
-      --card-bg: rgba(255, 255, 255, 0.98);
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
+      --primary: #154F96;        /* Azul Escuro 4G */
+      --primary-light: #52A3E1;  /* Azul Claro 4G */
+      --yellow: #FFF029;         /* Amarelo 4G */
+      --dark: #000000;           /* Preto 4G */
+      --white: #FFFFFF;          /* Branco */
+      --text-muted: #475569;
+      --bg-light: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --shadow-sm: 0 4px 12px rgba(21, 79, 150, 0.08);
+      --shadow-md: 0 12px 28px rgba(21, 79, 150, 0.15);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      
+      --font-title: 'Anton', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-family: var(--font-body);
+      scroll-behavior: smooth;
       -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 10px 10px 90px;
+      background-color: var(--bg-light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .app-container {
-      width: 100%;
-      max-width: 850px;
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding-bottom: 24px;
+    h1, h2, h3, .heading-font {
+      font-family: var(--font-title);
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    /* BARRA DE NAVEGAÇÃO PRINCIPAL */
-    .page-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      background: #E0F2FE;
-      padding: 10px;
-      border-radius: var(--radius-lg);
-      margin: 10px 15px 0;
-      flex-wrap: wrap;
-    }
-    .nav-tab-btn {
-      flex: 1;
-      min-width: 90px;
-      max-width: 160px;
-      padding: 12px 10px;
-      border: none;
-      border-radius: 16px;
-      font-weight: 800;
-      font-size: 14px;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text-muted);
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .nav-tab-btn.active {
+    /* TOP BAR MARQUEE */
+    .top-bar {
       background: var(--primary);
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 2px solid var(--yellow);
     }
-    .nav-tab-btn.vip-tab {
-      background: #0F172A;
-      color: #FFF;
+    .marquee {
+      display: inline-block;
+      animation: marquee 25s linear infinite;
     }
-    .nav-tab-btn.vip-tab.active {
-      background: #334155;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
-    }
-
-    /* SUB-ABAS DE JOGOS */
-    .games-subnav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      background: #FEF3C7;
-      padding: 8px;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-    .subnav-btn {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 12px;
-      cursor: pointer;
-      background: #FFFBEB;
-      color: #92400E;
-      transition: all 0.2s;
-    }
-    .subnav-btn.active {
-      background: #F59E0B;
-      color: #FFF;
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-    }
-    .subnav-btn.vip-sub {
-      background: #F8FAFC;
-      border: 1.5px solid #CBD5E1;
-      color: #1E293B;
-    }
-    .subnav-btn.vip-sub.active {
-      background: #0F172A;
-      color: #FFF;
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
-    .game-tab-content { display: none; }
-    .game-tab-content.active-game-tab { display: block; }
-
-    /* PÁGINAS COM ALTERNÂNCIA */
-    .page-content {
-      display: none;
-      flex-direction: column;
-      gap: 24px;
-      animation: fadeIn 0.3s ease;
+    /* HEADER & NAV */
+    .header {
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
     }
-    .page-content.active-page { display: flex; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-
-    /* HEADER */
-    header {
-      padding: 12px 20px;
-      background: #BAE6FD;
+    .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-radius: var(--radius-lg);
-      margin: 10px 10px 0;
+      height: 80px;
     }
-    .logo-img { max-width: 120px; height: auto; }
-
-    .audio-toggle-btn {
-      background: #FFFFFF;
-      border: 2px solid var(--primary);
-      color: var(--primary-dark);
-      font-weight: 800;
-      font-size: 13px;
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
+    .logo-img {
+      max-height: 55px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-menu a:hover {
+      color: var(--primary-light);
+    }
+    .nav-actions {
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-    .audio-toggle-btn.muted {
-      background: #FEE2E2;
-      border-color: #EF4444;
-      color: #991B1B;
+      gap: 12px;
     }
 
-    /* BANNER E BOAS-VINDAS */
-    .banner-intro-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 0 20px;
+    /* BUTTONS */
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .banner-container { width: 100%; }
-    .banner-img {
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(21, 79, 150, 0.3);
+    }
+    .btn-primary:hover {
+      background: #0D3A70;
+      transform: translateY(-2px);
+    }
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--dark);
+      box-shadow: 0 4px 14px rgba(255, 240, 41, 0.4);
+    }
+    .btn-yellow:hover {
+      background: #E6D820;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border: 2px solid var(--primary-light);
+      color: var(--primary);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: var(--primary-light);
+      color: var(--white);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover {
+      background: #1EBE57;
+      transform: translateY(-2px);
+    }
+    .btn-large {
+      padding: 14px 28px;
+      font-size: 16px;
+      border-radius: var(--radius-lg);
+    }
+    .btn-block {
+      width: 100%;
+    }
+
+    /* BANNER TOPO RESERVADO */
+    .top-banner-space {
+      width: 100%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .top-banner-space img {
       width: 100%;
       height: auto;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      display: block;
+      max-height: 400px;
       object-fit: cover;
     }
 
-    .intro-box {
-      width: 100%;
-      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
-      border: 2px solid #FCD34D;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+    /* HERO SECTION */
+    .hero {
+      padding: 60px 0 80px;
+      background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
     }
-    .intro-box-header {
-      display: flex;
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
+    }
+    .hero-text h1 {
+      font-size: 46px;
+      color: var(--primary);
       margin-bottom: 8px;
     }
-    .intro-box h2 { font-size: 20px; font-weight: 800; color: #92400E; }
-    .intro-box p { font-size: 15px; color: #78350F; line-height: 1.6; font-weight: 600; }
-
-    .btn-audio-mini {
-      background: linear-gradient(135deg, #FBBF24, #F59E0B);
-      border: none;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
-      flex-shrink: 0;
-    }
-
-    .audio-notice-info {
-      font-size: 12px;
-      color: #B45309;
-      background: rgba(253, 230, 138, 0.5);
-      border-radius: 12px;
-      padding: 6px 14px;
-      margin-top: 10px;
+    .hero-text .subtitle {
+      font-size: 20px;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      color: var(--primary-light);
+      margin-bottom: 16px;
     }
-
-    /* REDES SOCIAIS */
-    .social-round-section {
-      padding: 0 20px;
+    .hero-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .hero-buttons {
       display: flex;
-      justify-content: center;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    .social-round-btn {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #FFF;
-      border: 3px solid #E2E8F0;
+
+    /* SEÇÕES EM GERAL */
+    .section {
+      padding: 80px 0;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 48px;
+    }
+    .bg-light {
+      background-color: #F1F5F9;
+    }
+
+    /* GRIDS & CARDS */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .grid-4 {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+    .grid-5 {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+
+    /* FORMULÁRIO EMBEDDED */
+    .inline-form-box {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-light);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* PARTNERS & FEATURES */
+    .partner-card h3, .feature-card h3 {
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .partner-card p, .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .service-item {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      font-weight: 700;
+      font-size: 15px;
       display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .service-item:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .service-item i {
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    /* LOCALIZAÇÃO */
+    .location-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .location-info {
+      flex: 1;
+      min-width: 280px;
+      text-align: left;
+    }
+    .location-info h3 {
+      font-size: 24px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .location-info p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .map-container {
+      flex: 1;
+      min-width: 280px;
+      height: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ESTRELAS FEEDBACK */
+    .star-rating {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      font-size: 28px;
+      color: #CBD5E1;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+    .star-rating i.active {
+      color: var(--yellow);
+    }
+
+    /* MODAIS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      font-size: 24px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-      transition: all 0.25s ease;
-    }
-    .social-round-btn img { width: 30px; height: 30px; object-fit: contain; }
-
-    /* PERSONAGENS */
-    .characters-section-title {
-      padding: 0 20px;
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .characters-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      padding: 0 20px;
-    }
-    @media (min-width: 480px) {
-      .characters-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .char-card {
-      background: #FFF;
-      border-radius: var(--radius-lg);
-      padding: 16px 10px;
-      text-align: center;
-      border: 3px solid #E2E8F0;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-      transition: all 0.25s ease;
-    }
-    .char-card img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)); }
-    .char-card span { font-weight: 800; font-size: 15px; color: var(--text-main); }
-
-    .char-details-box {
-      margin: 0 20px;
-      background: #FFFFFF;
-      border: 3px solid var(--primary);
-      border-radius: var(--radius-lg);
       padding: 20px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
     }
-
-    /* VÍDEOS */
-    .video-section { padding: 0 20px; }
-    .video-card {
-      background: #FFFFFF;
+    .modal-content {
+      background: var(--card-bg);
       border-radius: var(--radius-lg);
-      padding: 18px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-      border: 2px solid #E2E8F0;
-      text-align: center;
-    }
-    .video-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .video-header h3 { font-size: 18px; font-weight: 900; color: var(--primary-dark); display: flex; align-items: center; gap: 8px; }
-    .video-wrapper {
+      padding: 36px;
+      width: 100%;
+      max-width: 520px;
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: modalUp 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
     }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-    /* ESTILOS DA ÁREA VIP */
-    .vip-lock-container {
-      background: #FFF;
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-lg);
-      padding: 30px 20px;
-      text-align: center;
-      margin: 0 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    @keyframes modalUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .vip-lock-container h3 { font-size: 20px; font-weight: 800; color: #1E293B; margin-bottom: 8px; }
-    .vip-lock-container p { font-size: 13px; color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 16px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    
-    .btn-vip-checkout {
-      display: inline-block;
-      background: #0F172A;
-      color: #FFF;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 12px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-      transition: background 0.2s;
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
       cursor: pointer;
-      border: none;
+      color: var(--text-muted);
     }
-    .btn-vip-checkout:hover { background: #334155; }
-
-    .vip-password-box {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #E2E8F0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
     }
-    .vip-input {
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 2px solid #CBD5E1;
-      font-size: 14px;
-      text-align: center;
+    .form-group label {
+      display: block;
       font-weight: 700;
-      width: 220px;
-      letter-spacing: 2px;
-    }
-    .vip-input:focus { outline: none; border-color: var(--primary); }
-
-    .vip-content-unlocked { display: none; padding: 0 20px; flex-direction: column; gap: 20px; }
-    .vip-content-unlocked.active-vip { display: flex; }
-
-    .vip-card-box {
-      background: #FFF;
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-    }
-    .vip-card-box h4 { font-size: 18px; font-weight: 900; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-
-    /* JOGOS & LOUSA */
-    .age-group-section {
-      margin: 0 20px;
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      border: 2px solid #E2E8F0;
-    }
-    .age-title { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; }
-    .interactive-card {
-      background: #F8FAFC;
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-      border: 1px solid #E2E8F0;
-      margin-bottom: 14px;
-    }
-    .lousa-mode-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .btn-mode {
-      padding: 8px 14px;
-      border-radius: 12px;
-      border: 2px solid var(--primary);
-      background: #FFF;
-      color: var(--primary-dark);
-      font-weight: 800;
       font-size: 13px;
-      cursor: pointer;
+      margin-bottom: 6px;
+      color: var(--dark);
     }
-    .btn-mode.active { background: var(--primary); color: #FFF; }
-    .coloring-select-grid { display: none; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .coloring-select-grid.active { display: flex; }
-    .btn-color-draw {
-      background: #FFF;
-      border: 2px solid #CBD5E1;
-      padding: 6px 10px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 2px solid #E2E8F0;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
     }
-    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
-    .btn-color-draw img { width: 22px; height: 22px; object-fit: contain; }
-    .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: #E0F2FE; padding: 8px 14px; border-radius: 14px; margin-bottom: 12px; flex-wrap: wrap; }
-    .lousa-controls-bar label { font-size: 12px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 6px; }
-    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; }
-    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 20px; width: 100%; min-height: 380px; touch-action: none; cursor: crosshair; }
-    .palette { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; }
-    .color-dot { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer; }
-    .game-btn-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 10px 18px; font-weight: 800; font-size: 16px; border-radius: 14px; cursor: pointer; }
-    .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; max-width: 360px; margin-left: auto; margin-right: auto; }
-    .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 20px; cursor: pointer; }
-    .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
-    .memory-card img { width: 80%; height: 80%; object-fit: contain; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary-light);
+    }
 
-    /* FOOTER */
-    footer { text-align: center; padding: 15px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); }
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 40px 0 20px;
+      text-align: center;
+      font-size: 14px;
+      border-top: 4px solid var(--yellow);
+    }
+    footer strong {
+      color: var(--yellow);
+    }
 
-    @media (min-width: 900px) {
-      .app-container { max-width: 1200px; padding: 20px 30px; }
-      .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
-      .intro-box { height: 100%; }
-      .characters-grid { grid-template-columns: repeat(8, 1fr); }
-      .char-card img { width: 110px; height: 110px; }
-      .social-round-btn { width: 62px; height: 62px; font-size: 28px; }
+    @media (max-width: 900px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-text h1 { font-size: 36px; }
+      .hero-buttons { justify-content: center; }
+      .nav-menu { display: none; }
+      .location-box { flex-direction: column; text-align: center; }
+      .location-info { text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
-
-    <!-- HEADER -->
-    <header>
-      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
-        <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
-      </a>
-      <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
-        <span id="audioIcon">🔊</span>
-        <span id="audioText">Voz Ligada</span>
-      </button>
-    </header>
-
-    <!-- NAVEGAÇÃO PRINCIPAL -->
-    <div class="page-nav">
-      <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
-      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
-      <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
-      <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
+  <!-- BANNER ROLANTE TOPO -->
+  <div class="top-bar">
+    <div class="marquee">
+      <span>👨‍👩‍👧‍👦 Proteção para toda a sua família! &nbsp;&nbsp;•&nbsp;&nbsp; 🚀 Conheça nossas opções em Consórcio! &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ Sem consulta ao SPC/Serasa! &nbsp;&nbsp;•&nbsp;&nbsp; 🤝 As melhores associações e seguradoras em um só lugar!</span>
     </div>
-
-    <!-- PÁGINA 1: INÍCIO -->
-    <div id="pagina-inicio" class="page-content active-page">
-      <div class="banner-intro-grid">
-        <div class="banner-container">
-          <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank">
-            <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa da Turminha" class="banner-img">
-          </a>
-        </div>
-        <div class="intro-box">
-          <div class="intro-box-header">
-            <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
-            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas e jogos educativos!')" title="Ouvir">🔊</button>
-          </div>
-          <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
-          <div class="audio-notice-info">💡 Dica: Toque nos personagens ou botões para ouvir!</div>
-        </div>
-      </div>
-
-      <!-- REDES SOCIAIS -->
-      <div class="social-round-section">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
-        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok">🎵</a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
-        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
-        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
-        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png"></a>
-      </div>
-
-      <!-- PERSONAGENS -->
-      <div class="characters-section-title">
-        <span>🌟 Conheça os Personagens</span>
-        <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">(Clique!)</span>
-      </div>
-      
-      <div class="characters-grid">
-        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/yApuLed.png"><span>Xexéu</span></div>
-        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/ETC0paX.png"><span>Capilé</span></div>
-        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/vunKLqO.png"><span>Léo</span></div>
-        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/VoHSsw9.png"><span>Joca</span></div>
-        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')"><img src="https://i.imgur.com/IX3LrtJ.png"><span>Iza</span></div>
-        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')"><img src="https://i.imgur.com/Wb2CFoH.png"><span>Nina</span></div>
-        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')"><img src="https://i.imgur.com/qcJyZb5.png"><span>Hilda</span></div>
-        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')"><img src="https://i.imgur.com/lzOHT4F.png"><span>Beto</span></div>
-      </div>
-
-      <div class="char-details-box" id="detalhes-personagem">
-        <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900;">Clique em um personagem acima!</h3>
-        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição aparecerá aqui!</p>
-      </div>
-
-      <div class="video-section">
-        <div class="video-card">
-          <div class="video-header">
-            <h3>🎬 Assista aos Episódios</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir">🔊</button>
-          </div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PÁGINA 2: VÍDEOS -->
-    <div id="pagina-videos" class="page-content">
-      <div class="video-section">
-        <div class="video-card">
-          <div class="video-header">
-            <h3>🎬 Canal Oficial - Playlist Completa</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
-          </div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PÁGINA 3: JOGOS -->
-    <div id="pagina-jogos" class="page-content">
-      <div class="age-group-section">
-        <div class="age-title">🎮 Área de Jogos da Turminha</div>
-        <div class="games-subnav">
-          <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
-          <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
-          <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
-          <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
-          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
-          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Quiz VIP</button>
-        </div>
-
-        <!-- LOUSA MÁGICA -->
-        <div id="game-lousa" class="game-tab-content active-game-tab interactive-card lousa-container">
-          <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica & Desenhos</h4>
-          <div class="lousa-mode-tabs">
-            <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
-            <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
-          </div>
-          <div id="coloringSelectGrid" class="coloring-select-grid">
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)"><img src="https://i.imgur.com/gXjRjnR.png"> Xexéu</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)"><img src="https://i.imgur.com/GVVoxPy.png"> Léo</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2bS7slp.png', 'Iza', this)"><img src="https://i.imgur.com/2bS7slp.png"> Iza</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/Wb2CFoH.png', 'Nina', this)"><img src="https://i.imgur.com/Wb2CFoH.png"> Nina</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/YhKkKft.png', 'Joca', this)"><img src="https://i.imgur.com/YhKkKft.png"> Joca</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/1ZeNUBw.png', 'Capilé', this)"><img src="https://i.imgur.com/1ZeNUBw.png"> Capilé</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)"><img src="https://i.imgur.com/CMVveed.png"> Hilda</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)"><img src="https://i.imgur.com/dwpdeww.png"> Beto</button>
-          </div>
-          <div class="lousa-controls-bar">
-            <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
-            <label>🔍 Zoom Guia: <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)"></label>
-          </div>
-          <canvas id="paintCanvas"></canvas>
-          <div class="palette">
-            <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
-            <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
-            <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
-            <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
-            <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
-            <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
-            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 36px; height: 36px; border:none; cursor:pointer;">
-            <button onclick="limparCanvas()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar 🗑️</button>
-            <button onclick="salvarFotoDesenho()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer;">📸 Salvar</button>
-          </div>
-        </div>
-
-        <!-- CONTAR -->
-        <div id="game-contar" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800;">🔢 Vamos Contar?</h4>
-          <p style="font-size: 13px; color: var(--text-muted);">Quantos bonequinhos aparecem abaixo?</p>
-          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 16px 0; min-height: 70px; flex-wrap: wrap;"></div>
-          <div id="countOptions" class="game-btn-grid"></div>
-        </div>
-
-        <!-- LETRAS -->
-        <div id="game-letras" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800;">🔤 Qual é a Primeira Letra?</h4>
-          <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
-          <img id="img-letra-personagem" src="" style="width: 100px; height: 100px; object-fit: contain; margin: 10px 0;">
-          <div id="opcoes-letras" class="game-btn-grid"></div>
-        </div>
-
-        <!-- MEMÓRIA -->
-        <div id="game-memoria" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800;">🧠 Jogo da Memória</h4>
-          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Encontre os 4 pares dos amigos!</p>
-          <div id="memoryBoard" class="memory-board"></div>
-        </div>
-
-        <!-- QUIZ & CORES -->
-        <div id="game-quiz" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800; margin-bottom: 10px;">❓ Desafios da Turminha</h4>
-          <div style="display: flex; flex-direction: column; gap: 20px;">
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-              <p style="font-size: 13px; font-weight: 700;">Quem é este personagem?</p>
-              <img id="quiz-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
-              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
-            </div>
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-              <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700;"></p>
-              <img id="cor-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
-              <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- QUIZ VIP -->
-        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #CBD5E1; background: #FFF;">
-          <h4 style="font-weight: 800; margin-bottom: 6px; color: #1E293B;">⭐ Super Quiz VIP Exclusivo</h4>
-          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Desafio avançado exclusivo para membros VIP.</p>
-          
-          <div id="vip-game-lock" style="padding: 20px; text-align: center;">
-            <p style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">Conteúdo exclusivo disponível apenas para membros VIP.</p>
-            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Acessar Área VIP ➔</button>
-          </div>
-
-          <div id="vip-game-body" style="display: none; background: #F8FAFC; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-            <p id="quizvip-pergunta" style="font-size: 14px; font-weight: 700; color: #1E293B; margin-bottom: 8px;"></p>
-            <img id="quizvip-img" src="" style="width: 90px; height: 90px; object-fit: contain; margin: 6px 0;">
-            <div id="quizvip-options" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- PÁGINA 4: ÁREA VIP -->
-    <div id="pagina-vip" class="page-content">
-      <div class="age-group-section">
-        <div class="age-title" style="color: #1E293B;">⭐ Área VIP</div>
-
-        <!-- TELA DE BLOQUEIO -->
-        <div id="vip-locked-view" class="vip-lock-container">
-          <h3>Área Restrita a Membros</h3>
-          <p>Desbloqueie episódios secretos, erros de gravação, desenhos em PDF para colorir, wallpapers e jogos exclusivos.</p>
-          
-          <a href="https://mpago.la/1o4iU8M" target="_blank" class="btn-vip-checkout" onclick="ativarVipTeste()">
-            Quero Acesso VIP (Mercado Pago)
-          </a>
-
-          <!-- CAIXINHA DE SENHA GERAL -->
-          <div class="vip-password-box">
-            <p style="font-size: 12px; font-weight: 700; color: #1E293B; margin-bottom: 2px;">Já tem a senha de acesso geral?</p>
-            <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-              <input type="password" id="senhaVipInput" class="vip-input" placeholder="Digite a senha">
-              <button onclick="verificarSenhaGeral()" class="btn-vip-checkout" style="padding: 10px 16px; font-size: 13px;">Entrar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTEÚDO VIP LIBERADO -->
-        <div id="vip-unlocked-view" class="vip-content-unlocked">
-          
-          <div class="vip-card-box">
-            <h4>🔒 Episódios Secretos</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Assista aos episódios secretos e conteúdos antecipados.</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class="vip-card-box">
-            <h4>🎬 Erros de Gravação & Bastidores Engraçados</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
-              Confira os micos, falhas de animação fingidas e tropeços mais engraçados da Turminha.
-            </p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class="vip-card-box">
-            <h4>🎨 Cantinho dos Downloads</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Baixe wallpapers exclusivos para o seu celular e packs de desenhos em PDF para colorir.</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none;">📥 Wallpapers Celular</a>
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none; background: var(--green);">📥 Pack de Desenhos PDF</a>
-            </div>
-          </div>
-
-          <div class="vip-card-box" style="background: #F8FAFC; border-color: #CBD5E1;">
-            <h4>⭐ Jogos Exclusivos Desbloqueados</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">O seu Super Quiz VIP já está liberado na aba de Jogos.</p>
-            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Jogar Super Quiz VIP ➔</button>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <!-- RODAPÉ -->
-    <footer>
-      <span>© Turminha do Xexéu - Todos os direitos reservados</span>
-    </footer>
-
   </div>
 
-  <script>
-    let audioAtivo = true;
-    const SENHA_MESTRA = "65628467";
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <img src="https://i.imgur.com/jM5wvZR.png" alt="4G Proteção Veicular" class="logo-img">
+      </div>
+      <nav class="nav-menu">
+        <a href="#sobre">A 4G</a>
+        <a href="#cotacao">Cotação</a>
+        <a href="#parceiros">Parceiros</a>
+        <a href="#veiculos">Proteção</a>
+        <a href="#servicos">Assistência 24h</a>
+        <a href="#consultor">Consultor</a>
+        <a href="#blog-feedback">Blog & Avaliações</a>
+        <a href="#localizacao">Escritório</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline">
+          <i class="fab fa-whatsapp"></i> Suporte
+        </a>
+        <button onclick="abrirModal()" class="btn btn-primary">COTAÇÃO RÁPIDA</button>
+      </div>
+    </div>
+  </header>
 
-    const TODOS_PERSONAGENS = [
-      { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
-      { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
-      { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
-      { nome: 'Nina', img: 'https://i.imgur.com/Wb2CFoH.png', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
-      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
-      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
-    ];
+  <!-- ESPAÇO RESERVADO DO BANNER -->
+  <div class="top-banner-space">
+    <img src="https://i.imgur.com/jM5wvZR.png" alt="Banner Promocional 4G Proteção Veicular" id="bannerTopoImg" style="display:none;">
+  </div>
 
-    function destravarAudioMobile() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const dummy = new SpeechSynthesisUtterance("");
-        window.speechSynthesis.speak(dummy);
-      }
-    }
+  <!-- 1. A 4G PROTEÇÃO VEICULAR -->
+  <section class="hero" id="sobre">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>Seu carro protegido, sua família tranquila</h1>
+        <p class="subtitle">Sua proteção sob medida com as maiores do Brasil.</p>
+        <p>Na 4G Proteção Veicular nossa missão é simplificar sua escolha. Como corretora especializada, unimos as maiores associações e seguradoras do mercado para garantir que seu patrimônio esteja sempre em segurança com total agilidade.</p>
+        <div class="hero-buttons">
+          <a href="#cotacao" class="btn btn-primary btn-large">Faça a sua Cotação</a>
+          <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-whatsapp btn-large">
+            <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="card" style="background: linear-gradient(135deg, #154F96 0%, #0D3A70 100%); color:#FFF; padding:40px;">
+          <i class="fas fa-shield-halved" style="font-size:70px; color:var(--yellow); margin-bottom:20px;"></i>
+          <h2 style="color:#FFF;">4G Proteção Veicular</h2>
+          <p style="color:#E2E8F0; margin-top:8px;">Proteção total contra Roubo, Furto, Colisão e Assistência 24h em todo o Brasil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function lerTexto(texto) {
-      if (!audioAtivo || !('speechSynthesis' in window)) return;
-      try {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(texto);
-        utterance.lang = 'pt-BR';
-        utterance.rate = 0.95;
-        window.speechSynthesis.speak(utterance);
-      } catch (e) {}
-    }
+  <!-- 2. COTAÇÃO INLINE -->
+  <section id="cotacao" class="section bg-light">
+    <div class="container">
+      <h2>Simule sua Cotação Agora Mesmo</h2>
+      <p class="section-subtitle">Preencha os dados abaixo para receber sua proposta no WhatsApp:</p>
 
-    function alternarAudioGlobal() {
-      audioAtivo = !audioAtivo;
-      const btn = document.getElementById('toggleAudioBtn');
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      if (audioAtivo) {
-        btn.classList.remove('muted');
-        document.getElementById('audioIcon').innerText = '🔊';
-        document.getElementById('audioText').innerText = 'Voz Ligada';
-        lerTexto("Voz ligada!");
-      } else {
-        btn.classList.add('muted');
-        document.getElementById('audioIcon').innerText = '🔇';
-        document.getElementById('audioText').innerText = 'Voz Desligada';
-      }
-    }
+      <div class="inline-form-box">
+        <form id="formCotacaoInline" onsubmit="enviarCotacaoInline(event)">
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="inline-nome">Seu Nome Completo:</label>
+              <input type="text" id="inline-nome" required placeholder="Digite seu nome">
+            </div>
 
-    document.addEventListener('click', () => {
-      destravarAudioMobile();
-    }, { once: true });
+            <div class="form-group">
+              <label for="inline-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
+              <input type="tel" id="inline-whatsapp" required placeholder="Ex: 11957666488">
+            </div>
+          </div>
 
-    function verificarStatusVip() {
-      const isVip = localStorage.getItem('turminha_xexeu_vip');
-      const lockedView = document.getElementById('vip-locked-view');
-      const unlockedView = document.getElementById('vip-unlocked-view');
-      const gameLock = document.getElementById('vip-game-lock');
-      const gameBody = document.getElementById('vip-game-body');
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="inline-placa">Placa do Veículo (Obrigatório):</label>
+              <input type="text" id="inline-placa" required placeholder="Ex: ABC-1234 ou ABC1D23">
+            </div>
 
-      if (isVip === 'true') {
-        if(lockedView) lockedView.style.display = 'none';
-        if(unlockedView) unlockedView.classList.add('active-vip');
-        if(gameLock) gameLock.style.display = 'none';
-        if(gameBody) gameBody.style.display = 'block';
-        carregarQuizVip();
-      } else {
-        if(lockedView) lockedView.style.display = 'block';
-        if(unlockedView) unlockedView.classList.remove('active-vip');
-        if(gameLock) gameLock.style.display = 'block';
-        if(gameBody) gameBody.style.display = 'none';
-      }
-    }
+            <div class="form-group">
+              <label for="inline-tipoVeiculo">Tipo de Veículo:</label>
+              <select id="inline-tipoVeiculo" required>
+                <option value="Carro de Passeio">Carro de Passeio</option>
+                <option value="Carro de Trabalho / Aplicativo">Carro de Trabalho / Aplicativo</option>
+                <option value="Moto">Moto</option>
+                <option value="Van">Van</option>
+                <option value="Caminhão / Pesados">Caminhão / Veículos Pesados</option>
+                <option value="Frota">Frota Empresarial</option>
+              </select>
+            </div>
+          </div>
 
-    function verificarSenhaGeral() {
-      const digitada = document.getElementById('senhaVipInput').value.trim();
-      if (digitada === SENHA_MESTRA) {
-        localStorage.setItem('turminha_xexeu_vip', 'true');
-        verificarStatusVip();
-        lerTexto("Acesso VIP liberado com sucesso!");
-      } else {
-        alert("Senha incorreta!");
-        lerTexto("Senha incorreta.");
-      }
-    }
+          <div id="msgInlineSucesso" style="display:none; color: #25D366; font-weight:700; margin-bottom:12px; text-align:center;">
+            ✨ Cotação enviada com sucesso! Em breve entraremos em contato.
+          </div>
 
-    function ativarVipTeste() {
-      localStorage.setItem('turminha_xexeu_vip', 'true');
-    }
+          <button type="submit" id="btnEnviarInline" class="btn btn-yellow btn-block btn-large">
+            <i class="fab fa-whatsapp"></i> Solicitar Cotação no WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-    function mudarPagina(pagina) {
-      document.getElementById('pagina-inicio').classList.remove('active-page');
-      document.getElementById('pagina-videos').classList.remove('active-page');
-      document.getElementById('pagina-jogos').classList.remove('active-page');
-      document.getElementById('pagina-vip').classList.remove('active-page');
+  <!-- 3. PARCEIROS -->
+  <section id="parceiros" class="section">
+    <div class="container">
+      <h2>Nossos Parceiros de Confiança</h2>
+      <p class="section-subtitle">Trabalhamos com os melhores nomes do setor. Clique para cotar com a empresa desejada:</p>
       
-      document.getElementById('btn-tab-inicio').classList.remove('active');
-      document.getElementById('btn-tab-videos').classList.remove('active');
-      document.getElementById('btn-tab-jogos').classList.remove('active');
-      document.getElementById('btn-tab-vip').classList.remove('active');
+      <div class="grid grid-4">
+        <div class="card partner-card" onclick="abrirModalComOpcao('Capitalcar')">
+          <i class="fas fa-car-burst" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <h3>Capitalcar</h3>
+          <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
+        </div>
+        <div class="card partner-card" onclick="abrirModalComOpcao('Valecar')">
+          <i class="fas fa-hand-holding-hand" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <h3>Valecar</h3>
+          <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
+        </div>
+        <div class="card partner-card" onclick="abrirModalComOpcao('Suhai')">
+          <i class="fas fa-shield-cat" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <h3>Suhai</h3>
+          <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
+        </div>
+        <div class="card partner-card" onclick="abrirModalComOpcao('APVS')">
+          <i class="fas fa-award" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <h3>APVS</h3>
+          <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      if (pagina === 'inicio') {
-        document.getElementById('pagina-inicio').classList.add('active-page');
-        document.getElementById('btn-tab-inicio').classList.add('active');
-      } else if (pagina === 'videos') {
-        document.getElementById('pagina-videos').classList.add('active-page');
-        document.getElementById('btn-tab-videos').classList.add('active');
-      } else if (pagina === 'jogos') {
-        document.getElementById('pagina-jogos').classList.add('active-page');
-        document.getElementById('btn-tab-jogos').classList.add('active');
-        setTimeout(redimensionarCanvas, 100);
-      } else if (pagina === 'vip') {
-        document.getElementById('pagina-vip').classList.add('active-page');
-        document.getElementById('btn-tab-vip').classList.add('active');
-        verificarStatusVip();
-      }
+  <!-- 4. O QUE PROTEGEMOS -->
+  <section id="veiculos" class="section bg-light">
+    <div class="container">
+      <h2>O Que Protegemos</h2>
+      <p class="section-subtitle">Escolha o seu tipo de veículo e garanta a melhor cobertura do mercado:</p>
+
+      <div class="grid grid-5">
+        <div class="card" onclick="selecionarETrazerForm('Carro de Passeio')">
+          <i class="fas fa-car" style="font-size:38px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Carros</h3>
+          <p>Passeio e Trabalho</p>
+        </div>
+        <div class="card" onclick="selecionarETrazerForm('Moto')">
+          <i class="fas fa-motorcycle" style="font-size:38px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Motos</h3>
+          <p>Particulares e Entregas</p>
+        </div>
+        <div class="card" onclick="selecionarETrazerForm('Van')">
+          <i class="fas fa-shuttle-van" style="font-size:38px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Vans</h3>
+          <p>Passageiros e Carga</p>
+        </div>
+        <div class="card" onclick="selecionarETrazerForm('Caminhão / Pesados')">
+          <i class="fas fa-truck-front" style="font-size:38px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Caminhões</h3>
+          <p>Veículos Pesados</p>
+        </div>
+        <div class="card" onclick="selecionarETrazerForm('Frota')">
+          <i class="fas fa-truck-pickup" style="font-size:38px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Frotas</h3>
+          <p>Para Empresas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SERVIÇOS 24H -->
+  <section id="servicos" class="section">
+    <div class="container">
+      <h2>Serviços 24 Horas para sua Comodidade</h2>
+      <p class="section-subtitle">Clique em qualquer serviço para solicitar atendimento ou cotação imediata:</p>
+      
+      <div class="grid services-grid">
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-truck-pickup"></i> Reboque</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-car-battery"></i> Auxílio Bateria</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-car-burst"></i> Colisão</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-gas-pump"></i> Auxílio Combustível</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-key"></i> Chaveiro 24h</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-shield-cat"></i> Roubo e Furto</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-hotel"></i> Hospedagem</div>
+        <div class="service-item" onclick="abrirModal()"><i class="fas fa-fire"></i> Incêndio</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TRABALHE CONOSCO -->
+  <section id="consultor" class="section bg-light">
+    <div class="container">
+      <h2>Trabalhe Conosco — Seja um Consultor 4G</h2>
+      <p class="section-subtitle">Monte sua própria carteira de clientes, conquiste prêmios e tenha independência financeira!</p>
+      
+      <div class="grid grid-4" style="margin-bottom: 32px;">
+        <div class="card">
+          <i class="fas fa-sack-dollar" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Comissões Atrativas</h3>
+          <p>Ganhe por cada nova adesão efetuada e construa sua renda recorrente.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-trophy" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Prêmios & Bônus</h3>
+          <p>Premiações exclusivas por atingimento de metas de vendas.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Flexibilidade</h3>
+          <p>Trabalhe no seu próprio horário e gerencie seu próprio ritmo de trabalho.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-headset" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <h3>Suporte Completo</h3>
+          <p>Treinamentos e suporte direto da equipe da 4G para alavancar suas vendas.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button onclick="abrirModalConsultor()" class="btn btn-primary btn-large">
+          <i class="fas fa-user-plus"></i> Quero ser um Consultor 4G
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BLOG & FEEDBACKS -->
+  <section id="blog-feedback" class="section">
+    <div class="container">
+      <div class="grid grid-2" style="align-items: start;">
+        
+        <!-- BLOG -->
+        <div class="card" style="text-align: left; padding: 32px;">
+          <h3 style="color: var(--primary); font-size: 24px; margin-bottom: 12px;">
+            <i class="fas fa-newspaper" style="color: var(--primary-light);"></i> Blog 4G & Nossa História
+          </h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+            Sob a liderança do nosso diretor <strong>Erasmo Pedro</strong>, a <strong>4G Proteção Veicular</strong> nasceu do compromisso de oferecer atendimento humano, rápido e sem burocracias. 
+          </p>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+            Trabalhamos diariamente para desmistificar a proteção veicular, reunindo as opções mais seguras do Brasil com transparência e custo acessível.
+          </p>
+          <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-outline btn-block">
+            Saber mais com nossos especialistas
+          </a>
+        </div>
+
+        <!-- FEEDBACKS -->
+        <div class="card" style="text-align: left; padding: 32px;">
+          <h3 style="color: var(--primary); font-size: 24px; margin-bottom: 12px;">
+            <i class="fas fa-star" style="color: var(--yellow);"></i> Deixe seu Feedback
+          </h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+            Sua avaliação ajuda a 4G a aprimorar continuadamente o atendimento:
+          </p>
+
+          <form id="formFeedback" onsubmit="enviarFeedback(event)">
+            <div class="form-group">
+              <label for="fb-nome">Seu Nome:</label>
+              <input type="text" id="fb-nome" required placeholder="Digite seu nome">
+            </div>
+
+            <div class="form-group" style="text-align: center;">
+              <label>Sua Avaliação:</label>
+              <div class="star-rating" id="starRating">
+                <i class="fas fa-star active" data-rating="1"></i>
+                <i class="fas fa-star active" data-rating="2"></i>
+                <i class="fas fa-star active" data-rating="3"></i>
+                <i class="fas fa-star active" data-rating="4"></i>
+                <i class="fas fa-star active" data-rating="5"></i>
+              </div>
+              <input type="hidden" id="fb-rating" value="5">
+            </div>
+
+            <div class="form-group">
+              <label for="fb-mensagem">Sua Avaliação / Comentário:</label>
+              <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência conosco..."></textarea>
+            </div>
+
+            <div id="msgFeedbackSucesso" style="display:none; color: #25D366; font-weight:700; margin-bottom:12px; text-align:center;">
+              ✨ Avaliação enviada com sucesso! Obrigado.
+            </div>
+
+            <button type="submit" id="btnEnviarFeedback" class="btn btn-primary btn-block">
+              Enviar Avaliação
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ONDE ESTAMOS -->
+  <section id="localizacao" class="section bg-light">
+    <div class="container">
+      <h2>Onde Estamos</h2>
+      <p class="section-subtitle">Nosso escritório físico de portas abertas para você:</p>
+      
+      <div class="location-box">
+        <div class="location-info">
+          <h3><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Escritório 4G Proteção Veicular</h3>
+          <p><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170</p>
+          <p>Atendimento presencial com nossa equipe para fechamento de contratos, retirada de dúvidas e suporte completo.</p>
+          <a href="#cotacao" class="btn btn-primary">Fazer Cotação Online</a>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%20-%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAIS -->
+  <div id="modalCotacao" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="fecharModal()">&times;</span>
+      <h2>Solicite sua Cotação</h2>
+      <p>Preencha os dados abaixo para receber sua simulação:</p>
+      
+      <form id="formCotacaoModal" onsubmit="enviarCotacaoModal(event)">
+        <div class="form-group">
+          <label for="modal-nome">Seu Nome Completo:</label>
+          <input type="text" id="modal-nome" required placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+          <label for="modal-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
+          <input type="tel" id="modal-whatsapp" required placeholder="Ex: 11957666488">
+        </div>
+
+        <div class="form-group">
+          <label for="modal-placa">Placa do Veículo (Obrigatório):</label>
+          <input type="text" id="modal-placa" required placeholder="Ex: ABC-1234 ou ABC1D23">
+        </div>
+        
+        <div class="form-group">
+          <label for="modal-tipoVeiculo">Tipo de Veículo:</label>
+          <select id="modal-tipoVeiculo" required>
+            <option value="Carro de Passeio">Carro de Passeio</option>
+            <option value="Carro de Trabalho / Aplicativo">Carro de Trabalho / Aplicativo</option>
+            <option value="Moto">Moto</option>
+            <option value="Van">Van</option>
+            <option value="Caminhão / Pesados">Caminhão / Veículos Pesados</option>
+            <option value="Frota">Frota Empresarial</option>
+          </select>
+        </div>
+
+        <div id="msgModalSucesso" style="display:none; color: #25D366; font-weight:700; margin-bottom:12px; text-align:center;">
+          ✨ Cotação enviada com sucesso! Em breve entraremos em contato.
+        </div>
+
+        <button type="submit" id="btnEnviarModal" class="btn btn-whatsapp btn-block btn-large">
+          <i class="fab fa-whatsapp"></i> Enviar Cotação
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modalConsultor" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
+      <h2>Seja um Consultor 4G</h2>
+      <p>Preencha seus dados para entrar na nossa equipe de consultores:</p>
+      
+      <form id="formConsultor" onsubmit="enviarConsultor(event)">
+        <div class="form-group">
+          <label for="cons-nome">Seu Nome Completo:</label>
+          <input type="text" id="cons-nome" required placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+          <label for="cons-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
+          <input type="tel" id="cons-whatsapp" required placeholder="Ex: 11957666488">
+        </div>
+
+        <div class="form-group">
+          <label for="cons-cidade">Sua Cidade / Região:</label>
+          <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP">
+        </div>
+
+        <div id="msgConsultorSucesso" style="display:none; color: #25D366; font-weight:700; margin-bottom:12px; text-align:center;">
+          ✨ Cadastro enviado com sucesso! Entraremos em contato.
+        </div>
+
+        <button type="submit" id="btnEnviarConsultor" class="btn btn-primary btn-block btn-large">
+          Enviar Cadastro de Consultor
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>4G Proteção Veicular</strong>. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // NÚMEROS DE TELEFONE CONFIGURADOS
+    const NUMERO_COTACAO = "5511957666488"; // Atendimento/Cotação
+    const NUMERO_SUPORTE = "5511957883108"; // Suporte
+    const URL_PLANILHA_GOOGLE = "https://script.google.com/macros/s/AKfycb.../exec";
+
+    function abrirModal() {
+      document.getElementById('modalCotacao').style.display = 'flex';
+    }
+    function fecharModal() {
+      document.getElementById('modalCotacao').style.display = 'none';
+      document.getElementById('msgModalSucesso').style.display = 'none';
     }
 
-    function mudarSubJogo(sub) {
-      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz', 'quizvip'];
-      subs.forEach(s => {
-        const el = document.getElementById('game-' + s);
-        const subBtn = document.getElementById('subtab-' + s);
-        if(el) el.classList.remove('active-game-tab');
-        if(subBtn) subBtn.classList.remove('active');
-      });
-      const targetEl = document.getElementById('game-' + sub);
-      const targetBtn = document.getElementById('subtab-' + sub);
-      if(targetEl) targetEl.classList.add('active-game-tab');
-      if(targetBtn) targetBtn.classList.add('active');
-      if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
-      if(sub === 'quizvip') verificarStatusVip();
+    function abrirModalComOpcao(parceiro) {
+      abrirModal();
     }
 
-    function exibirEFalar(nome, desc, genero = 'm') {
-      const artigo = (genero === 'f') ? "Esta é a " : "Este é o ";
-      document.getElementById('detalhe-nome').innerText = nome;
-      document.getElementById('detalhe-texto').innerText = desc;
-      lerTexto(artigo + nome + ". " + desc);
+    function selecionarETrazerForm(tipo) {
+      document.getElementById('inline-tipoVeiculo').value = tipo;
+      document.getElementById('cotacao').scrollIntoView({ behavior: 'smooth' });
     }
 
-    let qContar = 0;
-    function carregarJogoContar() {
-      qContar = Math.floor(Math.random() * 9) + 1;
-      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      const display = document.getElementById('countDisplay');
-      display.innerHTML = '';
-      for (let i = 0; i < qContar; i++) {
-        const img = document.createElement('img');
-        img.src = charSorteado.img;
-        img.style.width = '42px'; img.style.height = '42px'; img.style.objectFit = 'contain';
-        display.appendChild(img);
-      }
-      const opts = document.getElementById('countOptions');
-      opts.innerHTML = '';
-      for (let n = 1; n <= 9; n++) {
-        const btn = document.createElement('button');
-        btn.className = 'btn-choice';
-        btn.style.padding = '10px 16px';
-        btn.innerText = n;
-        btn.onclick = () => {
-          if (n === qContar) { lerTexto("Parabéns! Contou certinho!"); setTimeout(carregarJogoContar, 600); }
-          else { lerTexto("Tente novamente!"); }
-        };
-        opts.appendChild(btn);
-      }
+    function abrirModalConsultor() {
+      document.getElementById('modalConsultor').style.display = 'flex';
+    }
+    function fecharModalConsultor() {
+      document.getElementById('modalConsultor').style.display = 'none';
+      document.getElementById('msgConsultorSucesso').style.display = 'none';
     }
 
-    let pLetraAtual = null;
-    function carregarJogoLetra() {
-      pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
-      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
-      const container = document.getElementById('opcoes-letras');
-      container.innerHTML = '';
-      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
-      let opcoes = [pLetraAtual.letra];
-      while (opcoes.length < 3) {
-        let lAleatoria = alfabeto[Math.floor(Math.random() * alfabeto.length)];
-        if (!opcoes.includes(lAleatoria)) opcoes.push(lAleatoria);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(l => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-choice'; btn.innerText = l;
-        btn.onclick = () => {
-          if (l === pLetraAtual.letra) { lerTexto("Muito bem! Letra " + pLetraAtual.letra); setTimeout(carregarJogoLetra, 600); }
-          else { lerTexto("Tente de novo!"); }
-        };
-        container.appendChild(btn);
-      });
+    function abrirAtendimento() {
+      const msg = encodeURIComponent("Olá! Gostaria de fazer uma cotação com a 4G Proteção Veicular.");
+      window.open(`https://wa.me/${NUMERO_COTACAO}?text=${msg}`, '_blank');
     }
 
-    let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
-    function iniciarMemoria() {
-      acertosMem = 0;
-      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
-      const imgsMem = sorteados.map(p => p.img);
-      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
-      const board = document.getElementById('memoryBoard');
-      board.innerHTML = '';
-      cMem.forEach(src => {
-        const card = document.createElement('div');
-        card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
-        card.onclick = () => {
-          if (travaMem || card.classList.contains('flipped')) return;
-          card.classList.add('flipped'); card.innerHTML = `<img src="${src}">`;
-          if (!pCarta) { pCarta = card; }
-          else {
-            if (pCarta.dataset.img === src) {
-              acertosMem++; lerTexto("Par! Acertou!"); pCarta = null;
-              if (acertosMem === 4) { lerTexto("Incrível! Encontrou todos os pares!"); setTimeout(iniciarMemoria, 1800); }
-            } else {
-              travaMem = true;
-              setTimeout(() => {
-                pCarta.classList.remove('flipped'); pCarta.innerText = '❓';
-                card.classList.remove('flipped'); card.innerText = '❓';
-                pCarta = null; travaMem = false;
-              }, 1000);
-            }
+    function abrirSuporte() {
+      const msg = encodeURIComponent("Olá! Gostaria de falar com o suporte da 4G Proteção Veicular.");
+      window.open(`https://wa.me/${NUMERO_SUPORTE}?text=${msg}`, '_blank');
+    }
+
+    // ESTRELAS DE FEEDBACK
+    const stars = document.querySelectorAll('#starRating i');
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const rating = parseInt(this.getAttribute('data-rating'));
+        document.getElementById('fb-rating').value = rating;
+        stars.forEach((s, idx) => {
+          if (idx < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
           }
-        };
-        board.appendChild(card);
+        });
+      });
+    });
+
+    // 1. COTAÇÃO INLINE
+    function enviarCotacaoInline(e) {
+      e.preventDefault();
+      const nome = document.getElementById('inline-nome').value;
+      const whatsapp = document.getElementById('inline-whatsapp').value;
+      const placa = document.getElementById('inline-placa').value;
+      const tipoVeiculo = document.getElementById('inline-tipoVeiculo').value;
+
+      const btn = document.getElementById('btnEnviarInline');
+      btn.innerText = "Enviando dados...";
+      btn.disabled = true;
+
+      const dadosLead = { tipo: "Cotação Direct", nome, whatsapp, placa, tipoVeiculo };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosLead)
+      }).then(() => {
+        document.getElementById('msgInlineSucesso').style.display = 'block';
+        btn.innerText = "Solicitar Cotação no WhatsApp";
+        btn.disabled = false;
+        
+        let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+        setTimeout(() => {
+          window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
+          document.getElementById('formCotacaoInline').reset();
+        }, 1000);
+      }).catch(err => {
+        document.getElementById('msgInlineSucesso').style.display = 'block';
+        btn.innerText = "Solicitar Cotação no WhatsApp";
+        btn.disabled = false;
       });
     }
 
-    let pQuizAtual = null;
-    function carregarQuiz() {
-      pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('quiz-img').src = pQuizAtual.img;
-      const container = document.getElementById('quiz-options');
-      container.innerHTML = '';
-      let opcoes = [pQuizAtual.nome];
-      while (opcoes.length < 3) {
-        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
-        if (!opcoes.includes(outro)) opcoes.push(outro);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pQuizAtual.nome) { lerTexto("Parabéns! É o " + pQuizAtual.nome); setTimeout(carregarQuiz, 600); }
-          else { lerTexto("Tente novamente!"); }
-        };
-        container.appendChild(btn);
+    // 2. COTAÇÃO MODAL
+    function enviarCotacaoModal(e) {
+      e.preventDefault();
+      const nome = document.getElementById('modal-nome').value;
+      const whatsapp = document.getElementById('modal-whatsapp').value;
+      const placa = document.getElementById('modal-placa').value;
+      const tipoVeiculo = document.getElementById('modal-tipoVeiculo').value;
+
+      const btn = document.getElementById('btnEnviarModal');
+      btn.innerText = "Enviando dados...";
+      btn.disabled = true;
+
+      const dadosLead = { tipo: "Cotação Modal", nome, whatsapp, placa, tipoVeiculo };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosLead)
+      }).then(() => {
+        document.getElementById('msgModalSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cotação";
+        btn.disabled = false;
+
+        let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+        setTimeout(() => {
+          fecharModal();
+          window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
+          document.getElementById('formCotacaoModal').reset();
+        }, 1000);
+      }).catch(err => {
+        document.getElementById('msgModalSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cotação";
+        btn.disabled = false;
       });
     }
 
-    let pCorAtual = null;
-    function carregarJogoCor() {
-      pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
-      document.getElementById('cor-img').src = pCorAtual.img;
-      const container = document.getElementById('cor-options');
-      container.innerHTML = '';
-      pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pCorAtual.corCorreta) { lerTexto("Acertou! Cor correta!"); setTimeout(carregarJogoCor, 600); }
-          else { lerTexto("Tente de novo!"); }
-        };
-        container.appendChild(btn);
+    // 3. CONSULTOR
+    function enviarConsultor(e) {
+      e.preventDefault();
+      const nome = document.getElementById('cons-nome').value;
+      const whatsapp = document.getElementById('cons-whatsapp').value;
+      const cidade = document.getElementById('cons-cidade').value;
+
+      const btn = document.getElementById('btnEnviarConsultor');
+      btn.innerText = "Enviando cadastro...";
+      btn.disabled = true;
+
+      const dadosConsultor = { tipo: "Consultor", nome, whatsapp, cidade };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosConsultor)
+      }).then(() => {
+        document.getElementById('msgConsultorSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cadastro de Consultor";
+        btn.disabled = false;
+
+        let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
+        setTimeout(() => {
+          fecharModalConsultor();
+          window.open(`https://wa.me/${NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`, '_blank');
+          document.getElementById('formConsultor').reset();
+        }, 1000);
+      }).catch(err => {
+        document.getElementById('msgConsultorSucesso').style.display = 'block';
+        btn.innerText = "Enviar Cadastro de Consultor";
+        btn.disabled = false;
       });
     }
 
-    let pQuizVipAtual = null;
-    function carregarQuizVip() {
-      pQuizVipAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('quizvip-pergunta').innerText = "Desafio VIP: De quem é este detalhe/personagem?";
-      document.getElementById('quizvip-img').src = pQuizVipAtual.img;
-      const container = document.getElementById('quizvip-options');
-      container.innerHTML = '';
-      let opcoes = [pQuizVipAtual.nome];
-      while (opcoes.length < 3) {
-        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
-        if (!opcoes.includes(outro)) opcoes.push(outro);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#F8FAFC; font-weight:800; color:#1E293B; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pQuizVipAtual.nome) { lerTexto("Excelente! Acertou o desafio VIP!"); setTimeout(carregarQuizVip, 600); }
-          else { lerTexto("Quase lá! Tente de novo."); }
-        };
-        container.appendChild(btn);
+    // 4. FEEDBACK
+    function enviarFeedback(e) {
+      e.preventDefault();
+      const nome = document.getElementById('fb-nome').value;
+      const rating = document.getElementById('fb-rating').value;
+      const mensagem = document.getElementById('fb-mensagem').value;
+
+      const btn = document.getElementById('btnEnviarFeedback');
+      btn.innerText = "Enviando...";
+      btn.disabled = true;
+
+      const dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
+
+      fetch(URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosFeedback)
+      }).then(() => {
+        document.getElementById('msgFeedbackSucesso').style.display = 'block';
+        btn.innerText = "Enviar Avaliação";
+        btn.disabled = false;
+        setTimeout(() => {
+          document.getElementById('msgFeedbackSucesso').style.display = 'none';
+          document.getElementById('formFeedback').reset();
+        }, 3000);
+      }).catch(err => {
+        document.getElementById('msgFeedbackSucesso').style.display = 'block';
+        btn.innerText = "Enviar Avaliação";
+        btn.disabled = false;
       });
     }
 
-    const canvas = document.getElementById('paintCanvas');
-    const ctx = canvas.getContext('2d');
-    let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
-    let imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
-
-    function redimensionarCanvas() {
-      if (!canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth - 20;
-      canvas.height = window.innerWidth >= 900 ? 420 : 360;
-      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
+    window.onclick = function(event) {
+      const modalCotacao = document.getElementById('modalCotacao');
+      const modalConsultor = document.getElementById('modalConsultor');
+      if (event.target == modalCotacao) { fecharModal(); }
+      if (event.target == modalConsultor) { fecharModalConsultor(); }
     }
-
-    function setLousaMode(modo) {
-      modoLousa = modo;
-      document.getElementById('btn-mode-free').classList.remove('active');
-      document.getElementById('btn-mode-color').classList.remove('active');
-      document.getElementById('coloringSelectGrid').classList.remove('active');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (modo === 'free') {
-        document.getElementById('btn-mode-free').classList.add('active');
-        imagemPintarCarregada = null;
-        lerTexto("Modo Desenho Livre ativado!");
-      } else {
-        document.getElementById('btn-mode-color').classList.add('active');
-        document.getElementById('coloringSelectGrid').classList.add('active');
-        lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', null);
-      }
-    }
-
-    function carregarContornoPintar(urlImg, nome, btnElemento) {
-      document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
-      if (btnElemento) btnElemento.classList.add('selected');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const img = new Image();
-      img.crossOrigin = "Anonymous";
-      img.src = urlImg;
-      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar o " + nome + "!"); };
-    }
-
-    function desenharContornoNoCanvas(img) {
-      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
-      const x = (canvas.width / 2) - (img.width * escala / 2);
-      const y = (canvas.height / 2) - (img.height * escala / 2);
-      ctx.globalAlpha = 0.35;
-      ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
-      ctx.globalAlpha = 1.0;
-    }
-
-    function mudarCor(c) { corAtual = c; }
-    function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
-    function mudarZoomGuia(val) {
-      escalaZoomGuia = val / 100;
-      if (modoLousa === 'color' && imagemPintarCarregada) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        desenharContornoNoCanvas(imagemPintarCarregada);
-      }
-    }
-
-    function limparCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
-    }
-
-    function salvarFotoDesenho() {
-      const tempCanvas = document.createElement('canvas');
-      tempCanvas.width = canvas.width; tempCanvas.height = canvas.height;
-      const tempCtx = tempCanvas.getContext('2d');
-      tempCtx.fillStyle = '#FFFFFF'; tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-      tempCtx.drawImage(canvas, 0, 0);
-      const link = document.createElement('a');
-      link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
-      link.href = tempCanvas.toDataURL('image/png');
-      link.click();
-      lerTexto("Desenho salvo com sucesso!");
-    }
-
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      return { x: clientX - rect.left, y: clientY - rect.top };
-    }
-
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
-    canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-    canvas.addEventListener('mouseup', () => desenhando = false);
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
-    canvas.addEventListener('touch_move', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
-    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
-    canvas.addEventListener('touchend', () => desenhando = false);
-    window.addEventListener('resize', redimensionarCanvas);
-
-    carregarJogoContar();
-    carregarJogoLetra();
-    iniciarMemoria();
-    carregarQuiz();
-    carregarJogoCor();
-    verificarStatusVip();
   </script>
 </body>
 </html>
