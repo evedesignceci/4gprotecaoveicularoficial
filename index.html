@@ -262,7 +262,21 @@
       margin-bottom: 20px;
     }
 
-    /* SEÇÕES EM GERAL */
+    /* TAG DE SELEÇÃO DINÂMICA NO FORMULÁRIO */
+    .selection-tag {
+      display: none;
+      background: #EFF6FF;
+      border: 1px dashed var(--primary-light);
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    /* SEÇÕES */
     .section {
       padding: 70px 0;
     }
@@ -283,9 +297,9 @@
       background-color: #F1F5F9;
     }
 
-    /* PARCEIROS EM AZUL ESCURO */
+    /* PARCEIROS EM AZUL ESCURO COM LOGOS DESTACADAS */
     .bg-dark-partners {
-      background-color: #0A2540; /* Azul Escuro Profundo */
+      background-color: #0A2540;
       color: var(--white);
       padding: 80px 0;
       border-top: 4px solid var(--primary-light);
@@ -303,9 +317,9 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
-      background: #10345E; /* Card Azul Noturno */
+      background: #10345E;
       border-radius: var(--radius-lg);
-      padding: 28px 20px;
+      padding: 24px 18px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(82, 163, 225, 0.2);
       cursor: pointer;
@@ -314,24 +328,27 @@
     }
     .partner-card-dark:hover {
       transform: translateY(-6px);
-      box-shadow: 0 14px 30px rgba(82, 163, 225, 0.3);
+      box-shadow: 0 14px 30px rgba(82, 163, 225, 0.35);
       border-color: var(--yellow);
     }
     .partner-logo-box-dark {
       width: 100%;
-      height: 90px;
+      height: 95px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 16px;
-      background: #FFFFFF;
+      background: #F8FAFC;
       border-radius: var(--radius-md);
-      padding: 10px;
+      padding: 12px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+      overflow: hidden;
     }
     .partner-logo-box-dark img {
       max-width: 90%;
       max-height: 100%;
       object-fit: contain;
+      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
     }
     .partner-card-dark h3 {
       font-size: 20px;
@@ -577,7 +594,7 @@
         <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline">
           <i class="fab fa-whatsapp"></i> Suporte
         </a>
-        <button onclick="abrirModal()" class="btn btn-primary">COTAÇÃO RÁPIDA</button>
+        <button onclick="focarNoFormulario()" class="btn btn-primary">COTAÇÃO RÁPIDA</button>
         <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Abrir Menu">
           <i class="fas fa-bars" id="hamburgerIcon"></i>
         </button>
@@ -610,7 +627,12 @@
         <h3><i class="fas fa-calculator" style="color: var(--primary);"></i> Cotação em 1 Minuto</h3>
         <p>Simule agora e receba no seu WhatsApp:</p>
 
+        <!-- TAG DE DETECÇÃO DE PREENCHIMENTO DIRETO -->
+        <div id="tagSelecaoForm" class="selection-tag"></div>
+
         <form id="formCotacaoInline" onsubmit="enviarCotacaoInline(event)">
+          <input type="hidden" id="inline-detalhe-extra" value="">
+
           <div class="form-group">
             <label for="inline-nome">Seu Nome Completo:</label>
             <input type="text" id="inline-nome" required placeholder="Ex: Maria Silva">
@@ -652,14 +674,14 @@
     </div>
   </section>
 
-  <!-- PARCEIROS EM AZUL ESCURO (LINKS DIRETOS COM OPÇÃO PREENCHIDA) -->
+  <!-- PARCEIROS EM AZUL ESCURO (DIRECIONAM PARA O FORMULÁRIO) -->
   <section id="parceiros" class="section bg-dark-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
       <p class="section-subtitle">Trabalhamos com os melhores nomes do setor. Clique para cotar diretamente com a parceira desejada:</p>
       
       <div class="grid grid-3">
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="abrirModalComOpcao('Capitalcar')">
+        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Capitalcar')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/5vSVukE.png" alt="Capitalcar">
           </div>
@@ -667,7 +689,7 @@
           <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="abrirModalComOpcao('Valecar')">
+        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Valecar')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/NscKSbs.png" alt="Valecar">
           </div>
@@ -675,7 +697,7 @@
           <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="abrirModalComOpcao('Suhai')">
+        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Suhai')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/suYfaUK.png" alt="Suhai Seguradora">
           </div>
@@ -683,7 +705,7 @@
           <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="abrirModalComOpcao('APVS')">
+        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('APVS')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/J6Z0PSX.png" alt="APVS Brasil">
           </div>
@@ -691,7 +713,7 @@
           <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="abrirModalComOpcao('AGV')">
+        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('AGV')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/Jp60y0i.png" alt="AGV Brasil">
           </div>
@@ -699,7 +721,7 @@
           <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="abrirModalComOpcao('Km')">
+        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Km')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/HvKGvLh.png" alt="Km Clube de Benefícios">
           </div>
@@ -710,34 +732,34 @@
     </div>
   </section>
 
-  <!-- O QUE PROTEGEMOS (LINKS DIRETOS PARA SELEÇÃO DO VEÍCULO) -->
+  <!-- O QUE PROTEGEMOS (DIRECIONAM PARA O FORMULÁRIO E SELECIONAM VEÍCULO) -->
   <section id="veiculos" class="section bg-light">
     <div class="container">
       <h2>O Que Protegemos</h2>
       <p class="section-subtitle">Escolha o seu tipo de veículo e garanta a melhor cobertura do mercado:</p>
 
       <div class="grid grid-5">
-        <a href="javascript:void(0)" class="card" onclick="selecionarETrazerForm('Carro de Passeio')">
+        <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Carro de Passeio')">
           <i class="fas fa-car" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Carros</h3>
           <p style="font-size:13px; color:var(--text-muted);">Passeio e Trabalho</p>
         </a>
-        <a href="javascript:void(0)" class="card" onclick="selecionarETrazerForm('Moto')">
+        <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Moto')">
           <i class="fas fa-motorcycle" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Motos</h3>
           <p style="font-size:13px; color:var(--text-muted);">Particulares e Entregas</p>
         </a>
-        <a href="javascript:void(0)" class="card" onclick="selecionarETrazerForm('Van')">
+        <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Van')">
           <i class="fas fa-shuttle-van" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Vans</h3>
           <p style="font-size:13px; color:var(--text-muted);">Passageiros e Carga</p>
         </a>
-        <a href="javascript:void(0)" class="card" onclick="selecionarETrazerForm('Caminhão / Pesados')">
+        <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Caminhão / Pesados')">
           <i class="fas fa-truck-front" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Caminhões</h3>
           <p style="font-size:13px; color:var(--text-muted);">Veículos Pesados</p>
         </a>
-        <a href="javascript:void(0)" class="card" onclick="selecionarETrazerForm('Frota')">
+        <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Frota')">
           <i class="fas fa-truck-pickup" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Frotas</h3>
           <p style="font-size:13px; color:var(--text-muted);">Para Empresas</p>
@@ -746,26 +768,26 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS 24H (LINKS COM COTAÇÃO/SUPORTE) -->
+  <!-- SERVIÇOS 24H (DIRECIONAM PARA O FORMULÁRIO COM O SERVIÇO) -->
   <section id="servicos" class="section">
     <div class="container">
       <h2>Serviços 24 Horas para sua Comodidade</h2>
       <p class="section-subtitle">Clique em qualquer serviço para solicitar atendimento ou cotação imediata:</p>
       
       <div class="grid services-grid">
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Reboque 24h')"><i class="fas fa-truck-pickup"></i> Reboque 24h</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Auxílio Bateria')"><i class="fas fa-car-battery"></i> Auxílio Bateria</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Proteção Colisão')"><i class="fas fa-car-burst"></i> Proteção contra Colisão</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Auxílio Combustível')"><i class="fas fa-gas-pump"></i> Auxílio Combustível</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Chaveiro 24h')"><i class="fas fa-key"></i> Chaveiro 24h</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Roubo e Furto')"><i class="fas fa-shield-cat"></i> Roubo e Furto</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Hospedagem Emergencial')"><i class="fas fa-hotel"></i> Hospedagem Emergencial</a>
-        <a href="javascript:void(0)" class="service-item" onclick="solicitarServico('Incêndio e Natureza')"><i class="fas fa-fire"></i> Incêndio & Natureza</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Reboque 24h')"><i class="fas fa-truck-pickup"></i> Reboque 24h</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Auxílio Bateria')"><i class="fas fa-car-battery"></i> Auxílio Bateria</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Proteção contra Colisão')"><i class="fas fa-car-burst"></i> Proteção Colisão</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Auxílio Combustível')"><i class="fas fa-gas-pump"></i> Auxílio Combustível</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Chaveiro 24h')"><i class="fas fa-key"></i> Chaveiro 24h</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Roubo e Furto')"><i class="fas fa-shield-cat"></i> Roubo e Furto</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Hospedagem Emergencial')"><i class="fas fa-hotel"></i> Hospedagem</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Incêndio & Natureza')"><i class="fas fa-fire"></i> Incêndio & Natureza</a>
       </div>
     </div>
   </section>
 
-  <!-- TRABALHE CONOSCO -->
+  <!-- TRABALHE CONOSCO (FORMULÁRIO DE CONSULTORES) -->
   <section id="consultor" class="section bg-light">
     <div class="container">
       <h2>Trabalhe Conosco — Seja um Consultor 4G</h2>
@@ -878,7 +900,7 @@
           <h3><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Escritório 4G Proteção Veicular</h3>
           <p style="margin-bottom:10px;"><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170</p>
           <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">Atendimento presencial com nossa equipe para fechamento de contratos, retirada de dúvidas e suporte completo.</p>
-          <a href="#cotacao" class="btn btn-primary">Fazer Cotação Online</a>
+          <a href="javascript:void(0)" onclick="focarNoFormulario()" class="btn btn-primary">Fazer Cotação Online</a>
         </div>
         <div class="map-container">
           <iframe 
@@ -895,55 +917,7 @@
     </div>
   </section>
 
-  <!-- MODAL COTAÇÃO -->
-  <div id="modalCotacao" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="fecharModal()">&times;</span>
-      <h2 style="color:var(--primary); text-align:center; margin-bottom:4px;" id="modalTitulo">Solicite sua Cotação</h2>
-      <p style="text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:16px;">Preencha os dados para receber sua simulação:</p>
-      
-      <form id="formCotacaoModal" onsubmit="enviarCotacaoModal(event)">
-        <div class="form-group">
-          <label for="modal-nome">Seu Nome Completo:</label>
-          <input type="text" id="modal-nome" required placeholder="Digite seu nome">
-        </div>
-
-        <div class="form-group">
-          <label for="modal-whatsapp">Celular / WhatsApp:</label>
-          <input type="tel" id="modal-whatsapp" required placeholder="(11) 99999-9999" maxlength="15" oninput="aplicarMascaraTelefone(this)">
-        </div>
-
-        <div class="form-group">
-          <label for="modal-placa">Placa do Veículo:</label>
-          <input type="text" id="modal-placa" required placeholder="Ex: ABC-1234" maxlength="8" oninput="aplicarMascaraPlaca(this)">
-        </div>
-        
-        <div class="form-group">
-          <label for="modal-tipoVeiculo">Tipo de Veículo:</label>
-          <select id="modal-tipoVeiculo" required>
-            <option value="Carro de Passeio">Carro de Passeio</option>
-            <option value="Carro de Trabalho / App">Carro de Trabalho / App</option>
-            <option value="Moto">Moto</option>
-            <option value="Van">Van</option>
-            <option value="Caminhão / Pesados">Caminhão / Veículos Pesados</option>
-            <option value="Frota">Frota Empresarial</option>
-          </select>
-        </div>
-
-        <input type="hidden" id="modal-parceiro-pref" value="">
-
-        <div id="msgModalSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13px;">
-          ✨ Cotação enviada! Redirecionando...
-        </div>
-
-        <button type="submit" id="btnEnviarModal" class="btn btn-whatsapp btn-block btn-large">
-          <i class="fab fa-whatsapp"></i> Receber Cotação no WhatsApp
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL CONSULTOR -->
+  <!-- MODAL DE CADASTRO DE CONSULTORES 4G -->
   <div id="modalConsultor" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
@@ -971,7 +945,7 @@
         </div>
 
         <button type="submit" id="btnEnviarConsultor" class="btn btn-primary btn-block btn-large">
-          Enviar Cadastro
+          Enviar Cadastro de Consultor
         </button>
       </form>
     </div>
@@ -1038,32 +1012,44 @@
       input.value = v;
     }
 
-    function abrirModal() {
-      document.getElementById('modalCotacao').style.display = 'flex';
-    }
-    function fecharModal() {
-      document.getElementById('modalCotacao').style.display = 'none';
-      document.getElementById('msgModalSucesso').style.display = 'none';
-      document.getElementById('modal-parceiro-pref').value = "";
-      document.getElementById('modalTitulo').innerText = "Solicite sua Cotação";
-    }
-
-    function abrirModalComOpcao(parceiro) {
-      document.getElementById('modal-parceiro-pref').value = parceiro;
-      document.getElementById('modalTitulo').innerText = "Cotação para " + parceiro;
-      abrirModal();
-    }
-
-    function selecionarETrazerForm(tipo) {
-      document.getElementById('inline-tipoVeiculo').value = tipo;
+    /* ROLAGEM E CONEXÃO DIRETA COM O FORMULÁRIO */
+    function focarNoFormulario() {
       document.getElementById('cotacao').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('inline-nome').focus();
     }
 
-    function solicitarServico(servico) {
-      const msg = encodeURIComponent(`Olá! Gostaria de solicitar informações / cotação sobre o serviço de *${servico}*.`);
-      window.open(`https://wa.me/${NUMERO_COTACAO}?text=${msg}`, '_blank');
+    function selecionarTipoVeiculoEForm(tipo) {
+      document.getElementById('inline-tipoVeiculo').value = tipo;
+      document.getElementById('inline-detalhe-extra').value = "";
+      
+      const tag = document.getElementById('tagSelecaoForm');
+      tag.innerHTML = `🚗 Veículo selecionado: <strong>${tipo}</strong>`;
+      tag.style.display = 'block';
+
+      focarNoFormulario();
     }
 
+    function selecionarParceiroEForm(parceiro) {
+      document.getElementById('inline-detalhe-extra').value = "Preferência de Parceiro: " + parceiro;
+
+      const tag = document.getElementById('tagSelecaoForm');
+      tag.innerHTML = `🤝 Opção em Destaque: <strong>${parceiro}</strong>`;
+      tag.style.display = 'block';
+
+      focarNoFormulario();
+    }
+
+    function selecionarServicoEForm(servico) {
+      document.getElementById('inline-detalhe-extra').value = "Serviço de Interesse: " + servico;
+
+      const tag = document.getElementById('tagSelecaoForm');
+      tag.innerHTML = `⚡ Serviço de Interesse: <strong>${servico}</strong>`;
+      tag.style.display = 'block';
+
+      focarNoFormulario();
+    }
+
+    /* MODAL CONSULTOR */
     function abrirModalConsultor() {
       document.getElementById('modalConsultor').style.display = 'flex';
     }
@@ -1105,12 +1091,13 @@
       const whatsapp = document.getElementById('inline-whatsapp').value;
       const placa = document.getElementById('inline-placa').value;
       const tipoVeiculo = document.getElementById('inline-tipoVeiculo').value;
+      const detalheExtra = document.getElementById('inline-detalhe-extra').value;
 
       const btn = document.getElementById('btnEnviarInline');
       btn.innerText = "Enviando dados...";
       btn.disabled = true;
 
-      const dadosLead = { tipo: "Cotação Hero", nome, whatsapp, placa, tipoVeiculo };
+      const dadosLead = { tipo: "Cotação Direta", nome, whatsapp, placa, tipoVeiculo, detalheExtra };
 
       fetch(URL_PLANILHA_GOOGLE, {
         method: "POST",
@@ -1123,55 +1110,18 @@
         btn.disabled = false;
         
         let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+        if (detalheExtra) {
+          texto += `\n*Detalhes:* ${detalheExtra}`;
+        }
+
         setTimeout(() => {
           window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
           document.getElementById('formCotacaoInline').reset();
+          document.getElementById('tagSelecaoForm').style.display = 'none';
         }, 1000);
       }).catch(err => {
         document.getElementById('msgInlineSucesso').style.display = 'block';
         btn.innerText = "Receber Proposta no WhatsApp";
-        btn.disabled = false;
-      });
-    }
-
-    /* SUBMIT COTAÇÃO MODAL */
-    function enviarCotacaoModal(e) {
-      e.preventDefault();
-      const nome = document.getElementById('modal-nome').value;
-      const whatsapp = document.getElementById('modal-whatsapp').value;
-      const placa = document.getElementById('modal-placa').value;
-      const tipoVeiculo = document.getElementById('modal-tipoVeiculo').value;
-      const parceiro = document.getElementById('modal-parceiro-pref').value;
-
-      const btn = document.getElementById('btnEnviarModal');
-      btn.innerText = "Enviando dados...";
-      btn.disabled = true;
-
-      const dadosLead = { tipo: "Cotação Modal", nome, whatsapp, placa, tipoVeiculo, parceiro };
-
-      fetch(URL_PLANILHA_GOOGLE, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dadosLead)
-      }).then(() => {
-        document.getElementById('msgModalSucesso').style.display = 'block';
-        btn.innerText = "Receber Cotação no WhatsApp";
-        btn.disabled = false;
-
-        let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
-        if (parceiro) {
-          texto += `\n*Opção Destaque:* ${parceiro}`;
-        }
-
-        setTimeout(() => {
-          fecharModal();
-          window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
-          document.getElementById('formCotacaoModal').reset();
-        }, 1000);
-      }).catch(err => {
-        document.getElementById('msgModalSucesso').style.display = 'block';
-        btn.innerText = "Receber Cotação no WhatsApp";
         btn.disabled = false;
       });
     }
@@ -1187,7 +1137,7 @@
       btn.innerText = "Enviando cadastro...";
       btn.disabled = true;
 
-      const dadosConsultor = { tipo: "Consultor", nome, whatsapp, cidade };
+      const dadosConsultor = { tipo: "Cadastro Consultor", nome, whatsapp, cidade };
 
       fetch(URL_PLANILHA_GOOGLE, {
         method: "POST",
@@ -1196,7 +1146,7 @@
         body: JSON.stringify(dadosConsultor)
       }).then(() => {
         document.getElementById('msgConsultorSucesso').style.display = 'block';
-        btn.innerText = "Enviar Cadastro";
+        btn.innerText = "Enviar Cadastro de Consultor";
         btn.disabled = false;
 
         let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
@@ -1207,7 +1157,7 @@
         }, 1000);
       }).catch(err => {
         document.getElementById('msgConsultorSucesso').style.display = 'block';
-        btn.innerText = "Enviar Cadastro";
+        btn.innerText = "Enviar Cadastro de Consultor";
         btn.disabled = false;
       });
     }
@@ -1246,9 +1196,7 @@
     }
 
     window.onclick = function(event) {
-      const modalCotacao = document.getElementById('modalCotacao');
       const modalConsultor = document.getElementById('modalConsultor');
-      if (event.target == modalCotacao) { fecharModal(); }
       if (event.target == modalConsultor) { fecharModalConsultor(); }
     }
   </script>
