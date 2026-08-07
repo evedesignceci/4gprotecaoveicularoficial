@@ -6,7 +6,7 @@
   <title>4G Proteção Veicular | Sua proteção sob medida</title>
   
   <!-- Favicon / Logo -->
-  <link rel="shortcut icon" href="https://i.imgur.com/jM5wvZR.png" type="image/png">
+  <link rel="shortcut icon" href="https://i.imgur.com/Xd8Bf4Q.png" type="image/png">
   
   <!-- Fontes Google: Anton (Títulos) e Open Sans (Corpo de texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +19,8 @@
     :root {
       --primary: #154F96;        /* Azul Escuro 4G */
       --primary-light: #52A3E1;  /* Azul Claro 4G */
-      --yellow: #FFF029;         /* Amarelo 4G */
-      --dark: #000000;           /* Preto 4G */
+      --yellow: #FFF029;          /* Amarelo 4G */
+      --dark: #000000;            /* Preto 4G */
       --white: #FFFFFF;          /* Branco */
       --text-muted: #475569;
       --bg-light: #F8FAFC;
@@ -97,13 +97,13 @@
       height: 80px;
     }
     .logo-img {
-      max-height: 55px;
+      max-height: 60px;
       width: auto;
       object-fit: contain;
     }
     .nav-menu {
       display: flex;
-      gap: 20px;
+      gap: 18px;
     }
     .nav-menu a {
       text-decoration: none;
@@ -119,6 +119,17 @@
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+
+    /* MENU HAMBÚRGUER (MOBILE) */
+    .hamburger-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 26px;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 5px;
     }
 
     /* BUTTONS */
@@ -259,6 +270,9 @@
     .grid-2 {
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
     .grid-4 {
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
@@ -281,6 +295,29 @@
       border-color: var(--primary-light);
     }
 
+    /* PARCEIROS (LOGOS) */
+    .partner-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .partner-logo-box {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .partner-logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+    }
+
     /* FORMULÁRIO EMBEDDED */
     .inline-form-box {
       background: var(--card-bg);
@@ -292,7 +329,6 @@
       margin: 0 auto;
     }
 
-    /* PARTNERS & FEATURES */
     .partner-card h3, .feature-card h3 {
       font-size: 20px;
       color: var(--primary);
@@ -457,13 +493,35 @@
       color: var(--yellow);
     }
 
+    /* MEDIA QUERIES & RESPONSIVIDADE MOBILE */
     @media (max-width: 900px) {
       .hero-container { grid-template-columns: 1fr; text-align: center; }
       .hero-text h1 { font-size: 36px; }
       .hero-buttons { justify-content: center; }
-      .nav-menu { display: none; }
+      .hamburger-btn { display: block; }
+
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px;
+        gap: 16px;
+        border-bottom: 3px solid var(--primary);
+        z-index: 99;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
       .location-box { flex-direction: column; text-align: center; }
       .location-info { text-align: center; }
+      .nav-actions .btn-outline {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -480,30 +538,35 @@
   <header class="header">
     <div class="container nav-container">
       <div class="logo">
-        <img src="https://i.imgur.com/jM5wvZR.png" alt="4G Proteção Veicular" class="logo-img">
+        <a href="#"><img src="https://i.imgur.com/Xd8Bf4Q.png" alt="4G Proteção Veicular" class="logo-img"></a>
       </div>
-      <nav class="nav-menu">
-        <a href="#sobre">A 4G</a>
-        <a href="#cotacao">Cotação</a>
-        <a href="#parceiros">Parceiros</a>
-        <a href="#veiculos">Proteção</a>
-        <a href="#servicos">Assistência 24h</a>
-        <a href="#consultor">Consultor</a>
-        <a href="#blog-feedback">Blog & Avaliações</a>
-        <a href="#localizacao">Escritório</a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#sobre" onclick="fecharMenuMobile()">A 4G</a>
+        <a href="#cotacao" onclick="fecharMenuMobile()">Cotação</a>
+        <a href="#parceiros" onclick="fecharMenuMobile()">Parceiros</a>
+        <a href="#veiculos" onclick="fecharMenuMobile()">Proteção</a>
+        <a href="#servicos" onclick="fecharMenuMobile()">Assistência 24h</a>
+        <a href="#consultor" onclick="fecharMenuMobile()">Consultor</a>
+        <a href="#blog-feedback" onclick="fecharMenuMobile()">Blog & Avaliações</a>
+        <a href="#localizacao" onclick="fecharMenuMobile()">Escritório</a>
       </nav>
+
       <div class="nav-actions">
         <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline">
           <i class="fab fa-whatsapp"></i> Suporte
         </a>
         <button onclick="abrirModal()" class="btn btn-primary">COTAÇÃO RÁPIDA</button>
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Abrir Menu">
+          <i class="fas fa-bars" id="hamburgerIcon"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- ESPAÇO RESERVADO DO BANNER -->
   <div class="top-banner-space">
-    <img src="https://i.imgur.com/jM5wvZR.png" alt="Banner Promocional 4G Proteção Veicular" id="bannerTopoImg" style="display:none;">
+    <img src="https://i.imgur.com/Xd8Bf4Q.png" alt="Banner Promocional 4G Proteção Veicular" id="bannerTopoImg" style="display:none;">
   </div>
 
   <!-- 1. A 4G PROTEÇÃO VEICULAR -->
@@ -546,14 +609,14 @@
 
             <div class="form-group">
               <label for="inline-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
-              <input type="tel" id="inline-whatsapp" required placeholder="Ex: 11957666488">
+              <input type="tel" id="inline-whatsapp" required placeholder="(11) 95766-6488" maxlength="15" oninput="aplicarMascaraTelefone(this)">
             </div>
           </div>
 
           <div class="grid grid-2">
             <div class="form-group">
               <label for="inline-placa">Placa do Veículo (Obrigatório):</label>
-              <input type="text" id="inline-placa" required placeholder="Ex: ABC-1234 ou ABC1D23">
+              <input type="text" id="inline-placa" required placeholder="Ex: ABC-1234 ou ABC1D23" maxlength="8" oninput="aplicarMascaraPlaca(this)">
             </div>
 
             <div class="form-group">
@@ -581,32 +644,65 @@
     </div>
   </section>
 
-  <!-- 3. PARCEIROS -->
+  <!-- 3. PARCEIROS (6 PARCEIROS COM LOGOS REAIS) -->
   <section id="parceiros" class="section">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
       <p class="section-subtitle">Trabalhamos com os melhores nomes do setor. Clique para cotar com a empresa desejada:</p>
       
-      <div class="grid grid-4">
+      <div class="grid grid-3">
+        <!-- Capitalcar -->
         <div class="card partner-card" onclick="abrirModalComOpcao('Capitalcar')">
-          <i class="fas fa-car-burst" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <div class="partner-logo-box">
+            <img src="https://i.imgur.com/5vSVukE.png" alt="Capitalcar">
+          </div>
           <h3>Capitalcar</h3>
           <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
         </div>
+
+        <!-- Valecar -->
         <div class="card partner-card" onclick="abrirModalComOpcao('Valecar')">
-          <i class="fas fa-hand-holding-hand" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <div class="partner-logo-box">
+            <img src="https://i.imgur.com/NscKSbs.png" alt="Valecar">
+          </div>
           <h3>Valecar</h3>
           <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
         </div>
+
+        <!-- Suhai -->
         <div class="card partner-card" onclick="abrirModalComOpcao('Suhai')">
-          <i class="fas fa-shield-cat" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <div class="partner-logo-box">
+            <img src="https://i.imgur.com/suYfaUK.png" alt="Suhai Seguradora">
+          </div>
           <h3>Suhai</h3>
           <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
         </div>
+
+        <!-- APVS -->
         <div class="card partner-card" onclick="abrirModalComOpcao('APVS')">
-          <i class="fas fa-award" style="font-size:36px; color:var(--primary-light); margin-bottom:12px;"></i>
+          <div class="partner-logo-box">
+            <img src="https://i.imgur.com/J6Z0PSX.png" alt="APVS Brasil">
+          </div>
           <h3>APVS</h3>
           <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
+        </div>
+
+        <!-- AGV -->
+        <div class="card partner-card" onclick="abrirModalComOpcao('AGV')">
+          <div class="partner-logo-box">
+            <img src="https://i.imgur.com/Jp60y0i.png" alt="AGV Brasil">
+          </div>
+          <h3>AGV Brasil</h3>
+          <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
+        </div>
+
+        <!-- Km -->
+        <div class="card partner-card" onclick="abrirModalComOpcao('Km')">
+          <div class="partner-logo-box">
+            <img src="https://i.imgur.com/HvKGvLh.png" alt="Km Clube de Benefícios">
+          </div>
+          <h3>Km</h3>
+          <p>Soluções modernas em assistência e proteção para garantir a sua tranquilidade nas estradas.</p>
         </div>
       </div>
     </div>
@@ -814,12 +910,12 @@
 
         <div class="form-group">
           <label for="modal-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
-          <input type="tel" id="modal-whatsapp" required placeholder="Ex: 11957666488">
+          <input type="tel" id="modal-whatsapp" required placeholder="(11) 95766-6488" maxlength="15" oninput="aplicarMascaraTelefone(this)">
         </div>
 
         <div class="form-group">
           <label for="modal-placa">Placa do Veículo (Obrigatório):</label>
-          <input type="text" id="modal-placa" required placeholder="Ex: ABC-1234 ou ABC1D23">
+          <input type="text" id="modal-placa" required placeholder="Ex: ABC-1234 ou ABC1D23" maxlength="8" oninput="aplicarMascaraPlaca(this)">
         </div>
         
         <div class="form-group">
@@ -859,7 +955,7 @@
 
         <div class="form-group">
           <label for="cons-whatsapp">Seu Celular / WhatsApp (com DDD):</label>
-          <input type="tel" id="cons-whatsapp" required placeholder="Ex: 11957666488">
+          <input type="tel" id="cons-whatsapp" required placeholder="(11) 95766-6488" maxlength="15" oninput="aplicarMascaraTelefone(this)">
         </div>
 
         <div class="form-group">
@@ -890,6 +986,60 @@
     const NUMERO_COTACAO = "5511957666488"; // Atendimento/Cotação
     const NUMERO_SUPORTE = "5511957883108"; // Suporte
     const URL_PLANILHA_GOOGLE = "https://script.google.com/macros/s/AKfycb.../exec";
+
+    // MENU HAMBÚRGUER MOBILE
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      } else {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    }
+
+    function fecharMenuMobile() {
+      const menu = document.getElementById('navMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    }
+
+    // MÁSCARAS DE ENTRADA
+    function aplicarMascaraTelefone(input) {
+      let v = input.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.substring(0, 11);
+      
+      if (v.length > 10) {
+        // Celular com 9 dígitos: (11) 95766-6488
+        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+      } else if (v.length > 6) {
+        // Fixo ou parcial: (11) 9576-6488
+        v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+      } else if (v.length > 2) {
+        v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+      } else {
+        v = v.replace(/^(\d*)$/, "($1");
+      }
+      input.value = v;
+    }
+
+    function aplicarMascaraPlaca(input) {
+      let v = input.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (v.length > 7) v = v.substring(0, 7);
+
+      // Padrão antigo: ABC-1234
+      if (/^[A-Z]{3}\d{4}$/.test(v)) {
+        v = v.replace(/^([A-Z]{3})(\d{4})$/, "$1-$2");
+      }
+      input.value = v;
+    }
 
     function abrirModal() {
       document.getElementById('modalCotacao').style.display = 'flex';
