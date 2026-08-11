@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>4G Proteção Veicular | Sua proteção sob medida</title>
   
-  <!-- Favicon / Logo da Aba -->
   <link rel="shortcut icon" href="https://i.imgur.com/bv7IBPy.png" type="image/png">
   
-  <!-- Fontes Google & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* CORES & IDENTIDADE VISUAL 4G */
     :root {
       --primary: #154F96;
       --primary-dark: #0D3668;
@@ -58,24 +55,30 @@
       text-transform: uppercase;
     }
 
-    /* TOP BAR MARQUEE */
+    /* TOP BAR OTIMIZADA PARA UX (Estática e Limpa) */
     .top-bar {
-      background: var(--primary);
+      background: var(--primary-dark);
       color: var(--white);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
       padding: 8px 0;
-      overflow: hidden;
-      white-space: nowrap;
       border-bottom: 3px solid var(--yellow);
+      text-align: center;
     }
-    .marquee {
-      display: inline-block;
-      animation: marquee 28s linear infinite;
+    .top-bar-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+    .top-bar-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar-item i {
+      color: var(--yellow);
     }
 
     /* HEADER & NAV */
@@ -99,7 +102,7 @@
       height: 80px;
     }
     .logo-img {
-      max-height: 60px;
+      max-height: 55px;
       width: auto;
       object-fit: contain;
     }
@@ -115,7 +118,7 @@
       transition: color 0.2s;
     }
     .nav-menu a:hover {
-      color: var(--primary-light);
+      color: var(--primary);
     }
     .nav-actions {
       display: flex;
@@ -133,7 +136,7 @@
       padding: 5px;
     }
 
-    /* BUTTONS */
+    /* BUTTONS COM ACESSIBILIDADE E FOCO */
     .btn {
       padding: 12px 24px;
       border-radius: var(--radius-md);
@@ -148,6 +151,10 @@
       gap: 8px;
       transition: all 0.25s ease;
     }
+    .btn:focus-visible {
+      outline: 3px solid var(--primary-light);
+      outline-offset: 2px;
+    }
     .btn-primary {
       background: var(--primary);
       color: var(--white);
@@ -159,7 +166,7 @@
     }
     .btn-yellow {
       background: var(--yellow);
-      color: var(--dark);
+      color: #000000;
       box-shadow: 0 4px 14px rgba(255, 240, 41, 0.4);
     }
     .btn-yellow:hover {
@@ -176,12 +183,12 @@
       color: var(--white);
     }
     .btn-whatsapp {
-      background: #25D366;
+      background: #1EBE57;
       color: var(--white);
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 4px 14px rgba(30, 190, 87, 0.3);
     }
     .btn-whatsapp:hover {
-      background: #1EBE57;
+      background: #169E46;
       transform: translateY(-2px);
     }
     .btn-large {
@@ -207,9 +214,9 @@
       align-items: center;
     }
     .hero-text h1 {
-      font-size: 48px;
+      font-size: 46px;
       color: var(--yellow);
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 12px;
     }
     .hero-text .subtitle {
@@ -234,7 +241,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.12);
       padding: 8px 14px;
       border-radius: 30px;
       font-size: 13px;
@@ -252,7 +259,18 @@
       box-shadow: var(--shadow-lg);
       color: var(--dark);
       border: 3px solid var(--yellow);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
+    .hero-form-card.highlight {
+      animation: pulseHighlight 1s ease;
+    }
+
+    @keyframes pulseHighlight {
+      0% { transform: scale(1); box-shadow: var(--shadow-lg); }
+      50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 240, 41, 0.8); }
+      100% { transform: scale(1); box-shadow: var(--shadow-lg); }
+    }
+
     .hero-form-card h3 {
       font-size: 24px;
       color: var(--primary);
@@ -266,21 +284,26 @@
       margin-bottom: 20px;
     }
 
-    /* TAG DE SELEÇÃO DINÂMICA */
+    /* TAG DE SELEÇÃO DINÂMICA COM MELHOR FEEDBACK */
     .selection-tag {
       display: none;
       background: #EFF6FF;
-      border: 1px dashed var(--primary-light);
-      color: var(--primary);
-      padding: 8px 12px;
+      border: 1.5px dashed var(--primary);
+      color: var(--primary-dark);
+      padding: 10px 14px;
       border-radius: var(--radius-md);
       font-size: 13px;
       font-weight: 700;
       margin-bottom: 16px;
       text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* SEÇÕES EM GERAL */
+    /* SEÇÕES */
     .section {
       padding: 70px 0;
     }
@@ -301,7 +324,7 @@
       background-color: #F1F5F9;
     }
 
-    /* SEÇÃO PARCEIROS EM AZUL ESCURO - CAIXAS BRANCAS PADRONIZADAS PARA LOGOS */
+    /* SEÇÃO PARCEIROS */
     .bg-dark-partners {
       background-color: #0A2540;
       color: var(--white);
@@ -542,9 +565,14 @@
 
     @media (max-width: 900px) {
       .hero-container { grid-template-columns: 1fr; text-align: center; }
-      .hero-text h1 { font-size: 36px; }
+      .hero-text h1 { font-size: 34px; }
       .hero-badges { justify-content: center; }
       .hamburger-btn { display: block; }
+
+      .top-bar-items {
+        flex-direction: column;
+        gap: 4px;
+      }
 
       .nav-menu {
         display: none;
@@ -568,18 +596,22 @@
 </head>
 <body>
 
-  <!-- BANNER ROLANTE TOPO -->
+  <!-- BANNER TOPO OTIMIZADO -->
   <div class="top-bar">
-    <div class="marquee">
-      <span>👨‍👩‍👧‍👦 Proteção para toda a sua família! &nbsp;&nbsp;•&nbsp;&nbsp; 🚀 Opções em Consórcio & Proteção! &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ Sem consulta ao SPC/Serasa! &nbsp;&nbsp;•&nbsp;&nbsp; 🤝 As melhores associações e seguradoras em um só lugar!</span>
+    <div class="container top-bar-items">
+      <span class="top-bar-item"><i class="fas fa-users"></i> Proteção para toda a sua família</span>
+      <span class="top-bar-item"><i class="fas fa-bolt"></i> Sem consulta ao SPC/Serasa</span>
+      <span class="top-bar-item"><i class="fas fa-handshake"></i> As melhores seguradoras e associações</span>
     </div>
   </div>
 
-  <!-- HEADER COM LOGO OFICIAL 4G -->
+  <!-- HEADER -->
   <header class="header">
     <div class="container nav-container">
       <div class="logo">
-        <a href="#sobre"><img src="https://i.imgur.com/bv7IBPy.png" alt="4G Proteção Veicular" class="logo-img"></a>
+        <a href="#sobre" aria-label="Home 4G Proteção Veicular">
+          <img src="https://i.imgur.com/bv7IBPy.png" alt="4G Proteção Veicular" class="logo-img">
+        </a>
       </div>
 
       <nav class="nav-menu" id="navMenu">
@@ -594,18 +626,18 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline">
+        <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline" aria-label="Falar com Suporte">
           <i class="fab fa-whatsapp"></i> Suporte
         </a>
         <button onclick="focarNoFormulario()" class="btn btn-primary">COTAÇÃO RÁPIDA</button>
-        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Abrir Menu">
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Abrir Menu Nav">
           <i class="fas fa-bars" id="hamburgerIcon"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION COM COTAÇÃO INLINE -->
+  <!-- HERO SECTION -->
   <section class="hero" id="sobre">
     <div class="container hero-container">
       <div class="hero-text">
@@ -630,7 +662,6 @@
         <h3><i class="fas fa-calculator" style="color: var(--primary);"></i> Cotação em 1 Minuto</h3>
         <p>Simule agora e receba no seu WhatsApp:</p>
 
-        <!-- TAG DE DETECÇÃO DE PREENCHIMENTO DIRETO -->
         <div id="tagSelecaoForm" class="selection-tag"></div>
 
         <form id="formCotacaoInline" onsubmit="enviarCotacaoInline(event)">
@@ -677,14 +708,13 @@
     </div>
   </section>
 
-  <!-- PARCEIROS EM AZUL ESCURO COM CAIXAS BRANCAS DE LOGO -->
+  <!-- PARCEIROS -->
   <section id="parceiros" class="section bg-dark-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
       <p class="section-subtitle">Trabalhamos com os melhores nomes do setor. Clique para cotar diretamente com a parceira desejada:</p>
       
       <div class="grid grid-3">
-        <!-- Capitalcar -->
         <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Capitalcar')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/RYxPezD.png" alt="Capitalcar">
@@ -693,7 +723,6 @@
           <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
         </a>
 
-        <!-- Valecar -->
         <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Valecar')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/DiazKeZ.png" alt="Valecar">
@@ -702,7 +731,6 @@
           <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
         </a>
 
-        <!-- Suhai -->
         <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Suhai')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/SPddi1a.png" alt="Suhai Seguradora">
@@ -711,7 +739,6 @@
           <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
         </a>
 
-        <!-- APVS -->
         <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('APVS')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/pgO0fqj.png" alt="APVS Brasil">
@@ -720,7 +747,6 @@
           <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
         </a>
 
-        <!-- AGV -->
         <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('AGV')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/zFmFcP6.png" alt="AGV Brasil">
@@ -729,7 +755,6 @@
           <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
         </a>
 
-        <!-- Km -->
         <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Km')">
           <div class="partner-logo-box-dark">
             <img src="https://i.imgur.com/QR6Pfsn.png" alt="Km Clube de Benefícios">
@@ -926,7 +951,7 @@
     </div>
   </section>
 
-  <!-- MODAL DE CADASTRO DE CONSULTORES 4G -->
+  <!-- MODAL DE CONSULTORES -->
   <div id="modalConsultor" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
@@ -1021,9 +1046,11 @@
       input.value = v;
     }
 
-    /* ROLAGEM E CONEXÃO DIRETA COM O FORMULÁRIO */
     function focarNoFormulario() {
-      document.getElementById('cotacao').scrollIntoView({ behavior: 'smooth' });
+      const card = document.getElementById('cotacao');
+      card.scrollIntoView({ behavior: 'smooth' });
+      card.classList.add('highlight');
+      setTimeout(() => card.classList.remove('highlight'), 1000);
       document.getElementById('inline-nome').focus();
     }
 
@@ -1058,7 +1085,6 @@
       focarNoFormulario();
     }
 
-    /* MODAL CONSULTOR */
     function abrirModalConsultor() {
       document.getElementById('modalConsultor').style.display = 'flex';
     }
@@ -1077,7 +1103,6 @@
       window.open(`https://wa.me/${NUMERO_SUPORTE}?text=${msg}`, '_blank');
     }
 
-    /* ESTRELAS FEEDBACK */
     const stars = document.querySelectorAll('#starRating i');
     stars.forEach(star => {
       star.addEventListener('click', function() {
@@ -1093,7 +1118,6 @@
       });
     });
 
-    /* SUBMIT COTAÇÃO INLINE */
     function enviarCotacaoInline(e) {
       e.preventDefault();
       const nome = document.getElementById('inline-nome').value;
@@ -1108,34 +1132,29 @@
 
       const dadosLead = { tipo: "Cotação Direta", nome, whatsapp, placa, tipoVeiculo, detalheExtra };
 
+      let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+      if (detalheExtra) {
+        texto += `\n*Detalhes:* ${detalheExtra}`;
+      }
+
       fetch(URL_PLANILHA_GOOGLE, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dadosLead)
-      }).then(() => {
+      }).finally(() => {
         document.getElementById('msgInlineSucesso').style.display = 'block';
         btn.innerText = "Receber Proposta no WhatsApp";
         btn.disabled = false;
-        
-        let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
-        if (detalheExtra) {
-          texto += `\n*Detalhes:* ${detalheExtra}`;
-        }
 
         setTimeout(() => {
-          window.open(`https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`, '_blank');
+          window.location.href = `https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`;
           document.getElementById('formCotacaoInline').reset();
           document.getElementById('tagSelecaoForm').style.display = 'none';
-        }, 1000);
-      }).catch(err => {
-        document.getElementById('msgInlineSucesso').style.display = 'block';
-        btn.innerText = "Receber Proposta no WhatsApp";
-        btn.disabled = false;
+        }, 600);
       });
     }
 
-    /* SUBMIT CONSULTOR */
     function enviarConsultor(e) {
       e.preventDefault();
       const nome = document.getElementById('cons-nome').value;
@@ -1147,31 +1166,26 @@
       btn.disabled = true;
 
       const dadosConsultor = { tipo: "Cadastro Consultor", nome, whatsapp, cidade };
+      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
 
       fetch(URL_PLANILHA_GOOGLE, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dadosConsultor)
-      }).then(() => {
+      }).finally(() => {
         document.getElementById('msgConsultorSucesso').style.display = 'block';
         btn.innerText = "Enviar Cadastro de Consultor";
         btn.disabled = false;
 
-        let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
         setTimeout(() => {
           fecharModalConsultor();
-          window.open(`https://wa.me/${NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`, '_blank');
+          window.location.href = `https://wa.me/${NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`;
           document.getElementById('formConsultor').reset();
-        }, 1000);
-      }).catch(err => {
-        document.getElementById('msgConsultorSucesso').style.display = 'block';
-        btn.innerText = "Enviar Cadastro de Consultor";
-        btn.disabled = false;
+        }, 600);
       });
     }
 
-    /* SUBMIT FEEDBACK */
     function enviarFeedback(e) {
       e.preventDefault();
       const nome = document.getElementById('fb-nome').value;
@@ -1189,7 +1203,7 @@
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dadosFeedback)
-      }).then(() => {
+      }).finally(() => {
         document.getElementById('msgFeedbackSucesso').style.display = 'block';
         btn.innerText = "Enviar Avaliação";
         btn.disabled = false;
@@ -1197,10 +1211,6 @@
           document.getElementById('msgFeedbackSucesso').style.display = 'none';
           document.getElementById('formFeedback').reset();
         }, 3000);
-      }).catch(err => {
-        document.getElementById('msgFeedbackSucesso').style.display = 'block';
-        btn.innerText = "Enviar Avaliação";
-        btn.disabled = false;
       });
     }
 
