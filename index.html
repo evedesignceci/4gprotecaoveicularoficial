@@ -24,11 +24,11 @@
       --text-muted: #64748B;
       --bg-light: #F8FAFC;
       --card-bg: #FFFFFF;
-      --shadow-sm: 0 4px 12px rgba(21, 79, 150, 0.08);
-      --shadow-md: 0 12px 28px rgba(21, 79, 150, 0.15);
-      --shadow-lg: 0 20px 35px rgba(21, 79, 150, 0.2);
-      --radius-lg: 18px;
-      --radius-md: 12px;
+      --shadow-sm: 0 4px 20px rgba(21, 79, 150, 0.05);
+      --shadow-md: 0 8px 24px rgba(21, 79, 150, 0.08);
+      --shadow-lg: 0 16px 32px rgba(21, 79, 150, 0.12);
+      --radius-lg: 16px;
+      --radius-md: 10px;
       --font-title: 'Anton', sans-serif;
       --font-body: 'Open Sans', sans-serif;
     }
@@ -51,25 +51,24 @@
 
     h1, h2, h3, .heading-font {
       font-family: var(--font-title);
-      letter-spacing: 0.8px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
     }
 
-    /* TOP BAR */
+    /* TOP BAR SUAVE */
     .top-bar {
       background: var(--primary-dark);
       color: var(--white);
       font-size: 13px;
       font-weight: 600;
-      padding: 8px 0;
-      border-bottom: 3px solid var(--yellow);
+      padding: 10px 0;
       text-align: center;
     }
     .top-bar-items {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       flex-wrap: wrap;
     }
     .top-bar-item {
@@ -88,6 +87,7 @@
       top: 0;
       z-index: 100;
       box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
     }
     .container {
       width: 100%;
@@ -99,23 +99,27 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 80px;
+      height: 75px;
     }
     .logo-img {
-      max-height: 55px;
+      max-height: 50px;
       width: auto;
       object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    .logo-img:hover {
+      transform: scale(1.02);
     }
     .nav-menu {
       display: flex;
-      gap: 18px;
+      gap: 20px;
     }
     .nav-menu a {
       text-decoration: none;
-      color: var(--dark);
-      font-weight: 700;
+      color: var(--text-muted);
+      font-weight: 600;
       font-size: 14px;
-      transition: color 0.2s;
+      transition: color 0.2s ease;
     }
     .nav-menu a:hover {
       color: var(--primary);
@@ -130,17 +134,17 @@
       display: none;
       background: transparent;
       border: none;
-      font-size: 26px;
+      font-size: 24px;
       color: var(--primary);
       cursor: pointer;
       padding: 5px;
     }
 
-    /* BUTTONS */
+    /* BOTÕES COM FEEDBACK DINÂMICO */
     .btn {
-      padding: 12px 24px;
+      padding: 11px 22px;
       border-radius: var(--radius-md);
-      font-weight: 800;
+      font-weight: 700;
       font-size: 14px;
       border: none;
       cursor: pointer;
@@ -149,60 +153,59 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
+    }
+    .btn:active {
+      transform: scale(0.97);
     }
     .btn:focus-visible {
-      outline: 3px solid var(--primary-light);
+      outline: 2px solid var(--primary-light);
       outline-offset: 2px;
     }
     .btn-primary {
       background: var(--primary);
       color: var(--white);
-      box-shadow: 0 4px 14px rgba(21, 79, 150, 0.3);
     }
     .btn-primary:hover {
       background: var(--primary-dark);
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
     }
     .btn-yellow {
       background: var(--yellow);
       color: #000000;
-      box-shadow: 0 4px 14px rgba(255, 240, 41, 0.4);
     }
     .btn-yellow:hover {
       background: var(--yellow-hover);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 240, 41, 0.25);
     }
     .btn-outline {
-      border: 2px solid var(--primary-light);
+      border: 1.5px solid var(--primary-light);
       color: var(--primary);
       background: transparent;
     }
     .btn-outline:hover {
-      background: var(--primary-light);
-      color: var(--white);
+      background: rgba(82, 163, 225, 0.08);
     }
     .btn-whatsapp {
-      background: #1EBE57;
+      background: #25D366;
       color: var(--white);
-      box-shadow: 0 4px 14px rgba(30, 190, 87, 0.3);
     }
     .btn-whatsapp:hover {
-      background: #169E46;
-      transform: translateY(-2px);
+      background: #22BF5B;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
     }
     .btn-large {
-      padding: 16px 32px;
-      font-size: 16px;
+      padding: 14px 28px;
+      font-size: 15px;
       border-radius: var(--radius-lg);
     }
     .btn-block {
       width: 100%;
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION SUAVIZADA */
     .hero {
-      padding: 50px 0 70px;
+      padding: 60px 0 80px;
       background: linear-gradient(135deg, #0D3668 0%, #154F96 100%);
       color: var(--white);
       position: relative;
@@ -214,14 +217,14 @@
       align-items: center;
     }
     .hero-text h1 {
-      font-size: 46px;
+      font-size: 42px;
       color: var(--yellow);
       line-height: 1.15;
       margin-bottom: 12px;
     }
     .hero-text .subtitle {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
       color: #E2E8F0;
       margin-bottom: 16px;
     }
@@ -233,20 +236,19 @@
 
     .hero-badges {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       margin-bottom: 24px;
     }
     .badge-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 8px 14px;
-      border-radius: 30px;
-      font-size: 13px;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12.5px;
       font-weight: 600;
-      backdrop-filter: blur(5px);
     }
     .badge-item i {
       color: var(--yellow);
@@ -255,24 +257,24 @@
     .hero-form-card {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
-      padding: 30px;
+      padding: 28px;
       box-shadow: var(--shadow-lg);
       color: var(--dark);
-      border: 3px solid var(--yellow);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      border: 1px solid rgba(21, 79, 150, 0.1);
+      transition: all 0.3s ease;
     }
     .hero-form-card.highlight {
-      animation: pulseHighlight 1s ease;
+      animation: pulseHighlight 0.8s ease;
     }
 
     @keyframes pulseHighlight {
       0% { transform: scale(1); box-shadow: var(--shadow-lg); }
-      50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 240, 41, 0.8); }
+      50% { transform: scale(1.01); box-shadow: 0 0 20px rgba(82, 163, 225, 0.4); }
       100% { transform: scale(1); box-shadow: var(--shadow-lg); }
     }
 
     .hero-form-card h3 {
-      font-size: 24px;
+      font-size: 22px;
       color: var(--primary);
       text-align: center;
       margin-bottom: 6px;
@@ -281,148 +283,149 @@
       text-align: center;
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
+    /* TAG DE SELEÇÃO COM FEEDBACK CLARO */
     .selection-tag {
       display: none;
-      background: #EFF6FF;
-      border: 1.5px dashed var(--primary);
+      background: #F0F7FF;
+      border: 1.5px solid var(--primary-light);
       color: var(--primary-dark);
       padding: 10px 14px;
       border-radius: var(--radius-md);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 16px;
       text-align: center;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-6px); }
+      from { opacity: 0; transform: translateY(-4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* SEÇÕES */
     .section {
-      padding: 70px 0;
+      padding: 65px 0;
     }
     .section h2 {
       text-align: center;
-      font-size: 36px;
+      font-size: 32px;
       color: var(--primary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .section-subtitle {
       text-align: center;
       color: var(--text-muted);
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
     .bg-light {
       background-color: #F1F5F9;
     }
 
-    /* SEÇÃO PARCEIROS */
-    .bg-dark-partners {
-      background-color: #0A2540;
+    /* SEÇÃO PARCEIROS MAIS LIMPA E ELEGANTE */
+    .bg-soft-partners {
+      background-color: #0F2A4A;
       color: var(--white);
-      padding: 80px 0;
-      border-top: 4px solid var(--primary-light);
-      border-bottom: 4px solid var(--yellow);
+      padding: 75px 0;
     }
-    .bg-dark-partners h2 {
-      color: var(--yellow) !important;
+    .bg-soft-partners h2 {
+      color: var(--white) !important;
     }
-    .bg-dark-partners .section-subtitle {
+    .bg-soft-partners .section-subtitle {
       color: #94A3B8 !important;
     }
-    .partner-card-dark {
+    .partner-card-soft {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       height: 100%;
-      background: #10345E;
+      background: #15345C;
       border-radius: var(--radius-lg);
-      padding: 24px 18px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(82, 163, 225, 0.25);
+      padding: 22px 16px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: all 0.25s ease;
       text-decoration: none;
     }
-    .partner-card-dark:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 30px rgba(82, 163, 225, 0.4);
-      border-color: var(--yellow);
+    .partner-card-soft:hover {
+      transform: translateY(-4px);
+      background: #193D6B;
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-md);
     }
-    .partner-logo-box-dark {
+    .partner-logo-box-soft {
       width: 100%;
-      height: 95px;
+      height: 85px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       background: #FFFFFF;
       border-radius: var(--radius-md);
-      padding: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
-    .partner-logo-box-dark img {
-      max-width: 88%;
+    .partner-logo-box-soft img {
+      max-width: 85%;
       max-height: 100%;
       object-fit: contain;
     }
-    .partner-card-dark h3 {
-      font-size: 20px;
+    .partner-card-soft h3 {
+      font-size: 18px;
       color: var(--white);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .partner-card-dark p {
-      font-size: 13.5px;
-      color: #E2E8F0;
+    .partner-card-soft p {
+      font-size: 13px;
+      color: #CBD5E1;
       text-align: center;
     }
 
-    /* GRIDS & CARDS */
+    /* GRIDS & CARDS COM MICROINTERAÇÃO */
     .grid {
       display: grid;
-      gap: 20px;
+      gap: 18px;
     }
-    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-    .grid-5 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .grid-5 { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
 
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       box-shadow: var(--shadow-sm);
       border: 1px solid #E2E8F0;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
       text-decoration: none;
       color: inherit;
+      cursor: pointer;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
       border-color: var(--primary-light);
     }
 
     /* SERVICES GRID */
     .services-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     }
     .service-item {
       background: var(--card-bg);
       border-radius: var(--radius-md);
-      padding: 18px;
-      font-weight: 700;
-      font-size: 14px;
+      padding: 16px;
+      font-weight: 600;
+      font-size: 13.5px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -431,15 +434,15 @@
       color: var(--dark);
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
     }
     .service-item:hover {
       border-color: var(--primary-light);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+      background: #F8FAFC;
+      transform: translateY(-2px);
     }
     .service-item i {
-      font-size: 22px;
+      font-size: 20px;
       color: var(--primary);
     }
 
@@ -447,7 +450,7 @@
     .location-box {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 30px;
+      padding: 28px;
       box-shadow: var(--shadow-sm);
       border: 1px solid #E2E8F0;
       display: flex;
@@ -460,27 +463,27 @@
       min-width: 280px;
     }
     .location-info h3 {
-      font-size: 22px;
+      font-size: 20px;
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .map-container {
       flex: 1;
       min-width: 280px;
-      height: 280px;
-      border-radius: 12px;
+      height: 260px;
+      border-radius: var(--radius-md);
       overflow: hidden;
     }
 
     /* ESTRELAS FEEDBACK */
     .star-rating {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       justify-content: center;
-      font-size: 26px;
+      font-size: 24px;
       color: #CBD5E1;
       cursor: pointer;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .star-rating i.active {
       color: var(--yellow);
@@ -494,8 +497,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(3px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -504,59 +507,64 @@
     .modal-content {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
-      padding: 32px;
+      padding: 30px;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      animation: modalUp 0.3s ease;
+      box-shadow: var(--shadow-lg);
+      animation: modalUp 0.25s ease;
       max-height: 90vh;
       overflow-y: auto;
     }
     @keyframes modalUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .close-btn {
       position: absolute;
-      top: 18px;
-      right: 18px;
-      font-size: 22px;
+      top: 16px;
+      right: 16px;
+      font-size: 20px;
       cursor: pointer;
       color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .close-btn:hover {
+      color: var(--dark);
     }
 
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-align: left;
     }
     .form-group label {
       display: block;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 13px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: var(--dark);
     }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 12px 14px;
+      padding: 11px 13px;
       border-radius: var(--radius-md);
-      border: 2px solid #E2E8F0;
+      border: 1.5px solid #CBD5E1;
       font-size: 14px;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--primary-light);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(21, 79, 150, 0.1);
     }
 
     footer {
       background: var(--primary-dark);
       color: var(--white);
-      padding: 35px 0 20px;
+      padding: 30px 0 20px;
       text-align: center;
-      font-size: 14px;
-      border-top: 4px solid var(--yellow);
+      font-size: 13.5px;
+      border-top: 3px solid var(--yellow);
     }
     footer strong {
       color: var(--yellow);
@@ -564,27 +572,22 @@
 
     @media (max-width: 900px) {
       .hero-container { grid-template-columns: 1fr; text-align: center; }
-      .hero-text h1 { font-size: 34px; }
+      .hero-text h1 { font-size: 32px; }
       .hero-badges { justify-content: center; }
       .hamburger-btn { display: block; }
-
-      .top-bar-items {
-        flex-direction: column;
-        gap: 4px;
-      }
-
+      .top-bar-items { flex-direction: column; gap: 4px; }
       .nav-menu {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 75px;
         left: 0;
         width: 100%;
         background: var(--card-bg);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: var(--shadow-md);
         padding: 20px;
-        gap: 16px;
-        border-bottom: 3px solid var(--primary);
+        gap: 14px;
+        border-bottom: 2px solid var(--primary);
         z-index: 99;
       }
       .nav-menu.active { display: flex; }
@@ -649,7 +652,7 @@
         <p class="subtitle">Sua proteção sob medida com as maiores do Brasil.</p>
         <p>Como corretora especializada, a 4G une as principais associações e seguradoras do mercado para garantir que seu veículo esteja protegido pelo menor preço e com o melhor suporte.</p>
         
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <div>
           <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-whatsapp btn-large">
             <i class="fab fa-whatsapp"></i> Falar Direto no WhatsApp
           </a>
@@ -695,7 +698,7 @@
             </div>
           </div>
 
-          <div id="msgInlineSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13px;">
+          <div id="msgInlineSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:12px; text-align:center; font-size:13px;">
             ✨ Cotação enviada! Redirecionando...
           </div>
 
@@ -707,55 +710,55 @@
     </div>
   </section>
 
-  <!-- PARCEIROS -->
-  <section id="parceiros" class="section bg-dark-partners">
+  <!-- PARCEIROS (ESTRUTURA MAIS SUAVE) -->
+  <section id="parceiros" class="section bg-soft-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
       <p class="section-subtitle">Trabalhamos com os melhores nomes do setor. Clique para cotar diretamente com a parceira desejada:</p>
       
       <div class="grid grid-3">
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Capitalcar')">
-          <div class="partner-logo-box-dark">
+        <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Capitalcar')">
+          <div class="partner-logo-box-soft">
             <img src="https://i.imgur.com/RYxPezD.png" alt="Capitalcar">
           </div>
           <h3>Capitalcar</h3>
           <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Valecar')">
-          <div class="partner-logo-box-dark">
+        <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Valecar')">
+          <div class="partner-logo-box-soft">
             <img src="https://i.imgur.com/DiazKeZ.png" alt="Valecar">
           </div>
           <h3>Valecar</h3>
           <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Suhai')">
-          <div class="partner-logo-box-dark">
+        <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Suhai')">
+          <div class="partner-logo-box-soft">
             <img src="https://i.imgur.com/SPddi1a.png" alt="Suhai Seguradora">
           </div>
           <h3>Suhai</h3>
           <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('APVS')">
-          <div class="partner-logo-box-dark">
+        <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('APVS')">
+          <div class="partner-logo-box-soft">
             <img src="https://i.imgur.com/pgO0fqj.png" alt="APVS Brasil">
           </div>
           <h3>APVS</h3>
           <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('AGV')">
-          <div class="partner-logo-box-dark">
+        <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('AGV')">
+          <div class="partner-logo-box-soft">
             <img src="https://i.imgur.com/zFmFcP6.png" alt="AGV Brasil">
           </div>
           <h3>AGV Brasil</h3>
           <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
         </a>
 
-        <a href="javascript:void(0)" class="partner-card-dark" onclick="selecionarParceiroEForm('Km')">
-          <div class="partner-logo-box-dark">
+        <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Km')">
+          <div class="partner-logo-box-soft">
             <img src="https://i.imgur.com/QR6Pfsn.png" alt="Km Clube de Benefícios">
           </div>
           <h3>Km</h3>
@@ -773,29 +776,29 @@
 
       <div class="grid grid-5">
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Carro de Passeio')">
-          <i class="fas fa-car" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <i class="fas fa-car" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
           <h3>Carros</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Passeio e Trabalho</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Passeio e Trabalho</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Moto')">
-          <i class="fas fa-motorcycle" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <i class="fas fa-motorcycle" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
           <h3>Motos</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Particulares e Entregas</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Particulares e Entregas</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Van')">
-          <i class="fas fa-shuttle-van" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <i class="fas fa-shuttle-van" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
           <h3>Vans</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Passageiros e Carga</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Passageiros e Carga</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Caminhão / Pesados')">
-          <i class="fas fa-truck-front" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <i class="fas fa-truck-front" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
           <h3>Caminhões</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Veículos Pesados</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Veículos Pesados</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Frota')">
-          <i class="fas fa-truck-pickup" style="font-size:36px; color:var(--primary); margin-bottom:12px;"></i>
+          <i class="fas fa-truck-pickup" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
           <h3>Frotas</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Para Empresas</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Para Empresas</p>
         </a>
       </div>
     </div>
@@ -826,26 +829,26 @@
       <h2>Trabalhe Conosco — Seja um Consultor 4G</h2>
       <p class="section-subtitle">Monte sua própria carteira de clientes, conquiste prêmios e tenha independência financeira!</p>
       
-      <div class="grid grid-4" style="margin-bottom: 32px;">
-        <div class="card">
-          <i class="fas fa-sack-dollar" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
+      <div class="grid grid-4" style="margin-bottom: 28px;">
+        <div class="card" style="cursor: default;">
+          <i class="fas fa-sack-dollar" style="font-size:28px; color:var(--primary); margin-bottom:8px;"></i>
           <h3>Comissões Atrativas</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Ganhe por cada nova adesão efetuada e construa sua renda recorrente.</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Ganhe por cada nova adesão efetuada e construa sua renda recorrente.</p>
         </div>
-        <div class="card">
-          <i class="fas fa-trophy" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
+        <div class="card" style="cursor: default;">
+          <i class="fas fa-trophy" style="font-size:28px; color:var(--primary); margin-bottom:8px;"></i>
           <h3>Prêmios & Bônus</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Premiações exclusivas por atingimento de metas de vendas.</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Premiações exclusivas por atingimento de metas de vendas.</p>
         </div>
-        <div class="card">
-          <i class="fas fa-clock" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
+        <div class="card" style="cursor: default;">
+          <i class="fas fa-clock" style="font-size:28px; color:var(--primary); margin-bottom:8px;"></i>
           <h3>Flexibilidade</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Trabalhe no seu próprio horário e gerencie seu próprio ritmo de trabalho.</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Trabalhe no seu próprio horário e gerencie seu próprio ritmo de trabalho.</p>
         </div>
-        <div class="card">
-          <i class="fas fa-headset" style="font-size:32px; color:var(--primary); margin-bottom:10px;"></i>
+        <div class="card" style="cursor: default;">
+          <i class="fas fa-headset" style="font-size:28px; color:var(--primary); margin-bottom:8px;"></i>
           <h3>Suporte Completo</h3>
-          <p style="font-size:13px; color:var(--text-muted);">Treinamentos e suporte direto da equipe da 4G para alavancar suas vendas.</p>
+          <p style="font-size:12.5px; color:var(--text-muted);">Treinamentos e suporte direto da equipe da 4G para alavancar suas vendas.</p>
         </div>
       </div>
 
@@ -862,14 +865,14 @@
     <div class="container">
       <div class="grid grid-2" style="align-items: start;">
         
-        <div class="card" style="text-align: left; padding: 30px;">
-          <h3 style="color: var(--primary); font-size: 22px; margin-bottom: 12px;">
+        <div class="card" style="text-align: left; padding: 26px; cursor: default;">
+          <h3 style="color: var(--primary); font-size: 20px; margin-bottom: 10px;">
             <i class="fas fa-newspaper" style="color: var(--primary-light);"></i> Quem Somos & Nossa História
           </h3>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 14px;">
+          <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 12px;">
             Sob a liderança do nosso diretor <strong>Erasmo Pedro</strong>, a <strong>4G Proteção Veicular</strong> nasceu do compromisso de oferecer atendimento humano, rápido e sem burocracias. 
           </p>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+          <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 18px;">
             Trabalhamos diariamente para desmistificar a proteção veicular, reunindo as opções mais seguras do Brasil com transparência e custo acessível.
           </p>
           <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-outline btn-block">
@@ -877,11 +880,11 @@
           </a>
         </div>
 
-        <div class="card" style="text-align: left; padding: 30px;">
-          <h3 style="color: var(--primary); font-size: 22px; margin-bottom: 12px;">
+        <div class="card" style="text-align: left; padding: 26px; cursor: default;">
+          <h3 style="color: var(--primary); font-size: 20px; margin-bottom: 10px;">
             <i class="fas fa-star" style="color: var(--yellow);"></i> Deixe seu Feedback
           </h3>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 14px;">
+          <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 12px;">
             Sua avaliação ajuda a 4G a aprimorar continuadamente o atendimento:
           </p>
 
@@ -908,7 +911,7 @@
               <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência conosco..."></textarea>
             </div>
 
-            <div id="msgFeedbackSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13px;">
+            <div id="msgFeedbackSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:12px; text-align:center; font-size:13px;">
               ✨ Avaliação enviada com sucesso! Obrigado.
             </div>
 
@@ -931,13 +934,13 @@
       <div class="location-box">
         <div class="location-info">
           <h3><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Escritório 4G Proteção Veicular</h3>
-          <p style="margin-bottom:10px;"><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170</p>
-          <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">Atendimento presencial com nossa equipe para fechamento de contratos, retirada de dúvidas e suporte completo.</p>
+          <p style="margin-bottom:8px; font-size:13.5px;"><strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170</p>
+          <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px;">Atendimento presencial com nossa equipe para fechamento de contratos, retirada de dúvidas e suporte completo.</p>
           <a href="javascript:void(0)" onclick="focarNoFormulario()" class="btn btn-primary">Fazer Cotação Online</a>
         </div>
         <div class="map-container">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%20-%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%2C%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
             width="100%" 
             height="100%" 
             style="border:0;" 
@@ -954,7 +957,7 @@
   <div id="modalConsultor" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
-      <h2 style="color:var(--primary); text-align:center; margin-bottom:4px;">Seja um Consultor 4G</h2>
+      <h2 style="color:var(--primary); text-align:center; margin-bottom:4px; font-size:22px;">Seja um Consultor 4G</h2>
       <p style="text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:16px;">Preencha seus dados para entrar na nossa equipe:</p>
       
       <form id="formConsultor" onsubmit="enviarConsultor(event)">
@@ -973,7 +976,7 @@
           <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP">
         </div>
 
-        <div id="msgConsultorSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13px;">
+        <div id="msgConsultorSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:12px; text-align:center; font-size:13px;">
           ✨ Cadastro enviado! Entraremos em contato.
         </div>
 
@@ -1049,7 +1052,7 @@
       const card = document.getElementById('cotacao');
       card.scrollIntoView({ behavior: 'smooth' });
       card.classList.add('highlight');
-      setTimeout(() => card.classList.remove('highlight'), 1000);
+      setTimeout(() => card.classList.remove('highlight'), 800);
       document.getElementById('inline-nome').focus();
     }
 
@@ -1150,7 +1153,7 @@
           window.location.href = `https://wa.me/${NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`;
           document.getElementById('formCotacaoInline').reset();
           document.getElementById('tagSelecaoForm').style.display = 'none';
-        }, 600);
+        }, 500);
       });
     }
 
@@ -1181,7 +1184,7 @@
           fecharModalConsultor();
           window.location.href = `https://wa.me/${NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`;
           document.getElementById('formConsultor').reset();
-        }, 600);
+        }, 500);
       });
     }
 
