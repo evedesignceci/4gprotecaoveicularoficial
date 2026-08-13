@@ -18,7 +18,7 @@
       --primary: #154F96;
       --primary-dark: #0D3668;
       --primary-light: #52A3E1;
-      --partner-blue: #2d69cf; /* Nova cor personalizada para os cards dos parceiros */
+      --partner-blue: #2d69cf;
       --yellow: #FFF029;
       --yellow-hover: #E6D820;
       --dark: #000000;
@@ -146,7 +146,7 @@
       padding: 5px;
     }
 
-    /* BOTÕES OTIMIZADOS SEGUINDO O BRANDBOOK */
+    /* BOTÕES OTIMIZADOS */
     .btn {
       padding: 12px 24px;
       border-radius: var(--radius-md);
@@ -331,9 +331,9 @@
       background-color: #F1F5F9;
     }
 
-    /* PARCEIROS - ATUALIZADO COM A COR #2D69CF */
+    /* SEÇÃO PARCEIROS (#2D69CF) */
     .bg-soft-partners {
-      background-color: #0F2A4A;
+      background-color: var(--partner-blue);
       color: var(--white);
       padding: 80px 0;
     }
@@ -341,7 +341,7 @@
       color: var(--white) !important;
     }
     .bg-soft-partners .section-subtitle {
-      color: #94A3B8 !important;
+      color: #E2E8F0 !important;
     }
     .partner-card-soft {
       display: flex;
@@ -349,20 +349,20 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
-      background: var(--partner-blue); /* Cor #2d69cf aplicada aqui */
+      background: rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-lg);
       padding: 24px 18px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
       transition: all 0.25s ease;
       text-decoration: none;
     }
     .partner-card-soft:hover {
       transform: translateY(-4px);
-      background: #2458B3; /* Cor de hover levemente mais escura */
+      background: rgba(255, 255, 255, 0.2);
       border-color: var(--yellow);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
     }
     .partner-logo-box-soft {
       width: 100%;
@@ -371,14 +371,12 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 16px;
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background: transparent;
+      padding: 6px;
       overflow: hidden;
     }
     .partner-logo-box-soft img {
-      max-width: 85%;
+      max-width: 90%;
       max-height: 100%;
       object-fit: contain;
     }
@@ -392,6 +390,48 @@
       color: #F1F5F9;
       text-align: center;
       line-height: 1.5;
+    }
+
+    /* REDES SOCIAIS */
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+      text-decoration: none;
+      color: var(--dark);
+      transition: all 0.25s ease;
+    }
+    .social-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+    .social-icon-box {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .social-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .social-info h3 {
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .social-info p {
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
     /* GRIDS & CARDS */
@@ -567,7 +607,7 @@
       box-shadow: 0 0 0 3px rgba(21, 79, 150, 0.15);
     }
 
-    /* BOTÃO FLUTUANTE DE WHATSAPP (UX MOBILE FIXO) */
+    /* BOTÃO FLUTUANTE DE WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 24px;
@@ -743,7 +783,7 @@
     </div>
   </section>
 
-  <!-- PARCEIROS (COM AS NOVAS LOGOS E COR #2D69CF) -->
+  <!-- PARCEIROS (SEÇÃO E LOGOS NO AZUL #2D69CF) -->
   <section id="parceiros" class="section bg-soft-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
@@ -856,29 +896,32 @@
     </div>
   </section>
 
-  <!-- TRABALHE CONOSCO -->
+  <!-- TRABALHE CONOSCO (INTERATIVO) -->
   <section id="consultor" class="section bg-light">
     <div class="container">
       <h2>Trabalhe Conosco — Seja um Consultor 4G</h2>
       <p class="section-subtitle">Monte sua própria carteira de clientes, conquiste prêmios e tenha independência financeira!</p>
       
       <div class="grid grid-4" style="margin-bottom: 32px;">
-        <div class="card" style="cursor: default;">
+        <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
           <i class="fas fa-sack-dollar" style="font-size:28px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Comissões Atrativas</h3>
           <p style="font-size:13px; color:var(--text-muted);">Ganhe por cada nova adesão efetuada e construa sua renda recorrente.</p>
         </div>
-        <div class="card" style="cursor: default;">
+
+        <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
           <i class="fas fa-trophy" style="font-size:28px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Prêmios & Bônus</h3>
           <p style="font-size:13px; color:var(--text-muted);">Premiações exclusivas por atingimento de metas de vendas.</p>
         </div>
-        <div class="card" style="cursor: default;">
+
+        <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
           <i class="fas fa-clock" style="font-size:28px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Flexibilidade</h3>
           <p style="font-size:13px; color:var(--text-muted);">Trabalhe no seu próprio horário e gerencie seu próprio ritmo de trabalho.</p>
         </div>
-        <div class="card" style="cursor: default;">
+
+        <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
           <i class="fas fa-headset" style="font-size:28px; color:var(--primary); margin-bottom:12px;"></i>
           <h3>Suporte Completo</h3>
           <p style="font-size:13px; color:var(--text-muted);">Treinamentos e suporte direto da equipe da 4G para alavancar suas vendas.</p>
@@ -893,8 +936,38 @@
     </div>
   </section>
 
+  <!-- SIGA A 4G NAS REDES SOCIAIS -->
+  <section class="section">
+    <div class="container">
+      <h2>Siga a 4G nas Redes Sociais</h2>
+      <p class="section-subtitle">Acompanhe nossas novidades, dicas de proteção e bastidores em nossas páginas oficiais:</p>
+
+      <div class="grid grid-2" style="max-width: 720px; margin: 0 auto;">
+        <a href="https://www.instagram.com/4gprotecaoveicular/" target="_blank" class="social-card">
+          <div class="social-icon-box">
+            <img src="https://i.imgur.com/ben7xpB.png" alt="Instagram 4G Proteção Veicular">
+          </div>
+          <div class="social-info">
+            <h3>Instagram</h3>
+            <p>@4gprotecaoveicular</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/4gprotecaoveicular" target="_blank" class="social-card">
+          <div class="social-icon-box">
+            <img src="https://i.imgur.com/fZl8mdc.png" alt="Facebook 4G Proteção Veicular">
+          </div>
+          <div class="social-info">
+            <h3>Facebook</h3>
+            <p>@4gprotecaoveicular</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- BLOG & FEEDBACKS -->
-  <section id="blog-feedback" class="section">
+  <section id="blog-feedback" class="section bg-light">
     <div class="container">
       <div class="grid grid-2" style="align-items: start;">
         
@@ -959,7 +1032,7 @@
   </section>
 
   <!-- LOCALIZAÇÃO -->
-  <section id="localizacao" class="section bg-light">
+  <section id="localizacao" class="section">
     <div class="container">
       <h2>Onde Estamos</h2>
       <p class="section-subtitle">Nosso escritório físico de portas abertas para você:</p>
@@ -1020,7 +1093,7 @@
     </div>
   </div>
 
-  <!-- BOTÃO FLUTUANTE DE WHATSAPP (UX MOBILE FIXO) -->
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
   <a href="javascript:void(0)" onclick="abrirAtendimento()" class="whatsapp-float" aria-label="Atendimento via WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -1035,7 +1108,7 @@
   <script>
     const NUMERO_COTACAO = "5511957666488";
     const NUMERO_SUPORTE = "5511957883108";
-    const URL_PLANILHA_GOOGLE = "https://script.google.com/macros/s/AKfycb.../exec";
+    const URL_PLANILHA_GOOGLE = "https://script.google.com/macros/s/AKfycbwq6moEmuFhJB_Swcnry8ql8R6FMPPzL7vogkVvK5bclVl3i07hyXi6Db95mmMOW9Qh/exec";
 
     function toggleMenu() {
       const menu = document.getElementById('navMenu');
