@@ -14,11 +14,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* PALETA E TIPOGRAFIA ESTRITAMENTE FIÉIS AO BRANDBOOK */
     :root {
       --primary: #154F96;
       --primary-dark: #0D3668;
       --primary-light: #52A3E1;
+      --partner-blue: #2d69cf; /* Nova cor personalizada para os cards dos parceiros */
       --yellow: #FFF029;
       --yellow-hover: #E6D820;
       --dark: #000000;
@@ -34,7 +34,6 @@
       --radius-lg: 16px;
       --radius-md: 10px;
       
-      /* Fontes oficiais da imagem */
       --font-title: 'Anton', sans-serif;
       --font-body: 'Open Sans', sans-serif;
     }
@@ -55,7 +54,6 @@
       overflow-x: hidden;
     }
 
-    /* Títulos usando a fonte oficial Anton */
     h1, h2, h3, .heading-font {
       font-family: var(--font-title);
       letter-spacing: 0.8px;
@@ -174,7 +172,6 @@
       background: var(--primary-dark);
       box-shadow: var(--shadow-sm);
     }
-    /* Amarelo #FFF029 com texto Preto #000000 para contraste perfeito */
     .btn-yellow {
       background: var(--yellow);
       color: var(--dark);
@@ -334,7 +331,7 @@
       background-color: #F1F5F9;
     }
 
-    /* PARCEIROS */
+    /* PARCEIROS - ATUALIZADO COM A COR #2D69CF */
     .bg-soft-partners {
       background-color: #0F2A4A;
       color: var(--white);
@@ -352,19 +349,19 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
-      background: #15345C;
+      background: var(--partner-blue); /* Cor #2d69cf aplicada aqui */
       border-radius: var(--radius-lg);
       padding: 24px 18px;
       box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       cursor: pointer;
       transition: all 0.25s ease;
       text-decoration: none;
     }
     .partner-card-soft:hover {
       transform: translateY(-4px);
-      background: #193D6B;
-      border-color: var(--primary-light);
+      background: #2458B3; /* Cor de hover levemente mais escura */
+      border-color: var(--yellow);
       box-shadow: var(--shadow-md);
     }
     .partner-logo-box-soft {
@@ -392,7 +389,7 @@
     }
     .partner-card-soft p {
       font-size: 13px;
-      color: #CBD5E1;
+      color: #F1F5F9;
       text-align: center;
       line-height: 1.5;
     }
@@ -746,7 +743,7 @@
     </div>
   </section>
 
-  <!-- PARCEIROS -->
+  <!-- PARCEIROS (COM AS NOVAS LOGOS E COR #2D69CF) -->
   <section id="parceiros" class="section bg-soft-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
@@ -755,7 +752,7 @@
       <div class="grid grid-3">
         <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Capitalcar')">
           <div class="partner-logo-box-soft">
-            <img src="https://i.imgur.com/RYxPezD.png" alt="Capitalcar">
+            <img src="https://i.imgur.com/NPQ7x8K.png" alt="Capitalcar">
           </div>
           <h3>Capitalcar</h3>
           <p>Referência em agilidade e suporte completo em ocorrências e assistência veicular.</p>
@@ -763,7 +760,7 @@
 
         <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Valecar')">
           <div class="partner-logo-box-soft">
-            <img src="https://i.imgur.com/DiazKeZ.png" alt="Valecar">
+            <img src="https://i.imgur.com/W39Pswx.png" alt="Valecar">
           </div>
           <h3>Valecar</h3>
           <p>Tradição e confiança em assistência 24h para você rodar sem preocupações.</p>
@@ -771,7 +768,7 @@
 
         <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Suhai')">
           <div class="partner-logo-box-soft">
-            <img src="https://i.imgur.com/SPddi1a.png" alt="Suhai Seguradora">
+            <img src="https://i.imgur.com/p3mRPKR.png" alt="Suhai Seguradora">
           </div>
           <h3>Suhai</h3>
           <p>Especialista renomada em cobertura contra furto e roubo sem burocracia excessiva.</p>
@@ -779,7 +776,7 @@
 
         <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('APVS')">
           <div class="partner-logo-box-soft">
-            <img src="https://i.imgur.com/pgO0fqj.png" alt="APVS Brasil">
+            <img src="https://i.imgur.com/5VqEkvj.png" alt="APVS Brasil">
           </div>
           <h3>APVS</h3>
           <p>A maior proteção veicular da América Latina ao seu alcance com cobertura nacional.</p>
@@ -787,7 +784,7 @@
 
         <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('AGV')">
           <div class="partner-logo-box-soft">
-            <img src="https://i.imgur.com/zFmFcP6.png" alt="AGV Brasil">
+            <img src="https://i.imgur.com/BxGRRlg.png" alt="AGV Brasil">
           </div>
           <h3>AGV Brasil</h3>
           <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
@@ -795,7 +792,7 @@
 
         <a href="javascript:void(0)" class="partner-card-soft" onclick="selecionarParceiroEForm('Km')">
           <div class="partner-logo-box-soft">
-            <img src="https://i.imgur.com/QR6Pfsn.png" alt="Km Clube de Benefícios">
+            <img src="https://i.imgur.com/otngD0v.png" alt="Km Clube de Benefícios">
           </div>
           <h3>Km</h3>
           <p>Soluções modernas em assistência e proteção para garantir a sua tranquilidade nas estradas.</p>
