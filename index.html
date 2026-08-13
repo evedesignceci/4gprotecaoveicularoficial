@@ -323,7 +323,7 @@
       margin-bottom: 60px;
     }
 
-    /* SEÇÃO PARCEIROS (COM O AZUL ORIGINAL) */
+    /* SEÇÃO PARCEIROS (COM FUNDO AZUL E LOGOS SEM BLOCO BRANCO) */
     .bg-partners {
       background-color: var(--primary);
       color: var(--white);
@@ -363,12 +363,12 @@
       justify-content: center;
       margin-bottom: 20px;
       padding: 10px;
-      background: #FAFAFA;
+      background: transparent; /* Fundo removido para sumir com o quadrado branco */
       border-radius: var(--radius-sm);
-      border: 1px solid #F1F5F9;
+      border: none;
     }
     .partner-logo-box img {
-      max-width: 85%;
+      max-width: 90%;
       max-height: 100%;
       object-fit: contain;
     }
@@ -760,7 +760,7 @@
     </div>
   </section>
 
-  <!-- PARCEIROS (COM O AZUL ORIGINAL DA MARCA) -->
+  <!-- PARCEIROS (COM FUNDO AZUL E LOGOS LIMPAS SEM QUADRADO BRANCO) -->
   <section id="parceiros" class="section bg-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
