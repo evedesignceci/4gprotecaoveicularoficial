@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>4G Proteção Veicular | Corretora Especializada</title>
   
   <link rel="shortcut icon" href="https://i.imgur.com/bv7IBPy.png" type="image/png">
@@ -27,12 +27,13 @@
       --bg-light: #F8FAFC;
       --border-color: #E2E8F0;
       
-      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.04);
-      --shadow-hover: 0 20px 40px rgba(21, 79, 150, 0.10);
+      --shadow-subtle: 0 4px 20px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-hover: 0 20px 30px rgba(21, 79, 150, 0.12);
       
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
       
       --font-title: 'Anton', sans-serif;
       --font-body: 'Open Sans', sans-serif;
@@ -50,8 +51,9 @@
     body {
       background-color: var(--bg-light);
       color: var(--dark);
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
+      width: 100%;
     }
 
     h1, h2, .heading-font {
@@ -61,38 +63,41 @@
       font-weight: 400;
     }
 
-    /* TOP BAR ELEGANTE */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* TOP BAR */
     .top-bar {
       background: var(--primary-dark);
       color: rgba(255, 255, 255, 0.9);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .top-bar-items {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
     .top-bar-item {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .top-bar-item i {
       color: var(--yellow);
     }
     .top-bar-social a {
       color: var(--white);
-      margin-left: 14px;
-      font-size: 15px;
+      margin-left: 12px;
+      font-size: 14px;
       transition: opacity 0.2s;
-    }
-    .top-bar-social a:hover {
-      opacity: 0.7;
     }
 
     /* HEADER */
@@ -100,36 +105,31 @@
       background: var(--white);
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      z-index: 1000;
       border-bottom: 1px solid var(--border-color);
-    }
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
     .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 90px;
+      height: 70px;
     }
     .logo-img {
-      max-height: 56px;
+      max-height: 46px;
       width: auto;
       object-fit: contain;
+      display: block;
     }
     .nav-menu {
       display: flex;
-      gap: 32px;
+      gap: 28px;
     }
     .nav-menu a {
       text-decoration: none;
       color: var(--dark);
       font-weight: 600;
-      font-size: 14.5px;
+      font-size: 14px;
       transition: color 0.2s ease;
     }
     .nav-menu a:hover {
@@ -138,21 +138,22 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
 
     .hamburger-btn {
       display: none;
       background: transparent;
       border: none;
-      font-size: 24px;
+      font-size: 22px;
       color: var(--primary);
       cursor: pointer;
+      padding: 8px;
     }
 
-    /* BOTÕES REFINADOS */
+    /* BOTÕES */
     .btn {
-      padding: 13px 26px;
+      padding: 12px 22px;
       border-radius: var(--radius-sm);
       font-weight: 700;
       font-size: 14px;
@@ -164,6 +165,7 @@
       justify-content: center;
       gap: 8px;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 46px;
     }
     .btn-primary {
       background: var(--primary);
@@ -171,8 +173,7 @@
     }
     .btn-primary:hover {
       background: var(--primary-dark);
-      box-shadow: 0 6px 16px rgba(21, 79, 150, 0.25);
-      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(21, 79, 150, 0.25);
     }
     .btn-yellow {
       background: var(--yellow);
@@ -181,17 +182,11 @@
     }
     .btn-yellow:hover {
       background: var(--yellow-hover);
-      box-shadow: 0 6px 20px rgba(255, 240, 41, 0.35);
-      transform: translateY(-1px);
     }
     .btn-outline {
       border: 1.5px solid var(--border-color);
       color: var(--dark);
       background: var(--white);
-    }
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
     }
     .btn-whatsapp {
       background: #25D366;
@@ -200,12 +195,10 @@
     }
     .btn-whatsapp:hover {
       background: #1EBE57;
-      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
-      transform: translateY(-1px);
     }
     .btn-large {
-      padding: 18px 36px;
-      font-size: 16px;
+      padding: 15px 28px;
+      font-size: 15px;
       border-radius: var(--radius-md);
     }
     .btn-block {
@@ -214,54 +207,53 @@
 
     /* HERO SECTION */
     .hero {
-      padding: 90px 0 110px;
+      padding: 50px 0 60px;
       background: linear-gradient(135deg, #0A2540 0%, #154F96 100%);
       color: var(--white);
-      position: relative;
     }
     .hero-container {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 60px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
       align-items: center;
     }
     .hero-text h1 {
-      font-size: 52px;
+      font-size: 42px;
       color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 20px;
+      line-height: 1.1;
+      margin-bottom: 16px;
     }
     .hero-text h1 span {
       color: var(--yellow);
     }
     .hero-text .subtitle {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 500;
       color: #E2E8F0;
-      margin-bottom: 20px;
-      line-height: 1.5;
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
     .hero-text p {
-      font-size: 15px;
+      font-size: 14px;
       color: #94A3B8;
-      margin-bottom: 35px;
+      margin-bottom: 24px;
     }
 
     .hero-badges {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .badge-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 13px;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
       font-weight: 600;
       color: #F1F5F9;
     }
@@ -273,24 +265,23 @@
     .hero-form-card {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       color: var(--dark);
-      border: 1px solid rgba(255,255,255,0.2);
     }
     .hero-form-card h3 {
-      font-size: 24px;
+      font-size: 22px;
       font-family: var(--font-body);
       font-weight: 800;
       color: var(--primary-dark);
       text-align: center;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .hero-form-card p {
       text-align: center;
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
 
     .selection-tag {
@@ -298,37 +289,38 @@
       background: #EFF6FF;
       border: 1px solid #BFDBFE;
       color: var(--primary);
-      padding: 12px;
+      padding: 10px;
       border-radius: var(--radius-sm);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       text-align: center;
     }
 
-    /* SEÇÕES GERAIS */
+    /* SEÇÕES */
     .section {
-      padding: 100px 0;
+      padding: 60px 0;
     }
     .section h2 {
       text-align: center;
-      font-size: 40px;
+      font-size: 32px;
       color: var(--primary-dark);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .section-subtitle {
       text-align: center;
       color: var(--text-muted);
-      font-size: 16px;
-      margin-bottom: 60px;
+      font-size: 14.5px;
+      margin-bottom: 36px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* SEÇÃO PARCEIROS (COM O AZUL #2D69CF) */
+    /* PARCEIROS */
     .bg-partners {
       background-color: var(--partner-blue);
       color: var(--white);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .bg-partners h2 {
       color: var(--white);
@@ -339,213 +331,183 @@
     .partner-card {
       background: var(--white);
       border-radius: var(--radius-md);
-      padding: 30px;
-      box-shadow: var(--shadow-subtle);
-      border: 1px solid var(--border-color);
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(255,255,255,0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       text-decoration: none;
       color: inherit;
-      transition: all 0.3s ease;
-    }
-    .partner-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      border-color: var(--yellow);
+      transition: transform 0.2s ease;
     }
     .partner-logo-box {
       width: 100%;
-      height: 90px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      padding: 12px;
-      background-color: var(--partner-blue); /* Fundo interno da logo com o azul #2D69CF */
+      margin-bottom: 14px;
+      padding: 8px;
+      background-color: var(--partner-blue);
       border-radius: var(--radius-sm);
-      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     .partner-logo-box img {
-      max-width: 90%;
+      max-width: 85%;
       max-height: 100%;
       object-fit: contain;
     }
     .partner-card h3 {
-      font-size: 19px;
+      font-size: 17px;
       color: var(--primary-dark);
-      margin-bottom: 8px;
-      font-family: var(--font-body);
+      margin-bottom: 6px;
       font-weight: 700;
     }
     .partner-card p {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
-    /* GRIDS & CARDS */
-    .grid { display: grid; gap: 28px; }
-    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .grid-5 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    /* GRIDS */
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
 
     .card {
       background: var(--white);
       border-radius: var(--radius-md);
-      padding: 32px;
+      padding: 24px 18px;
       box-shadow: var(--shadow-subtle);
       border: 1px solid var(--border-color);
       text-align: center;
-      transition: all 0.3s ease;
       text-decoration: none;
       color: inherit;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--primary-light);
+      transition: all 0.2s ease;
     }
     .card h3 {
-      font-size: 19px;
-      font-family: var(--font-body);
+      font-size: 16px;
       font-weight: 700;
       color: var(--primary-dark);
-      margin-top: 14px;
-      margin-bottom: 8px;
+      margin-top: 10px;
+      margin-bottom: 6px;
     }
 
-    /* SERVICES GRID */
+    /* SERVIÇOS */
     .services-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
     }
     .service-item {
       background: var(--white);
       border-radius: var(--radius-md);
-      padding: 24px;
+      padding: 16px;
       font-weight: 600;
-      font-size: 14.5px;
+      font-size: 13.5px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       box-shadow: var(--shadow-subtle);
       border: 1px solid var(--border-color);
       color: var(--dark);
-      cursor: pointer;
       text-decoration: none;
-      transition: all 0.25s ease;
-    }
-    .service-item:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-3px);
     }
     .service-item i {
-      font-size: 24px;
+      font-size: 20px;
       color: var(--primary);
+      flex-shrink: 0;
     }
 
-    /* FORMULÁRIOS & INPUTS */
+    /* INPUTS */
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       text-align: left;
     }
     .form-group label {
       display: block;
       font-weight: 600;
-      font-size: 13.5px;
-      margin-bottom: 8px;
+      font-size: 13px;
+      margin-bottom: 6px;
       color: var(--dark);
     }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 14px 18px;
+      padding: 12px 14px;
       border-radius: var(--radius-sm);
       border: 1.5px solid var(--border-color);
-      font-size: 14.5px;
+      font-size: 16px; /* Evita zoom automático no iOS */
       outline: none;
       background: #FAFAFA;
-      transition: all 0.2s ease;
     }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: var(--primary);
       background: var(--white);
-      box-shadow: 0 0 0 4px rgba(21, 79, 150, 0.08);
     }
 
     /* LOCALIZAÇÃO */
     .location-box {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 30px;
       box-shadow: var(--shadow-subtle);
       border: 1px solid var(--border-color);
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
       align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
     }
-    .location-info { flex: 1; min-width: 320px; }
     .location-info h3 {
-      font-size: 24px;
+      font-size: 20px;
       color: var(--primary-dark);
-      margin-bottom: 14px;
-      font-family: var(--font-body);
+      margin-bottom: 12px;
       font-weight: 700;
     }
     .map-container {
-      flex: 1;
-      min-width: 320px;
-      height: 320px;
+      width: 100%;
+      height: 260px;
       border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid var(--border-color);
     }
 
-    /* REDES SOCIAIS INTEGRADAS */
+    /* REDES SOCIAIS */
     .social-section-box {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       margin-top: 14px;
     }
     .social-btn-card {
       display: flex;
       align-items: center;
-      gap: 14px;
-      background: var(--white);
+      justify-content: center;
+      gap: 10px;
+      background: var(--bg-light);
       border: 1px solid var(--border-color);
-      padding: 16px 30px;
-      border-radius: var(--radius-md);
+      padding: 12px;
+      border-radius: var(--radius-sm);
       text-decoration: none;
       color: var(--dark);
       font-weight: 700;
-      box-shadow: var(--shadow-subtle);
-      transition: all 0.25s ease;
-    }
-    .social-btn-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
+      font-size: 14px;
     }
     .social-btn-card img {
-      width: 36px;
-      height: 36px;
+      width: 26px;
+      height: 26px;
       object-fit: contain;
     }
 
-    /* ESTRELAS FEEDBACK */
+    /* ESTRELAS */
     .star-rating {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
-      font-size: 26px;
+      font-size: 32px;
       color: #CBD5E1;
       cursor: pointer;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .star-rating i.active { color: var(--yellow); }
 
@@ -555,91 +517,167 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(6px);
-      z-index: 1000;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
     }
     .modal-content {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 24px;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       position: relative;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+      max-height: 90vh;
+      overflow-y: auto;
     }
     .close-btn {
       position: absolute;
-      top: 24px; right: 24px;
-      font-size: 24px;
+      top: 16px; right: 16px;
+      font-size: 22px;
       cursor: pointer;
       color: var(--text-muted);
-      transition: color 0.2s;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .close-btn:hover { color: var(--dark); }
 
-    /* BOTÃO FLUTUANTE DE WHATSAPP */
+    /* WHATSAPP FLOAT */
     .whatsapp-float-clean {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 20px;
+      right: 20px;
       background-color: #25D366;
       color: #FFF;
       border-radius: 50px;
-      padding: 14px 24px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 14.5px;
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      font-size: 14px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
       z-index: 999;
-      transition: all 0.25s ease;
-    }
-    .whatsapp-float-clean:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 16px 35px rgba(37, 211, 102, 0.5);
     }
     .whatsapp-float-clean i {
-      font-size: 26px;
+      font-size: 24px;
     }
 
     footer {
       background: var(--primary-dark);
       color: #94A3B8;
-      padding: 50px 0 36px;
+      padding: 40px 0 30px;
       text-align: center;
-      font-size: 14px;
-      border-top: 5px solid var(--yellow);
+      font-size: 13px;
+      border-top: 4px solid var(--yellow);
     }
     footer strong { color: var(--white); }
 
-    @media (max-width: 900px) {
-      .hero-container { grid-template-columns: 1fr; text-align: center; }
-      .hero-text h1 { font-size: 38px; }
-      .hero-badges { justify-content: center; }
-      .hamburger-btn { display: block; }
+    /* ====================================================
+       MEDIA QUERIES - UX MOBILE & TABLET CORRIGIDOS
+    ==================================================== */
+    @media (max-width: 992px) {
+      .grid-5 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 820px) {
+      .top-bar-items {
+        flex-direction: column;
+        text-align: center;
+        gap: 6px;
+      }
+      .top-bar-item { margin: 0 !important; font-size: 11.5px; }
+
+      .hero { padding: 35px 0 45px; }
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .hero-text {
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 30px;
+      }
+      .hero-text .subtitle {
+        font-size: 15px;
+      }
+      .hero-badges {
+        justify-content: center;
+      }
+
+      .hero-form-card {
+        padding: 22px 18px;
+      }
+
+      .hamburger-btn {
+        display: block;
+      }
+
       .nav-menu {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 90px; left: 0;
+        top: 70px;
+        left: 0;
         width: 100%;
         background: var(--white);
-        box-shadow: var(--shadow-hover);
-        padding: 30px;
-        gap: 20px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        padding: 20px;
+        gap: 16px;
         border-bottom: 3px solid var(--primary);
       }
-      .nav-menu.active { display: flex; }
-      .location-box { flex-direction: column; text-align: center; }
-      .nav-actions .btn-outline { display: none; }
-      .whatsapp-float-clean span { display: none; }
-      .whatsapp-float-clean { padding: 16px; border-radius: 50%; }
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+      .nav-actions .btn-yellow {
+        padding: 8px 14px;
+        font-size: 12px;
+        min-height: 38px;
+      }
+
+      .section { padding: 45px 0; }
+      .section h2 { font-size: 26px; }
+
+      .grid-2, .grid-3, .grid-4, .grid-5, .services-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .location-box {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+      .map-container {
+        height: 220px;
+      }
+
+      .social-section-box {
+        grid-template-columns: 1fr;
+      }
+
+      .whatsapp-float-clean span {
+        display: none;
+      }
+      .whatsapp-float-clean {
+        padding: 14px;
+        border-radius: 50%;
+        bottom: 16px;
+        right: 16px;
+      }
     }
   </style>
 </head>
@@ -649,8 +687,8 @@
   <div class="top-bar">
     <div class="container top-bar-items">
       <div>
-        <span class="top-bar-item"><i class="fas fa-shield-halved"></i> Proteção Veicular Sem Burocracia</span>
-        <span class="top-bar-item" style="margin-left: 18px;"><i class="fas fa-bolt"></i> Sem Consulta SPC/Serasa</span>
+        <span class="top-bar-item"><i class="fas fa-shield-halved"></i> Proteção Sem Burocracia</span>
+        <span class="top-bar-item" style="margin-left: 14px;"><i class="fas fa-bolt"></i> Sem SPC/Serasa</span>
       </div>
       <div class="top-bar-social">
         <a href="https://www.instagram.com/4gprotecaoveicular/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -696,14 +734,14 @@
       <div class="hero-text">
         <div class="hero-badges">
           <span class="badge-item"><i class="fas fa-check"></i> 100% Sem Burocracia</span>
-          <span class="badge-item"><i class="fas fa-globe"></i> Cobertura em Todo o Brasil</span>
+          <span class="badge-item"><i class="fas fa-globe"></i> Cobertura Nacional</span>
         </div>
         <h1>Seu veículo protegido, <span>sua família tranquila.</span></h1>
-        <p class="subtitle">As melhores seguradoras e associações reunidas em um só lugar para te dar o menor preço.</p>
-        <p>A 4G compara as maiores do mercado e encontra a proteção sob medida para a sua necessidade e bolso.</p>
+        <p class="subtitle">As melhores seguradoras e associações reunidas para te dar o menor preço.</p>
+        <p>A 4G compara as maiores do mercado e encontra a proteção sob medida para você.</p>
         
         <div>
-          <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-whatsapp btn-large">
+          <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-whatsapp btn-large btn-block">
             <i class="fab fa-whatsapp"></i> Cotar Direto pelo WhatsApp
           </a>
         </div>
@@ -729,7 +767,7 @@
             <input type="tel" id="inline-whatsapp" required placeholder="(11) 99999-9999" maxlength="15" oninput="aplicarMascaraTelefone(this)">
           </div>
 
-          <div class="grid grid-2" style="gap:14px;">
+          <div class="grid grid-2">
             <div class="form-group">
               <label for="inline-placa">Placa do Veículo:</label>
               <input type="text" id="inline-placa" required placeholder="ABC-1234" maxlength="8" oninput="aplicarMascaraPlaca(this)">
@@ -749,7 +787,7 @@
           </div>
 
           <div id="msgInlineSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:14px; text-align:center; font-size:13.5px;">
-            ✨ Cotação enviada com sucesso! Redirecionando...
+            ✨ Cotação enviada! Redirecionando...
           </div>
 
           <button type="submit" id="btnEnviarInline" class="btn btn-yellow btn-block btn-large">
@@ -760,7 +798,7 @@
     </div>
   </section>
 
-  <!-- PARCEIROS (COM FUNDO AZUL #2D69CF E CAIXAS DAS LOGOS TAMBÉM COM O MESMO AZUL) -->
+  <!-- PARCEIROS -->
   <section id="parceiros" class="section bg-partners">
     <div class="container">
       <h2>Nossos Parceiros de Confiança</h2>
@@ -804,7 +842,7 @@
             <img src="https://i.imgur.com/BxGRRlg.png" alt="AGV Brasil">
           </div>
           <h3>AGV Brasil</h3>
-          <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
+          <p>Proteção abrangente e atendimento qualificado com foco na satisfação do associado.</p>
         </a>
 
         <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('Km')">
@@ -812,7 +850,7 @@
             <img src="https://i.imgur.com/otngD0v.png" alt="Km Clube de Benefícios">
           </div>
           <h3>Km</h3>
-          <p>Soluções modernas em assistência e proteção para garantir a sua tranquilidade nas estradas.</p>
+          <p>Soluções modernas em assistência e proteção para garantir tranquilidade nas estradas.</p>
         </a>
       </div>
     </div>
@@ -822,33 +860,33 @@
   <section id="veiculos" class="section">
     <div class="container">
       <h2>O Que Protegemos</h2>
-      <p class="section-subtitle">Escolha o seu tipo de veículo para receber o plano ideal:</p>
+      <p class="section-subtitle">Toque no seu tipo de veículo para receber uma proposta específica:</p>
 
       <div class="grid grid-5">
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Carro de Passeio')">
-          <i class="fas fa-car" style="font-size:36px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-car" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Carros</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Passeio e Aplicativo</p>
+          <p style="font-size:13px; color:var(--text-muted);">Passeio e App</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Moto')">
-          <i class="fas fa-motorcycle" style="font-size:36px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-motorcycle" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Motos</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Particulares e Trabalho</p>
+          <p style="font-size:13px; color:var(--text-muted);">Particulares e Trabalho</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Van')">
-          <i class="fas fa-shuttle-van" style="font-size:36px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-shuttle-van" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Vans</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Passageiros e Cargas</p>
+          <p style="font-size:13px; color:var(--text-muted);">Passageiros e Cargas</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Caminhão / Pesados')">
-          <i class="fas fa-truck-front" style="font-size:36px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-truck-front" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Caminhões</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Veículos Pesados</p>
+          <p style="font-size:13px; color:var(--text-muted);">Veículos Pesados</p>
         </a>
         <a href="javascript:void(0)" class="card" onclick="selecionarTipoVeiculoEForm('Frota')">
-          <i class="fas fa-truck-pickup" style="font-size:36px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-truck-pickup" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Frotas</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Soluções Corporativas</p>
+          <p style="font-size:13px; color:var(--text-muted);">Corporativo</p>
         </a>
       </div>
     </div>
@@ -858,7 +896,7 @@
   <section id="servicos" class="section bg-light">
     <div class="container">
       <h2>Assistência 24h & Coberturas</h2>
-      <p class="section-subtitle">Suporte completo em qualquer lugar do país:</p>
+      <p class="section-subtitle">Cobertura completa em qualquer lugar do Brasil:</p>
       
       <div class="grid services-grid">
         <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Reboque 24h')"><i class="fas fa-truck-pickup"></i> Reboque 24h</a>
@@ -868,7 +906,7 @@
         <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Chaveiro 24h')"><i class="fas fa-key"></i> Chaveiro 24h</a>
         <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Roubo e Furto')"><i class="fas fa-shield-cat"></i> Roubo e Furto</a>
         <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Hospedagem Emergencial')"><i class="fas fa-hotel"></i> Hospedagem</a>
-        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Incêndio & Natureza')"><i class="fas fa-fire"></i> Fenômenos da Natureza</a>
+        <a href="javascript:void(0)" class="service-item" onclick="selecionarServicoEForm('Incêndio & Natureza')"><i class="fas fa-fire"></i> Fenômenos Naturais</a>
       </div>
     </div>
   </section>
@@ -877,37 +915,37 @@
   <section id="consultor" class="section">
     <div class="container">
       <h2>Seja um Consultor 4G</h2>
-      <p class="section-subtitle">Monte sua própria carteira de clientes e tenha independência financeira:</p>
+      <p class="section-subtitle">Construa sua própria carteira com total flexibilidade:</p>
       
-      <div class="grid grid-4" style="margin-bottom: 40px;">
+      <div class="grid grid-4" style="margin-bottom: 30px;">
         <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
-          <i class="fas fa-sack-dollar" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-sack-dollar" style="font-size:28px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Comissões Atrativas</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Ganhe por cada nova adesão efetuada e construa sua renda recorrente.</p>
+          <p style="font-size:13px; color:var(--text-muted);">Ganhe por novas adesões e construa renda recorrente.</p>
         </div>
 
         <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
-          <i class="fas fa-trophy" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-trophy" style="font-size:28px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Prêmios & Bônus</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Premiações exclusivas por atingimento de metas de vendas.</p>
+          <p style="font-size:13px; color:var(--text-muted);">Premiações por atingimento de metas.</p>
         </div>
 
         <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
-          <i class="fas fa-clock" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
+          <i class="fas fa-clock" style="font-size:28px; color:var(--primary); margin-bottom: 6px;"></i>
           <h3>Flexibilidade</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Trabalhe no seu próprio horário e gerencie seu próprio ritmo de trabalho.</p>
+          <p style="font-size:13px; color:var(--text-muted);">Faça seu próprio horário e gerencie seu ritmo.</p>
         </div>
 
         <div class="card" onclick="abrirModalConsultor()" style="cursor: pointer;">
-          <i class="fas fa-headset" style="font-size:32px; color:var(--primary); margin-bottom: 6px;"></i>
-          <h3>Suporte Completo</h3>
-          <p style="font-size:13.5px; color:var(--text-muted);">Treinamentos e suporte direto da equipe da 4G para alavancar suas vendas.</p>
+          <i class="fas fa-headset" style="font-size:28px; color:var(--primary); margin-bottom: 6px;"></i>
+          <h3>Suporte Total</h3>
+          <p style="font-size:13px; color:var(--text-muted);">Treinamento completo para alavancar suas vendas.</p>
         </div>
       </div>
 
       <div style="text-align: center;">
-        <button onclick="abrirModalConsultor()" class="btn btn-primary btn-large">
-          <i class="fas fa-user-plus"></i> Cadastrar-se como Consultor
+        <button onclick="abrirModalConsultor()" class="btn btn-primary btn-large btn-block">
+          <i class="fas fa-user-plus"></i> Quero Ser Consultor
         </button>
       </div>
     </div>
@@ -919,18 +957,18 @@
       <div class="grid grid-2" style="align-items: start;">
         
         <!-- SOBRE NÓS E REDES SOCIAIS -->
-        <div class="card" style="text-align: left; padding: 36px; cursor: default;">
-          <h3 style="color: var(--primary-dark); font-size: 24px; margin-bottom: 14px;">
+        <div class="card" style="text-align: left; padding: 24px; cursor: default;">
+          <h3 style="color: var(--primary-dark); font-size: 20px; margin-bottom: 12px;">
             <i class="fas fa-building-user" style="color: var(--primary);"></i> Quem Somos
           </h3>
-          <p style="color: var(--text-muted); font-size: 14.5px; margin-bottom: 14px;">
-            Sob a liderança do nosso diretor <strong>Erasmo Pedro</strong>, a <strong>4G Proteção Veicular</strong> nasceu do compromisso de oferecer atendimento humano, rápido e sem burocracias.
+          <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 12px;">
+            Sob a liderança do nosso diretor <strong>Erasmo Pedro</strong>, a <strong>4G Proteção Veicular</strong> nasceu do compromisso de oferecer atendimento humano, rápido e transparente.
           </p>
-          <p style="color: var(--text-muted); font-size: 14.5px; margin-bottom: 28px;">
-            Trabalhamos diariamente para desmistificar a proteção veicular, reunindo as opções mais seguras do Brasil com transparência.
+          <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 20px;">
+            Trabalhamos diariamente para descomplicar a proteção veicular com as opções mais seguras do Brasil.
           </p>
 
-          <h4 style="font-size: 16px; color: var(--primary-dark); margin-bottom: 14px; font-weight: 700;">Acompanhe nossas Redes Sociais:</h4>
+          <h4 style="font-size: 14px; color: var(--primary-dark); margin-bottom: 10px; font-weight: 700;">Nossas Redes:</h4>
           <div class="social-section-box">
             <a href="https://www.instagram.com/4gprotecaoveicular/" target="_blank" class="social-btn-card">
               <img src="https://i.imgur.com/ben7xpB.png" alt="Instagram">
@@ -944,12 +982,12 @@
         </div>
 
         <!-- FEEDBACK -->
-        <div class="card" style="text-align: left; padding: 36px; cursor: default;">
-          <h3 style="color: var(--primary-dark); font-size: 24px; margin-bottom: 14px;">
+        <div class="card" style="text-align: left; padding: 24px; cursor: default;">
+          <h3 style="color: var(--primary-dark); font-size: 20px; margin-bottom: 12px;">
             <i class="fas fa-star" style="color: var(--yellow);"></i> Deixe seu Feedback
           </h3>
-          <p style="color: var(--text-muted); font-size: 14.5px; margin-bottom: 18px;">
-            Sua avaliação ajuda a 4G a aprimorar continuadamente o atendimento:
+          <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 16px;">
+            Sua opinião é fundamental para aprimorarmos nosso atendimento:
           </p>
 
           <form id="formFeedback" onsubmit="enviarFeedback(event)">
@@ -972,11 +1010,11 @@
 
             <div class="form-group">
               <label for="fb-mensagem">Seu Comentário:</label>
-              <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência conosco..."></textarea>
+              <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência..."></textarea>
             </div>
 
-            <div id="msgFeedbackSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:14px; text-align:center; font-size:13.5px;">
-              ✨ Avaliação enviada com sucesso! Obrigado.
+            <div id="msgFeedbackSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:12px; text-align:center; font-size:13.5px;">
+              ✨ Avaliação enviada com sucesso!
             </div>
 
             <button type="submit" id="btnEnviarFeedback" class="btn btn-primary btn-block">
@@ -993,18 +1031,18 @@
   <section id="localizacao" class="section">
     <div class="container">
       <h2>Onde Estamos</h2>
-      <p class="section-subtitle">Visite nosso escritório físico para um atendimento presencial:</p>
+      <p class="section-subtitle">Visite nosso escritório físico para atendimento presencial:</p>
       
       <div class="location-box">
         <div class="location-info">
           <h3>Escritório 4G Proteção Veicular</h3>
-          <p style="margin-bottom:14px; font-size:14.5px; color: var(--text-muted);">
+          <p style="margin-bottom:12px; font-size:13.5px; color: var(--text-muted);">
             <strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170
           </p>
-          <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:28px;">
-            Atendimento presencial com nossa equipe para fechamento de contratos, retirada de dúvidas e suporte completo.
+          <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">
+            Suporte para fechamento de contratos, dúvidas e vistorias.
           </p>
-          <a href="javascript:void(0)" onclick="focarNoFormulario()" class="btn btn-primary">Fazer Cotação Online</a>
+          <a href="javascript:void(0)" onclick="focarNoFormulario()" class="btn btn-primary btn-block">Fazer Cotação Online</a>
         </div>
         <div class="map-container">
           <iframe 
@@ -1025,8 +1063,8 @@
   <div id="modalConsultor" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
-      <h2 style="color:var(--primary-dark); text-align:center; margin-bottom:6px; font-size:24px; font-family:var(--font-body); font-weight:800;">Seja um Consultor 4G</h2>
-      <p style="text-align:center; font-size:14px; color:var(--text-muted); margin-bottom:24px;">Preencha seus dados para entrar na nossa equipe:</p>
+      <h2 style="color:var(--primary-dark); text-align:center; margin-bottom:4px; font-size:20px; font-family:var(--font-body); font-weight:800;">Seja um Consultor 4G</h2>
+      <p style="text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:18px;">Preencha seus dados para nossa equipe:</p>
       
       <form id="formConsultor" onsubmit="enviarConsultor(event)">
         <div class="form-group">
@@ -1044,12 +1082,12 @@
           <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP">
         </div>
 
-        <div id="msgConsultorSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:14px; text-align:center; font-size:13.5px;">
-          ✨ Cadastro enviado com sucesso! Entraremos em contato.
+        <div id="msgConsultorSucesso" style="display:none; color: #16a34a; font-weight:600; margin-bottom:12px; text-align:center; font-size:13.5px;">
+          ✨ Cadastro enviado! Entraremos em contato.
         </div>
 
         <button type="submit" id="btnEnviarConsultor" class="btn btn-primary btn-block btn-large">
-          Enviar Cadastro de Consultor
+          Enviar Cadastro
         </button>
       </form>
     </div>
@@ -1089,7 +1127,7 @@
     function fecharMenuMobile() {
       const menu = document.getElementById('navMenu');
       const icon = document.getElementById('hamburgerIcon');
-      if (menu.classList.contains('active')) {
+      if (menu && menu.classList.contains('active')) {
         menu.classList.remove('active');
         icon.classList.remove('fa-xmark');
         icon.classList.add('fa-bars');
@@ -1133,7 +1171,7 @@
       document.getElementById('inline-detalhe-extra').value = "";
       
       const tag = document.getElementById('tagSelecaoForm');
-      tag.innerHTML = `🚗 Veículo selecionado: <strong>${tipo}</strong>`;
+      tag.innerHTML = `🚗 Veículo: <strong>${tipo}</strong>`;
       tag.style.display = 'block';
 
       focarNoFormulario();
@@ -1143,7 +1181,7 @@
       document.getElementById('inline-detalhe-extra').value = "Preferência de Parceiro: " + parceiro;
 
       const tag = document.getElementById('tagSelecaoForm');
-      tag.innerHTML = `🤝 Opção em Destaque: <strong>${parceiro}</strong>`;
+      tag.innerHTML = `🤝 Destaque: <strong>${parceiro}</strong>`;
       tag.style.display = 'block';
 
       focarNoFormulario();
@@ -1153,7 +1191,7 @@
       document.getElementById('inline-detalhe-extra').value = "Serviço de Interesse: " + servico;
 
       const tag = document.getElementById('tagSelecaoForm');
-      tag.innerHTML = `⚡ Serviço de Interesse: <strong>${servico}</strong>`;
+      tag.innerHTML = `⚡ Serviço: <strong>${servico}</strong>`;
       tag.style.display = 'block';
 
       focarNoFormulario();
@@ -1249,7 +1287,7 @@
         body: JSON.stringify(dadosConsultor)
       }).finally(() => {
         document.getElementById('msgConsultorSucesso').style.display = 'block';
-        btn.innerText = "Enviar Cadastro de Consultor";
+        btn.innerText = "Enviar Cadastro";
         btn.disabled = false;
 
         setTimeout(() => {
