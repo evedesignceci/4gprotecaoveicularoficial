@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_code = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -70,34 +70,60 @@
       padding: 0 20px;
     }
 
-    /* TOP BAR */
+    /* TOP BAR - HARMONIZADA SEM O VAZIO */
     .top-bar {
       background: var(--primary-dark);
       color: rgba(255, 255, 255, 0.9);
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 500;
-      padding: 8px 0;
+      padding: 9px 0;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .top-bar-items {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .top-bar-highlights {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
     }
     .top-bar-item {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
     .top-bar-item i {
       color: var(--yellow);
     }
+    .top-bar-divider {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 11px;
+    }
+    .top-bar-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-bar-social span {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
     .top-bar-social a {
       color: var(--white);
-      margin-left: 12px;
       font-size: 14px;
-      transition: opacity 0.2s;
+      transition: color 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .top-bar-social a:hover {
+      color: var(--yellow);
+      transform: translateY(-1px);
     }
 
     /* HEADER */
@@ -452,7 +478,7 @@
       padding: 12px 14px;
       border-radius: var(--radius-sm);
       border: 1.5px solid var(--border-color);
-      font-size: 16px; /* Evita zoom automático no iOS */
+      font-size: 16px;
       outline: none;
       background: #FAFAFA;
     }
@@ -593,9 +619,7 @@
       background: #F1F5F9;
     }
 
-    /* ====================================================
-       BANNER DE COOKIES & LGPD
-    ==================================================== */
+    /* COOKIE BANNER & LGPD */
     .cookie-banner {
       position: fixed;
       bottom: 24px;
@@ -657,7 +681,6 @@
       min-height: 38px;
     }
 
-    /* Modal de Preferências de Cookies */
     .cookie-item {
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
@@ -733,9 +756,7 @@
       text-decoration: underline;
     }
 
-    /* ====================================================
-       MEDIA QUERIES - RESPONSIVO & MOBILE
-    ==================================================== */
+    /* ================= MEDIA QUERIES ================= */
     @media (max-width: 992px) {
       .grid-5 { grid-template-columns: repeat(3, 1fr); }
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -748,7 +769,9 @@
         text-align: center;
         gap: 6px;
       }
-      .top-bar-item { margin: 0 !important; font-size: 11.5px; }
+      .top-bar-divider { display: none; }
+      .top-bar-highlights { gap: 10px; font-size: 11.5px; }
+      .top-bar-social { gap: 10px; font-size: 12px; }
 
       .hero { padding: 35px 0 45px; }
       .hero-container {
@@ -854,11 +877,16 @@
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="container top-bar-items">
-      <div>
+      <div class="top-bar-highlights">
         <span class="top-bar-item"><i class="fas fa-shield-halved"></i> Proteção Sem Burocracia</span>
-        <span class="top-bar-item" style="margin-left: 14px;"><i class="fas fa-bolt"></i> Sem SPC/Serasa</span>
+        <span class="top-bar-divider">•</span>
+        <span class="top-bar-item"><i class="fas fa-bolt"></i> Sem SPC/Serasa</span>
       </div>
+      
+      <span class="top-bar-divider" style="display: inline-block;">|</span>
+
       <div class="top-bar-social">
+        <span>Siga-nos:</span>
         <a href="https://www.instagram.com/4gprotecaoveicular/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://www.facebook.com/4gprotecaoveicular" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       </div>
@@ -1567,9 +1595,9 @@
 
       const dadosLead = { tipo: "Cotação Direta", nome, whatsapp, placa, tipoVeiculo, detalheExtra };
 
-      let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+      let texto = `Olá! Gostaria de fazer uma cotação.\\n\\n*Nome:* ${nome}\\n*WhatsApp:* ${whatsapp}\\n*Placa:* ${placa}\\n*Tipo de Veículo:* ${tipoVeiculo}`;
       if (detalheExtra) {
-        texto += `\n*Detalhes:* ${detalheExtra}`;
+        texto += `\\n*Detalhes:* ${detalheExtra}`;
       }
 
       fetch(URL_PLANILHA_GOOGLE, {
@@ -1601,7 +1629,7 @@
       btn.disabled = true;
 
       const dadosConsultor = { tipo: "Cadastro Consultor", nome, whatsapp, cidade };
-      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
+      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\\n\\n*Nome:* ${nome}\\n*WhatsApp:* ${whatsapp}\\n*Cidade/Região:* ${cidade}`;
 
       fetch(URL_PLANILHA_GOOGLE, {
         method: "POST",
@@ -1661,4 +1689,9 @@
     }
   </script>
 </body>
-</html>
+</html>"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_code)
+
+print("HTML salvo com sucesso!")
