@@ -1,4 +1,4 @@
-html_code = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -141,12 +141,45 @@ html_code = """<!DOCTYPE html>
       justify-content: space-between;
       height: 70px;
     }
-    .logo-img {
-      max-height: 46px;
-      width: auto;
-      object-fit: contain;
-      display: block;
+    
+    /* ESTILO LOGOTIPO ESTILO VITCONI (TEXTO MODERNO COM ÍCONE) */
+    .logo-vitconi {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
     }
+    .logo-icon-box {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--yellow);
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(21, 79, 150, 0.2);
+    }
+    .logo-text-box {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .logo-brand-name {
+      font-family: var(--font-title);
+      font-size: 24px;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+    }
+    .logo-brand-sub {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
     .nav-menu {
       display: flex;
       gap: 28px;
@@ -897,8 +930,14 @@ html_code = """<!DOCTYPE html>
   <header class="header">
     <div class="container nav-container">
       <div class="logo">
-        <a href="#sobre" aria-label="Home 4G Proteção Veicular">
-          <img src="https://i.imgur.com/bv7IBPy.png" alt="4G Proteção Veicular" class="logo-img">
+        <a href="#sobre" class="logo-vitconi" aria-label="Home 4G Proteção Veicular">
+          <div class="logo-icon-box">
+            <i class="fas fa-shield-halved"></i>
+          </div>
+          <div class="logo-text-box">
+            <span class="logo-brand-name">4G</span>
+            <span class="logo-brand-sub">Proteção Veicular</span>
+          </div>
         </a>
       </div>
 
@@ -1357,7 +1396,7 @@ html_code = """<!DOCTYPE html>
         <p style="margin-bottom: 10px;">Os dados só são compartilhados com as associações e seguradoras parceiras com o propósito exclusivo de emitir a proposta ou cotação solicitada pelo usuário.</p>
         
         <h4 style="color: var(--primary-dark); margin: 12px 0 4px;">3. Direitos do Titular</h4>
-        <p style="margin-bottom: 10px;">Você tem o direito de solicitar a confirmação da existência de tratamento, acesso, correção ou eliminação dos seus dados pessoais através dos nossos canais de suporte.</p>
+        <p style="margin-bottom: 10px;">Você tiene o direito de solicitar a confirmação da existência de tratamento, acesso, correção ou eliminação dos seus dados pessoais através dos nossos canais de suporte.</p>
         
         <h4 style="color: var(--primary-dark); margin: 12px 0 4px;">4. Contato do Encarregado (DPO)</h4>
         <p>Para dúvidas sobre o uso dos seus dados, entre em contato através do nosso WhatsApp de suporte ou visite nosso escritório físico em Francisco Morato - SP.</p>
@@ -1595,9 +1634,9 @@ html_code = """<!DOCTYPE html>
 
       const dadosLead = { tipo: "Cotação Direta", nome, whatsapp, placa, tipoVeiculo, detalheExtra };
 
-      let texto = `Olá! Gostaria de fazer uma cotação.\\n\\n*Nome:* ${nome}\\n*WhatsApp:* ${whatsapp}\\n*Placa:* ${placa}\\n*Tipo de Veículo:* ${tipoVeiculo}`;
+      let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
       if (detalheExtra) {
-        texto += `\\n*Detalhes:* ${detalheExtra}`;
+        texto += `\n*Detalhes:* ${detalheExtra}`;
       }
 
       fetch(URL_PLANILHA_GOOGLE, {
@@ -1629,7 +1668,7 @@ html_code = """<!DOCTYPE html>
       btn.disabled = true;
 
       const dadosConsultor = { tipo: "Cadastro Consultor", nome, whatsapp, cidade };
-      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\\n\\n*Nome:* ${nome}\\n*WhatsApp:* ${whatsapp}\\n*Cidade/Região:* ${cidade}`;
+      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
 
       fetch(URL_PLANILHA_GOOGLE, {
         method: "POST",
@@ -1667,7 +1706,7 @@ html_code = """<!DOCTYPE html>
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dadosFeedback)
       }).finally(() => {
-        document.getElementById('msgFeedbackSucesso').style.display = 'block';
+        document.getElementById('msgFeedbackSubcesso').style.display = 'block';
         btn.innerText = "Enviar Avaliação";
         btn.disabled = false;
         setTimeout(() => {
@@ -1689,9 +1728,4 @@ html_code = """<!DOCTYPE html>
     }
   </script>
 </body>
-</html>"""
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html_code)
-
-print("HTML salvo com sucesso!")
+</html>
