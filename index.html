@@ -224,7 +224,7 @@
       opacity: 1;
     }
 
-    /* BOTÕES COM CONTRASTE CORRIGIDO */
+    /* BOTÕES COM CONTRASTE CALIBRADO */
     .btn {
       padding: 12px 22px;
       border-radius: var(--radius-sm);
@@ -254,7 +254,7 @@
       transform: translateY(-2px);
     }
     
-    /* BOTÃO AMARELO - ÍCONE E TEXTO EM PRETO PARA CONTRASTE PERFEITO */
+    /* BOTÃO AMARELO (Texto e ícone em preto de alto contraste) */
     .btn-yellow {
       background: var(--yellow);
       color: #000000 !important;
@@ -267,7 +267,7 @@
       transform: translateY(-2px);
     }
     .btn-yellow .btn-icon-custom {
-      filter: brightness(0); /* Garante que o ícone do orçamento fique preto */
+      filter: brightness(0);
     }
 
     .btn-pulse {
@@ -289,7 +289,7 @@
       border-color: #CBD5E1;
     }
 
-    /* BOTÃO WHATSAPP - BADGE BRANCO NO ÍCONE PARA NÃO SUMIR NO FUNDO VERDE */
+    /* BOTÃO WHATSAPP */
     .btn-whatsapp {
       background: #25D366;
       color: var(--white);
@@ -391,7 +391,7 @@
       color: var(--yellow);
     }
 
-    /* CARD DO HERO (FORM COM FOCO) */
+    /* CARD DO HERO */
     .hero-form-card {
       background: var(--white);
       border-radius: var(--radius-lg);
@@ -459,7 +459,7 @@
       color: var(--dark);
     }
 
-    /* TRUST PROOF BAR */
+    /* TRUST BAR */
     .trust-bar {
       background: var(--white);
       border-bottom: 1px solid var(--border-color);
@@ -594,7 +594,7 @@
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
     .grid-5 { grid-template-columns: repeat(5, 1fr); }
 
-    /* CARDS DE VEÍCULOS */
+    /* CARDS DE VEÍCULOS E CARREIRA */
     .vehicle-card {
       background: var(--white);
       border-radius: var(--radius-md);
@@ -899,7 +899,7 @@
       background: #F1F5F9;
     }
 
-    /* WHATSAPP FLOAT WITH CONTRAST CORRIGIDO */
+    /* WHATSAPP FLOAT */
     .whatsapp-float-clean {
       position: fixed;
       bottom: 24px;
@@ -1458,11 +1458,10 @@
         </div>
       </div>
 
+      <!-- BOTÃO QUERO SER CONSULTOR - ÍCONE NATIVO COM CONTRASTE BRILHANTE -->
       <div style="text-align: center; max-width: 360px; margin: 0 auto;">
         <button onclick="abrirModalConsultor()" class="btn btn-primary btn-large btn-block">
-          <span class="icon-badge-white" style="width:26px; height:26px; padding:2px;">
-            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TRABALHE_CONOSCO_ICONE.png" alt="Trabalhe Conosco">
-          </span>
+          <i class="fas fa-user-tie" style="font-size: 19px; color: var(--yellow);"></i>
           Quero Ser Consultor
         </button>
       </div>
@@ -1641,7 +1640,7 @@
     </div>
   </div>
 
-  <!-- BOTÃO FLUTUANTE DE WHATSAPP COM PÍLULA BRANCA NO ÍCONE -->
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
   <a href="javascript:void(0)" onclick="abrirAtendimento()" class="whatsapp-float-clean" aria-label="Atendimento via WhatsApp">
     <span class="online-indicator"></span>
     <span class="icon-badge-white">
