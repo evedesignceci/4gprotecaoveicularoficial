@@ -173,6 +173,12 @@
     .nav-menu a:hover {
       color: var(--primary);
     }
+
+    /* ESCONDIDO NO DESKTOP POR PADRÃO */
+    .nav-menu-close {
+      display: none;
+    }
+
     .nav-actions {
       display: flex;
       align-items: center;
@@ -333,7 +339,7 @@
       color: var(--yellow);
     }
 
-    /* CARD DE FORMULÁRIO DO HERO */
+    /* CARD DO HERO */
     .hero-form-card {
       background: var(--white);
       border-radius: var(--radius-lg);
@@ -879,13 +885,17 @@
         padding: 10px 0;
         border-bottom: 1px solid var(--border-color);
       }
+      
+      /* EXIBE APENAS NO MOBILE */
       .nav-menu-close {
+        display: block;
         position: absolute;
         top: 18px;
         right: 18px;
         background: transparent;
         border: none;
-        font-size: 24px;
+        font-size: 28px;
+        line-height: 1;
         color: var(--text-muted);
         cursor: pointer;
         padding: 6px;
