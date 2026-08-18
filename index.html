@@ -207,6 +207,7 @@
       z-index: 1600;
     }
 
+    /* OVERLAY SEM BORRÃO (NÍTIDO) */
     .nav-overlay {
       display: none;
       position: fixed;
@@ -214,11 +215,10 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.55);
-      backdrop-filter: blur(4px);
+      background: rgba(15, 23, 42, 0.6); /* Fundo escuro sem efeito de desfoque */
       z-index: 1400;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
     }
     .nav-overlay.active {
       display: block;
@@ -988,6 +988,7 @@
         justify-content: center;
       }
 
+      /* MENU MOBILE 100% NÍDITO E SEM BORRÃO */
       .nav-menu {
         position: fixed;
         top: 0;
@@ -995,15 +996,16 @@
         width: 82%;
         max-width: 320px;
         height: 100vh;
-        background: var(--white);
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+        background: #FFFFFF;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
         padding: 80px 24px 30px;
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
         z-index: 1500;
-        transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        overflow-y: auto;
+        transition: right 0.25s ease-out;
+        will-change: right;
+        backface-visibility: hidden;
       }
       .nav-menu.active { right: 0 !important; }
       .nav-menu a {
@@ -1561,7 +1563,7 @@
         </div>
         <div class="map-container">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab!3s0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%2C%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%2C%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
             width="100%" 
             height="100%" 
             style="border:0;" 
