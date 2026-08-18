@@ -204,7 +204,7 @@
       cursor: pointer;
       padding: 8px;
       border-radius: 8px;
-      z-index: 1600; /* Garante que fique acima da overlay */
+      z-index: 1600;
     }
 
     .nav-overlay {
@@ -1561,7 +1561,7 @@
         </div>
         <div class="map-container">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%2C%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab!3s0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%2C%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
             width="100%" 
             height="100%" 
             style="border:0;" 
@@ -1690,7 +1690,6 @@
       document.getElementById('msgConsultorSucesso').style.display = 'none';
     }
 
-    /* CORREÇÃO DO MENU MOBILE */
     function abrirMenuMobile() {
       const menu = document.getElementById('navMenu');
       const overlay = document.getElementById('navOverlay');
@@ -1872,7 +1871,7 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
       btn.disabled = true;
 
-      The dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
+      const dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
 
       fetch(CONFIG.URL_PLANILHA_GOOGLE, {
         method: "POST",
