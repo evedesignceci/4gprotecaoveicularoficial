@@ -60,10 +60,6 @@
       width: 100%;
     }
 
-    body.menu-open {
-      overflow: hidden;
-    }
-
     h1, h2, h3.title-styled, .heading-font {
       font-family: var(--font-title);
       letter-spacing: 0.8px;
@@ -157,14 +153,15 @@
     }
     .nav-menu {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
+      flex-wrap: wrap;
     }
     .nav-menu a {
       text-decoration: none;
       color: var(--dark);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13.5px;
       transition: color 0.2s ease;
       position: relative;
     }
@@ -185,44 +182,10 @@
       width: 100%;
     }
 
-    .nav-menu-close {
-      display: none;
-    }
-
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 12px;
-    }
-
-    .hamburger-btn {
-      display: none;
-      background: transparent;
-      border: none;
-      font-size: 24px;
-      color: var(--primary-dark);
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 8px;
-      z-index: 1600;
-    }
-
-    /* OVERLAY SEM BORRÃO (NÍTIDO) */
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(15, 23, 42, 0.6); /* Fundo escuro sem efeito de desfoque */
-      z-index: 1400;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-    .nav-overlay.active {
-      display: block;
-      opacity: 1;
     }
 
     /* BOTÕES */
@@ -971,6 +934,7 @@
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .trust-grid { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+      .nav-menu { display: none; } /* Oculta os links em telas menores se preferir apenas botões diretos */
     }
 
     @media (max-width: 820px) {
@@ -981,54 +945,6 @@
 
       .nav-container { height: 64px; }
       .logo-img { max-height: 40px; }
-
-      .hamburger-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* MENU MOBILE 100% NÍDITO E SEM BORRÃO */
-      .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 82%;
-        max-width: 320px;
-        height: 100vh;
-        background: #FFFFFF;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
-        padding: 80px 24px 30px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        z-index: 1500;
-        transition: right 0.25s ease-out;
-        will-change: right;
-        backface-visibility: hidden;
-      }
-      .nav-menu.active { right: 0 !important; }
-      .nav-menu a {
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--primary-dark);
-        width: 100%;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border-color);
-      }
-      
-      .nav-menu-close {
-        display: block;
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        background: transparent;
-        border: none;
-        font-size: 28px;
-        color: var(--text-muted);
-        cursor: pointer;
-        padding: 6px;
-      }
 
       .nav-actions .btn-outline { display: none; }
       .nav-actions .btn-yellow {
@@ -1076,9 +992,6 @@
 </head>
 <body>
 
-  <!-- BACKDROP MOBILE -->
-  <div class="nav-overlay" id="navOverlay" onclick="fecharMenuMobile()"></div>
-
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="container top-bar-items">
@@ -1111,16 +1024,15 @@
         </a>
       </div>
 
-      <nav class="nav-menu" id="navMenu">
-        <button class="nav-menu-close" onclick="fecharMenuMobile()" aria-label="Fechar menu">&times;</button>
-        <a href="#sobre" onclick="fecharMenuMobile()">A 4G</a>
-        <a href="#cotacao" onclick="fecharMenuMobile()">Cotação Rápida</a>
-        <a href="#parceiros" onclick="fecharMenuMobile()">Parceiros</a>
-        <a href="#veiculos" onclick="fecharMenuMobile()">Proteção</a>
-        <a href="#servicos" onclick="fecharMenuMobile()">Assistência 24h</a>
-        <a href="#faq" onclick="fecharMenuMobile()">Dúvidas</a>
-        <a href="#consultor" onclick="fecharMenuMobile()">Seja Consultor</a>
-        <a href="#localizacao" onclick="fecharMenuMobile()">Escritório</a>
+      <nav class="nav-menu">
+        <a href="#sobre">A 4G</a>
+        <a href="#cotacao">Cotação Rápida</a>
+        <a href="#parceiros">Parceiros</a>
+        <a href="#veiculos">Proteção</a>
+        <a href="#servicos">Assistência 24h</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#consultor">Seja Consultor</a>
+        <a href="#localizacao">Escritório</a>
       </nav>
 
       <div class="nav-actions">
@@ -1129,9 +1041,6 @@
         </a>
         <button onclick="focarNoFormulario()" class="btn btn-yellow">
           <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/OR%C3%87AMENTO.png" alt="Orçamento" class="btn-icon-custom"> COTAÇÃO ONLINE
-        </button>
-        <button class="hamburger-btn" onclick="abrirMenuMobile()" aria-label="Abrir Menu">
-          <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
@@ -1690,22 +1599,6 @@
     function fecharModalConsultor() {
       document.getElementById('modalConsultor').style.display = 'none';
       document.getElementById('msgConsultorSucesso').style.display = 'none';
-    }
-
-    function abrirMenuMobile() {
-      const menu = document.getElementById('navMenu');
-      const overlay = document.getElementById('navOverlay');
-      if (menu) menu.classList.add('active');
-      if (overlay) overlay.classList.add('active');
-      document.body.classList.add('menu-open');
-    }
-
-    function fecharMenuMobile() {
-      const menu = document.getElementById('navMenu');
-      const overlay = document.getElementById('navOverlay');
-      if (menu) menu.classList.remove('active');
-      if (overlay) overlay.classList.remove('active');
-      document.body.classList.remove('menu-open');
     }
 
     function aplicarMascaraTelefone(input) {
