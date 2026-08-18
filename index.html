@@ -1,110 +1,1913 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>4G Proteção Veicular | Cotação Rápida e Personalizada</title>
-  
-  <link rel="shortcut icon" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908272/4G.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>4G Proteção Veicular | Cotação Rápida e Personalizada</title>
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908272/4G.png" type="image/png">
+  
+  <!-- Fontes e Ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    :root {
-      --primary: #154F96; --primary-dark: #0D3668; --yellow: #FFF029; --dark: #0F172A;
-      --white: #FFFFFF; --bg-light: #F8FAFC; --border-color: #E2E8F0;
-      --font-title: 'Anton', sans-serif; --font-body: 'Open Sans', sans-serif;
-    }
-    /* Estilos originais preservados com ajustes de UX */
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-body); }
-    html { scroll-behavior: smooth; }
-    body { background-color: var(--bg-light); color: var(--dark); overflow-x: hidden; }
-    
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    
-    /* HEADER E NAV */
-    .header { background: var(--white); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
-    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-    .logo-img { max-height: 48px; }
-    
-    .nav-menu { display: flex; gap: 24px; align-items: center; }
-    .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 14px; }
-    .hamburger-btn { display: none; background: transparent; border: none; font-size: 24px; color: var(--primary-dark); cursor: pointer; }
-    
-    /* BOTÕES */
-    .btn { padding: 12px 22px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; transition: 0.3s; }
-    .btn-yellow { background: var(--yellow); color: #000; }
-    .btn-block { width: 100%; }
+  <style>
+    :root {
+      --primary: #154F96;
+      --primary-dark: #0D3668;
+      --primary-light: #52A3E1;
+      --partner-blue: #2D69CF;
+      --yellow: #FFF029;
+      --yellow-hover: #E6D820;
+      --dark: #0F172A;
+      --white: #FFFFFF;
+      --text-muted: #64748B;
+      --bg-light: #F8FAFC;
+      --border-color: #E2E8F0;
+      
+      --shadow-subtle: 0 4px 20px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-hover: 0 18px 32px rgba(21, 79, 150, 0.15);
+      
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      
+      --font-title: 'Anton', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
 
-    /* HERO E FORMULÁRIO */
-    .hero { padding: 60px 0; background: radial-gradient(circle at 85% 15%, #1d6ec7 0%, #0A2540 70%); color: var(--white); }
-    .hero-container { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .hero-form-card { background: var(--white); border-radius: 24px; padding: 32px; color: var(--dark); box-shadow: 0 24px 48px rgba(0,0,0,0.3); }
-    .form-group { margin-bottom: 16px; }
-    .form-group input { width: 100%; padding: 14px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 16px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body);
+      -webkit-tap-highlight-color: transparent;
+    }
 
-    /* MOBILE CTA STICKY */
-    .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px; background: var(--white); box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 999; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    @media (max-width: 820px) {
-      .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: var(--white); flex-direction: column; padding: 80px 30px; transition: 0.3s; }
-      .nav-menu.active { right: 0; }
-      .hamburger-btn { display: block; }
-      .hero-container { grid-template-columns: 1fr; }
-      .mobile-cta { display: block; }
-    }
-  </style>
+    body {
+      background-color: var(--bg-light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    h1, h2, h3.title-styled, .heading-font {
+      font-family: var(--font-title);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-bar-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .top-bar-highlights {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .top-bar-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar-item i {
+      color: var(--yellow);
+    }
+    .top-bar-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-bar-social span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .top-bar-social a {
+      transition: transform 0.2s;
+      display: inline-flex;
+    }
+    .top-bar-social a:hover {
+      transform: translateY(-2px);
+    }
+    .top-bar-social img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    /* HEADER & NAV */
+    .header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .logo-img {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.2s;
+    }
+    .logo-img:hover {
+      transform: scale(1.03);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.2s ease;
+    }
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-menu-close {
+      display: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hamburger-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: var(--primary-dark);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1400;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* BOTÕES COM CONTRASTE CALIBRADO */
+    .btn {
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 48px;
+      position: relative;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 6px 18px rgba(21, 79, 150, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    /* BOTÃO AMARELO (Texto e ícone em preto de alto contraste) */
+    .btn-yellow {
+      background: var(--yellow);
+      color: #000000 !important;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(255, 240, 41, 0.3);
+    }
+    .btn-yellow:hover {
+      background: var(--yellow-hover);
+      box-shadow: 0 6px 20px rgba(255, 240, 41, 0.5);
+      transform: translateY(-2px);
+    }
+    .btn-yellow .btn-icon-custom {
+      filter: brightness(0);
+    }
+
+    .btn-pulse {
+      animation: pulseGlow 2.5s infinite;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(255, 240, 41, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(255, 240, 41, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 240, 41, 0); }
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--border-color);
+      color: var(--dark);
+      background: var(--white);
+    }
+    .btn-outline:hover {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
+
+    /* BOTÃO WHATSAPP */
+    .btn-whatsapp {
+      background: #25D366;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .btn-whatsapp:hover {
+      background: #1EBE57;
+      color: var(--white);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+      transform: translateY(-2px);
+    }
+    .icon-badge-white {
+      background: #FFFFFF;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 3px;
+    }
+    .icon-badge-white img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .btn-large {
+      padding: 16px 28px;
+      font-size: 15px;
+      border-radius: var(--radius-md);
+    }
+    .btn-block {
+      width: 100%;
+    }
+    .btn-icon-custom {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 60px 0 74px;
+      background: radial-gradient(circle at 85% 15%, #1d6ec7 0%, #0A2540 70%, #081B30 100%);
+      color: var(--white);
+      position: relative;
+    }
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-size: clamp(32px, 4.2vw, 48px);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .hero-text h1 span {
+      color: var(--yellow);
+      display: inline-block;
+    }
+    .hero-text .subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 500;
+      color: #E2E8F0;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .hero-text p {
+      font-size: 15px;
+      color: #CBD5E1;
+      margin-bottom: 24px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .badge-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .badge-item i {
+      color: var(--yellow);
+    }
+
+    /* CARD DO HERO */
+    .hero-form-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+      color: var(--dark);
+      position: relative;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .hero-form-card.highlight-pulse {
+      animation: formPulse 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes formPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 240, 41, 0.8); }
+      50% { transform: scale(1.02); box-shadow: 0 0 0 16px rgba(255, 240, 41, 0); }
+      100% { transform: scale(1); box-shadow: 0 24px 48px rgba(0,0,0,0.3); }
+    }
+    .hero-form-card .card-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF9C3;
+      color: #854D0E;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .hero-form-card h3 {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+    .hero-form-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .selection-tag {
+      display: none;
+      background: #EFF6FF;
+      border: 1.5px solid #BFDBFE;
+      color: var(--primary);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .selection-tag.active {
+      display: flex;
+    }
+    .selection-tag-close {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 2px 6px;
+    }
+    .selection-tag-close:hover {
+      color: var(--dark);
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-color);
+      padding: 22px 0;
+      box-shadow: var(--shadow-subtle);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: left;
+    }
+    .trust-item i {
+      font-size: 26px;
+      color: var(--primary);
+    }
+    .trust-item-text strong {
+      display: block;
+      font-size: 15px;
+      color: var(--primary-dark);
+    }
+    .trust-item-text span {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    /* SEÇÕES */
+    .section {
+      padding: 76px 0;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: clamp(26px, 3.2vw, 36px);
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 44px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    /* PARCEIROS */
+    .bg-partners {
+      background: linear-gradient(180deg, var(--partner-blue) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+    .bg-partners h2 {
+      color: var(--white);
+    }
+    .bg-partners .section-subtitle {
+      color: #E2E8F0;
+    }
+    .partner-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-card);
+      border: 2px solid transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .partner-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--yellow);
+    }
+    .partner-card .select-cta {
+      margin-top: 14px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.9;
+    }
+    .partner-card:hover .select-cta {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    .partner-logo-box {
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 10px;
+      background-color: var(--partner-blue);
+      border-radius: var(--radius-sm);
+    }
+    .partner-logo-box img {
+      max-width: 85%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .partner-card h3 {
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .partner-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* GRIDS */
+    .grid { display: grid; gap: 20px; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+    /* CARDS DE VEÍCULOS E CARREIRA */
+    .vehicle-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 26px 18px;
+      box-shadow: var(--shadow-subtle);
+      border: 2px solid var(--border-color);
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .vehicle-card i {
+      font-size: 34px;
+      color: var(--primary);
+      margin-bottom: 10px;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .vehicle-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .vehicle-card:hover i {
+      transform: scale(1.1);
+      color: var(--primary-dark);
+    }
+    .vehicle-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+    .vehicle-card p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    /* SERVIÇOS */
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .service-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-subtle);
+      border: 1.5px solid var(--border-color);
+      color: var(--dark);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .service-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+      background: #F8FAFC;
+    }
+    .service-item i {
+      font-size: 22px;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .service-item:hover i {
+      transform: scale(1.15);
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover {
+      border-color: var(--primary-light);
+    }
+    .faq-question {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--primary-dark);
+      user-select: none;
+    }
+    .faq-question i {
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+      background: #FAFBFD;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 0 22px;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding: 14px 22px 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* FORMULÁRIOS */
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-color);
+      font-size: 15px;
+      outline: none;
+      background: #FAFAFA;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(21, 79, 150, 0.15);
+    }
+
+    .form-check-lgpd {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: left;
+    }
+    .form-check-lgpd input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+    }
+    .form-check-lgpd a {
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* LOCALIZAÇÃO */
+    .location-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid var(--border-color);
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .location-info h3 {
+      font-size: 22px;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .map-container {
+      width: 100%;
+      height: 300px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    /* REDES SOCIAIS */
+    .social-section-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .social-btn-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-color);
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .social-btn-card:hover {
+      background: #EDF2F7;
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+    }
+    .social-btn-card img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    /* AVALIAÇÃO */
+    .star-rating {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      font-size: 34px;
+      color: #CBD5E1;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+    .star-rating i.active { color: var(--yellow); }
+
+    /* MODAIS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalFadeIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .close-btn:hover {
+      background: #F1F5F9;
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float-clean {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #25D366;
+      color: #FFF;
+      border-radius: 50px;
+      padding: 10px 20px 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .whatsapp-float-clean:hover {
+      transform: translateY(-3px) scale(1.03);
+      color: #FFF;
+    }
+    .whatsapp-float-clean .online-indicator {
+      width: 10px;
+      height: 10px;
+      background-color: #FFF029;
+      border-radius: 50%;
+      border: 2px solid #25D366;
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--primary-dark);
+      color: #94A3B8;
+      padding: 46px 0 34px;
+      text-align: center;
+      font-size: 13.5px;
+      border-top: 4px solid var(--yellow);
+    }
+    footer strong { color: var(--white); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--yellow);
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVO MOBILE */
+    @media (max-width: 992px) {
+      .grid-5 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+    }
+
+    @media (max-width: 820px) {
+      .container { padding: 0 16px; }
+      .top-bar-items { justify-content: center; gap: 8px; }
+      .top-bar-highlights { font-size: 11.5px; gap: 10px; justify-content: center; }
+      .top-bar-social { display: none; }
+
+      .nav-container { height: 64px; }
+      .logo-img { max-height: 40px; }
+
+      .hamburger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 82%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--white);
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+        padding: 80px 24px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        z-index: 1500;
+        transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow-y: auto;
+      }
+      .nav-menu.active { right: 0; }
+      .nav-menu a {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--primary-dark);
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .nav-menu-close {
+        display: block;
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        background: transparent;
+        border: none;
+        font-size: 28px;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 6px;
+      }
+
+      .nav-actions .btn-outline { display: none; }
+      .nav-actions .btn-yellow {
+        padding: 8px 14px;
+        font-size: 12px;
+        min-height: 38px;
+      }
+
+      .hero { padding: 36px 0 48px; }
+      .hero-container { grid-template-columns: 1fr; gap: 32px; }
+      .hero-text { text-align: center; }
+      .hero-badges { justify-content: center; }
+      .hero-form-card { padding: 24px 18px; }
+
+      .trust-grid { grid-template-columns: 1fr; gap: 14px; }
+      .trust-item { justify-content: flex-start; padding-left: 20px; }
+
+      .section { padding: 50px 0; }
+      .grid-2, .grid-3, .grid-4, .grid-5, .services-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .location-box {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+        gap: 22px;
+      }
+      .map-container { height: 240px; }
+      .social-section-box { grid-template-columns: 1fr; }
+
+      .whatsapp-float-clean span { display: none; }
+      .whatsapp-float-clean {
+        padding: 12px;
+        border-radius: 50%;
+        bottom: 18px;
+        right: 18px;
+      }
+      .whatsapp-float-clean .icon-badge-white {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="container nav-container">
-      <a href="#sobre"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908272/4G.png" alt="4G" class="logo-img"></a>
-      <nav class="nav-menu" id="navMenu">
-        <a href="#sobre" onclick="fecharMenuMobile()">A 4G</a>
-        <a href="#parceiros" onclick="fecharMenuMobile()">Parceiros</a>
-        <a href="#veiculos" onclick="fecharMenuMobile()">Proteção</a>
-        <button onclick="focarNoFormulario(); fecharMenuMobile();" class="btn btn-yellow">COTAÇÃO ONLINE</button>
-      </nav>
-      <button class="hamburger-btn" onclick="abrirMenuMobile()"><i class="fas fa-bars"></i></button>
-    </div>
-  </header>
+  <!-- BACKDROP MOBILE -->
+  <div class="nav-overlay" id="navOverlay" onclick="fecharMenuMobile()"></div>
 
-  <section class="hero" id="sobre">
-    <div class="container hero-container">
-      <div class="hero-text">
-        <h1>Seu veículo protegido, <span>sua família tranquila.</span></h1>
-        <p>Comparamos as melhores seguradoras e associações para você pagar menos.</p>
-      </div>
-      <div class="hero-form-card" id="cotacao">
-        <h3>Simulação Grátis</h3>
-        <form id="formCotacao" onsubmit="enviarLead(event)">
-          <div class="form-group"><input type="text" id="nome" required placeholder="Nome Completo"></div>
-          <div class="form-group"><input type="tel" id="whatsapp" required placeholder="WhatsApp com DDD"></div>
-          <button type="submit" class="btn btn-yellow btn-block">RECEBER PROPOSTA NO ZAP</button>
-        </form>
-      </div>
-    </div>
-  </section>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-items">
+      <div class="top-bar-highlights">
+        <span class="top-bar-item"><i class="fas fa-shield-halved"></i> Proteção Sem Burocracia</span>
+        <span>•</span>
+        <span class="top-bar-item"><i class="fas fa-bolt"></i> Sem Consulta SPC/Serasa</span>
+        <span>•</span>
+        <span class="top-bar-item"><i class="fas fa-headset"></i> Assistência 24h em Todo Brasil</span>
+      </div>
 
-  <div class="mobile-cta">
-    <button onclick="focarNoFormulario()" class="btn btn-yellow btn-block">QUERO MINHA COTAÇÃO</button>
-  </div>
+      <div class="top-bar-social">
+        <span>Siga nossas redes:</span>
+        <a href="https://www.instagram.com/4gprotecaoveicular/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/4gprotecaoveicular" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/FACEBOOK.png" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    function abrirMenuMobile() { document.getElementById('navMenu').classList.add('active'); }
-    function fecharMenuMobile() { document.getElementById('navMenu').classList.remove('active'); }
-    function focarNoFormulario() { document.getElementById('cotacao').scrollIntoView({ behavior: 'smooth' }); }
-    
-    function enviarLead(e) {
-      e.preventDefault();
-      const nome = document.getElementById('nome').value;
-      const wpp = document.getElementById('whatsapp').value;
-      const url = `https://wa.me/5511957666488?text=Olá, me chamo ${nome} e quero uma cotação.`;
-      window.open(url, '_blank');
-    }
-  </script>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="#sobre" aria-label="Página Inicial da 4G Proteção Veicular">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908272/4G.png" alt="4G Proteção Veicular" class="logo-img">
+        </a>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <button class="nav-menu-close" onclick="fecharMenuMobile()" aria-label="Fechar menu">&times;</button>
+        <a href="#sobre" onclick="fecharMenuMobile()">A 4G</a>
+        <a href="#cotacao" onclick="fecharMenuMobile()">Cotação Rápida</a>
+        <a href="#parceiros" onclick="fecharMenuMobile()">Parceiros</a>
+        <a href="#veiculos" onclick="fecharMenuMobile()">Proteção</a>
+        <a href="#servicos" onclick="fecharMenuMobile()">Assistência 24h</a>
+        <a href="#faq" onclick="fecharMenuMobile()">Dúvidas</a>
+        <a href="#consultor" onclick="fecharMenuMobile()">Seja Consultor</a>
+        <a href="#localizacao" onclick="fecharMenuMobile()">Escritório</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="javascript:void(0)" onclick="abrirSuporte()" class="btn btn-outline" aria-label="Falar com Suporte">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/ZAP.png" alt="WhatsApp" class="btn-icon-custom"> Suporte
+        </a>
+        <button onclick="focarNoFormulario()" class="btn btn-yellow">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/OR%C3%87AMENTO.png" alt="Orçamento" class="btn-icon-custom"> COTAÇÃO ONLINE
+        </button>
+        <button class="hamburger-btn" onclick="abrirMenuMobile()" aria-label="Abrir Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="sobre">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge-item"><i class="fas fa-check-circle"></i> 100% Sem Burocracia</span>
+          <span class="badge-item"><i class="fas fa-globe-americas"></i> Cobertura Nacional</span>
+          <span class="badge-item"><i class="fas fa-tags"></i> Menor Preço Garantido</span>
+        </div>
+        <h1>Seu veículo protegido, <span>sua família tranquila.</span></h1>
+        <p class="subtitle">Comparamos as maiores associações e seguradoras para encontrar a melhor proteção pelo menor custo mensal.</p>
+        <p>Sem análise de perfil de condutor, sem burocracia e com acionamento 24h em qualquer lugar do Brasil.</p>
+        
+        <div>
+          <a href="javascript:void(0)" onclick="abrirAtendimento()" class="btn btn-whatsapp btn-large btn-block">
+            <span class="icon-badge-white">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/ZAP.png" alt="WhatsApp">
+            </span>
+            Falar com um Consultor no WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- FORMULÁRIO DO HERO -->
+      <div class="hero-form-card" id="cotacao">
+        <div class="card-header-badge"><i class="fas fa-bolt"></i> Simulação Grátis em 1 Minuto</div>
+        <h3>Simule sua Proteção</h3>
+        <p>Receba propostas personalizadas das melhores seguradoras:</p>
+
+        <div id="tagSelecaoForm" class="selection-tag">
+          <span id="tagSelecaoTexto"></span>
+          <span class="selection-tag-close" onclick="removerSelecao()" title="Remover seleção">&times;</span>
+        </div>
+
+        <form id="formCotacaoInline" onsubmit="enviarCotacaoInline(event)">
+          <input type="hidden" id="inline-detalhe-extra" value="">
+
+          <div class="form-group">
+            <label for="inline-nome"><i class="fas fa-user" style="color:var(--primary); margin-right:4px;"></i> Seu Nome Completo:</label>
+            <input type="text" id="inline-nome" required placeholder="Ex: Maria Silva">
+          </div>
+
+          <div class="form-group">
+            <label for="inline-whatsapp"><i class="fab fa-whatsapp" style="color:#25D366; margin-right:4px;"></i> Celular / WhatsApp:</label>
+            <input type="tel" id="inline-whatsapp" required placeholder="(11) 99999-9999" maxlength="15" oninput="aplicarMascaraTelefone(this)">
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="inline-placa"><i class="fas fa-id-card" style="color:var(--primary); margin-right:4px;"></i> Placa do Veículo:</label>
+              <input type="text" id="inline-placa" required placeholder="ABC-1234 ou ABC1D23" maxlength="8" oninput="aplicarMascaraPlaca(this)">
+            </div>
+
+            <div class="form-group">
+              <label for="inline-tipoVeiculo"><i class="fas fa-car" style="color:var(--primary); margin-right:4px;"></i> Tipo de Veículo:</label>
+              <select id="inline-tipoVeiculo" required>
+                <option value="Carro de Passeio">Carro de Passeio</option>
+                <option value="Carro de Trabalho / App">Carro de Aplicativo / Uber</option>
+                <option value="Moto">Moto</option>
+                <option value="Van">Van / Utilitário</option>
+                <option value="Caminhão / Pesados">Caminhão / Pesados</option>
+                <option value="Frota">Frota Corporativa</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-check-lgpd">
+            <input type="checkbox" id="check-lgpd-cotacao" required checked>
+            <label for="check-lgpd-cotacao">
+              Concordo em receber a cotação conforme a <a href="javascript:void(0)" onclick="abrirModalPrivacidade()">Política de Privacidade</a>.
+            </label>
+          </div>
+
+          <div id="msgInlineSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:14px; text-align:center; font-size:13.5px;">
+            ✨ Dados recebidos! Abrindo seu atendimento no WhatsApp...
+          </div>
+
+          <button type="submit" id="btnEnviarInline" class="btn btn-yellow btn-block btn-large btn-pulse">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/OR%C3%87AMENTO.png" alt="Orçamento" class="btn-icon-custom"> RECEBER PROPOSTA NO WHATSAPP
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR / PROVA SOCIAL -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <i class="fas fa-shield-cat"></i>
+          <div class="trust-item-text">
+            <strong>Roubo, Furto e Colisão</strong>
+            <span>Cobertura completa e justa</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-truck-pickup"></i>
+          <div class="trust-item-text">
+            <strong>Guincho 24 Horas</strong>
+            <span>Atendimento em todo o Brasil</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-file-signature"></i>
+          <div class="trust-item-text">
+            <strong>Sem Análise de Perfil</strong>
+            <span>Qualquer pessoa pode aderir</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-hand-holding-dollar"></i>
+          <div class="trust-item-text">
+            <strong>Até 60% Mais Barato</strong>
+            <span>Economia real no seu bolso</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS -->
+  <section id="parceiros" class="section bg-partners">
+    <div class="container">
+      <h2>Nossos Parceiros de Confiança</h2>
+      <p class="section-subtitle">A 4G Proteção Veicular conecta você às associações e seguradoras líderes de mercado:</p>
+      
+      <div class="grid grid-3">
+        <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('Capitalcar')">
+          <div class="partner-logo-box">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/CAPITALCAR.png" alt="Capitalcar">
+          </div>
+          <h3>Capitalcar</h3>
+          <p>Referência em agilidade e suporte de ponta a ponta em ocorrências e assistência veicular.</p>
+          <span class="select-cta"><i class="fas fa-arrow-right"></i> Cotar com a Capitalcar</span>
+        </a>
+
+        <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('Valecar')">
+          <div class="partner-logo-box">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/VALECAR.png" alt="Valecar">
+          </div>
+          <h3>Valecar</h3>
+          <p>Tradição e extrema confiança com serviços 24h para você rodar sem preocupações.</p>
+          <span class="select-cta"><i class="fas fa-arrow-right"></i> Cotar com a Valecar</span>
+        </a>
+
+        <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('Suhai')">
+          <div class="partner-logo-box">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SUHAI.png" alt="Suhai Seguradora">
+          </div>
+          <h3>Suhai Seguradora</h3>
+          <p>Líder especialista em cobertura contra furto e roubo com aceitação para qualquer veículo.</p>
+          <span class="select-cta"><i class="fas fa-arrow-right"></i> Cotar com a Suhai</span>
+        </a>
+
+        <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('APVS')">
+          <div class="partner-logo-box">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908272/APVS.png" alt="APVS Brasil">
+          </div>
+          <h3>APVS Brasil</h3>
+          <p>A maior proteção veicular da América Latina ao seu alcance com máxima robustez.</p>
+          <span class="select-cta"><i class="fas fa-arrow-right"></i> Cotar com a APVS</span>
+        </a>
+
+        <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('AGV')">
+          <div class="partner-logo-box">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908272/AGV.png" alt="AGV Brasil">
+          </div>
+          <h3>AGV Brasil</h3>
+          <p>Proteção abrangente e atendimento qualificado com foco total na satisfação do associado.</p>
+          <span class="select-cta"><i class="fas fa-arrow-right"></i> Cotar com a AGV</span>
+        </a>
+
+        <a href="javascript:void(0)" class="partner-card" onclick="selecionarParceiroEForm('Km')">
+          <div class="partner-logo-box">
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/KM.png" alt="Km Clube de Benefícios">
+          </div>
+          <h3>Km Clube de Benefícios</h3>
+          <p>Soluções modernas em assistência e proteção para garantir tranquilidade nas estradas.</p>
+          <span class="select-cta"><i class="fas fa-arrow-right"></i> Cotar com a Km</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE PROTEGEMOS -->
+  <section id="veiculos" class="section">
+    <div class="container">
+      <h2>O Que Protegemos</h2>
+      <p class="section-subtitle">Clique no tipo do seu veículo para personalizar a sua simulação:</p>
+
+      <div class="grid grid-5">
+        <div class="vehicle-card" onclick="selecionarTipoVeiculoEForm('Carro de Passeio')">
+          <i class="fas fa-car"></i>
+          <h3>Carros</h3>
+          <p>Passeio e Aplicativo</p>
+        </div>
+        <div class="vehicle-card" onclick="selecionarTipoVeiculoEForm('Moto')">
+          <i class="fas fa-motorcycle"></i>
+          <h3>Motos</h3>
+          <p>Particulares e Entregas</p>
+        </div>
+        <div class="vehicle-card" onclick="selecionarTipoVeiculoEForm('Van')">
+          <i class="fas fa-shuttle-van"></i>
+          <h3>Vans</h3>
+          <p>Passageiros e Cargas</p>
+        </div>
+        <div class="vehicle-card" onclick="selecionarTipoVeiculoEForm('Caminhão / Pesados')">
+          <i class="fas fa-truck-front"></i>
+          <h3>Caminhões</h3>
+          <p>Veículos Pesados</p>
+        </div>
+        <div class="vehicle-card" onclick="selecionarTipoVeiculoEForm('Frota')">
+          <i class="fas fa-truck-pickup"></i>
+          <h3>Frotas</h3>
+          <p>Empresas e CNPJ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS 24H -->
+  <section id="servicos" class="section bg-light">
+    <div class="container">
+      <h2>Assistência 24h & Coberturas Completas</h2>
+      <p class="section-subtitle">Clique no benefício que você mais precisa para incluí-lo na proposta:</p>
+      
+      <div class="grid services-grid">
+        <div class="service-item" onclick="selecionarServicoEForm('Reboque 24h')"><i class="fas fa-truck-pickup"></i> Reboque / Guincho 24h</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Auxílio Bateria')"><i class="fas fa-car-battery"></i> Carga de Bateria</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Proteção contra Colisão')"><i class="fas fa-car-burst"></i> Colisão & Terceiros</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Auxílio Combustível')"><i class="fas fa-gas-pump"></i> Pane Seca</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Chaveiro 24h')"><i class="fas fa-key"></i> Chaveiro 24h</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Roubo e Furto')"><i class="fas fa-shield-cat"></i> Roubo e Furto 100%</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Hospedagem Emergencial')"><i class="fas fa-hotel"></i> Hospedagem Emergencial</div>
+        <div class="service-item" onclick="selecionarServicoEForm('Incêndio & Natureza')"><i class="fas fa-fire"></i> Fenômenos da Natureza</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>Perguntas Frequentes</h2>
+      <p class="section-subtitle">Tire suas dúvidas sobre o funcionamento da proteção veicular:</p>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Qual a diferença entre Proteção Veicular e Seguro Tradicional?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            A Proteção Veicular funciona pelo sistema de mutualismo gerido por associações regulamentadas. Ela não possui análise de perfil de condutor (idade, gênero ou CEP), tornando os custos até 60% mais acessíveis que o seguro convencional com coberturas equivalentes (roubo, furto, colisão e guincho).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Precisa de consulta ao SPC ou Serasa para contratar?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Não! A adesão à proteção veicular não exige consulta aos órgãos de crédito (SPC/Serasa). Qualquer pessoa com veículo regular pode se associar rapidamente.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Carros de aplicativo (Uber/99) e táxis são aceitos?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Sim! Temos planos especializados para motoristas de aplicativo, entregadores e frotistas, garantindo assistência 24h sem restrições de rodagem.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Como funciona o acionamento da assistência 24 horas?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            O associado conta com um número de 0800 direto e suporte via WhatsApp da associação parceira para solicitar guincho, troca de pneus, chaveiro ou socorro elétrico a qualquer hora do dia ou da noite.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABALHE CONOSCO -->
+  <section id="consultor" class="section bg-light">
+    <div class="container">
+      <h2>Seja um Consultor 4G</h2>
+      <p class="section-subtitle">Construa sua própria carteira com total flexibilidade e comissões recorrentes:</p>
+      
+      <div class="grid grid-4" style="margin-bottom: 30px;">
+        <div class="vehicle-card" onclick="abrirModalConsultor()">
+          <i class="fas fa-sack-dollar"></i>
+          <h3>Comissões Altas</h3>
+          <p>Ganhe por adesão e receba recorrência mensal.</p>
+        </div>
+
+        <div class="vehicle-card" onclick="abrirModalConsultor()">
+          <i class="fas fa-trophy"></i>
+          <h3>Prêmios & Metas</h3>
+          <p>Premiações extras por alcance de objetivos.</p>
+        </div>
+
+        <div class="vehicle-card" onclick="abrirModalConsultor()">
+          <i class="fas fa-clock"></i>
+          <h3>Flexibilidade</h3>
+          <p>Trabalhe nos seus horários de onde quiser.</p>
+        </div>
+
+        <div class="vehicle-card" onclick="abrirModalConsultor()">
+          <i class="fas fa-headset"></i>
+          <h3>Suporte Total</h3>
+          <p>Treinamento e materiais prontos para divulgação.</p>
+        </div>
+      </div>
+
+      <!-- BOTÃO QUERO SER CONSULTOR - ÍCONE NATIVO COM CONTRASTE BRILHANTE -->
+      <div style="text-align: center; max-width: 360px; margin: 0 auto;">
+        <button onclick="abrirModalConsultor()" class="btn btn-primary btn-large btn-block">
+          <i class="fas fa-user-tie" style="font-size: 19px; color: var(--yellow);"></i>
+          Quero Ser Consultor
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDES SOCIAIS E FEEDBACKS -->
+  <section id="blog-feedback" class="section">
+    <div class="container">
+      <div class="grid grid-2" style="align-items: start;">
+        
+        <!-- SOBRE NÓS -->
+        <div class="hero-form-card" style="text-align: left; padding: 28px;">
+          <h3 style="color: var(--primary-dark); font-size: 20px; margin-bottom: 12px;">
+            <i class="fas fa-building-user" style="color: var(--primary);"></i> Quem Somos
+          </h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 12px;">
+            Sob a liderança do nosso diretor <strong>Erasmo Pedro</strong>, a <strong>4G Proteção Veicular</strong> nasceu do compromisso de oferecer atendimento humano, rápido e transparente.
+          </p>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 22px;">
+            Comparamos as maiores entidades do Brasil para trazer a opção ideal para seu bolso e seu veículo.
+          </p>
+
+          <h4 style="font-size: 14px; color: var(--primary-dark); margin-bottom: 10px; font-weight: 700;">Nossas Redes Oficiais:</h4>
+          <div class="social-section-box">
+            <a href="https://www.instagram.com/4gprotecaoveicular/" target="_blank" rel="noopener" class="social-btn-card">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram">
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/4gprotecaoveicular" target="_blank" rel="noopener" class="social-btn-card">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/FACEBOOK.png" alt="Facebook">
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FEEDBACK -->
+        <div class="hero-form-card" style="text-align: left; padding: 28px;">
+          <h3 style="color: var(--primary-dark); font-size: 20px; margin-bottom: 12px;">
+            <i class="fas fa-star" style="color: var(--yellow);"></i> Deixe seu Feedback
+          </h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+            Sua opinião é fundamental para aprimorarmos continuamente nosso atendimento:
+          </p>
+
+          <form id="formFeedback" onsubmit="enviarFeedback(event)">
+            <div class="form-group">
+              <label for="fb-nome">Seu Nome:</label>
+              <input type="text" id="fb-nome" required placeholder="Digite seu nome">
+            </div>
+
+            <div class="form-group" style="text-align: center;">
+              <label>Sua Avaliação:</label>
+              <div class="star-rating" id="starRating">
+                <i class="fas fa-star active" data-rating="1"></i>
+                <i class="fas fa-star active" data-rating="2"></i>
+                <i class="fas fa-star active" data-rating="3"></i>
+                <i class="fas fa-star active" data-rating="4"></i>
+                <i class="fas fa-star active" data-rating="5"></i>
+              </div>
+              <input type="hidden" id="fb-rating" value="5">
+            </div>
+
+            <div class="form-group">
+              <label for="fb-mensagem">Seu Comentário:</label>
+              <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência..."></textarea>
+            </div>
+
+            <div id="msgFeedbackSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13.5px;">
+              ✨ Avaliação enviada com sucesso! Obrigado.
+            </div>
+
+            <button type="submit" id="btnEnviarFeedback" class="btn btn-primary btn-block">
+              Enviar Avaliação
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section id="localizacao" class="section bg-light">
+    <div class="container">
+      <h2>Onde Estamos</h2>
+      <p class="section-subtitle">Visite nosso escritório físico para um atendimento presencial e consultoria:</p>
+      
+      <div class="location-box">
+        <div class="location-info">
+          <h3>Escritório 4G Proteção Veicular</h3>
+          <p style="margin-bottom:12px; font-size:14.5px; color: var(--text-muted);">
+            <strong>Endereço:</strong> R. Azevedo Marques, 59 - Jardim Prof. Francisco Morato, Francisco Morato - SP, 07910-170
+          </p>
+          <p style="font-size:14px; color:var(--text-muted); margin-bottom:22px;">
+            Estrutura completa para vistorias, fechamento de contratos e suporte presencial.
+          </p>
+          <a href="javascript:void(0)" onclick="focarNoFormulario()" class="btn btn-primary btn-block">Fazer Cotação Online</a>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.8566418858273!2d-46.7441893!3d-23.2846461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee28ffea4e1ab%3A0xbbfd6fefd1a9bc38!2sR.%20Azevedo%20Marques%2C%2059%20-%20Jardim%20Prof.%20Francisco%20Morato%2C%20Francisco%20Morato%2C%20SP%2C%2007910-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE CONSULTORES -->
+  <div id="modalConsultor" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="fecharModalConsultor()">&times;</span>
+      <h2 style="color:var(--primary-dark); text-align:center; margin-bottom:6px; font-size:22px; font-weight:800;">Seja um Consultor 4G</h2>
+      <p style="text-align:center; font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">Preencha seus dados para receber nosso contato:</p>
+      
+      <form id="formConsultor" onsubmit="enviarConsultor(event)">
+        <div class="form-group">
+          <label for="cons-nome">Seu Nome Completo:</label>
+          <input type="text" id="cons-nome" required placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+          <label for="cons-whatsapp">Celular / WhatsApp:</label>
+          <input type="tel" id="cons-whatsapp" required placeholder="(11) 99999-9999" maxlength="15" oninput="aplicarMascaraTelefone(this)">
+        </div>
+
+        <div class="form-group">
+          <label for="cons-cidade">Sua Cidade / Região:</label>
+          <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP">
+        </div>
+
+        <div class="form-check-lgpd">
+          <input type="checkbox" id="check-lgpd-consultor" required checked>
+          <label for="check-lgpd-consultor">
+            Aceito o tratamento dos dados para contato comercial, conforme a <a href="javascript:void(0)" onclick="abrirModalPrivacidade()">LGPD</a>.
+          </label>
+        </div>
+
+        <div id="msgConsultorSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13.5px;">
+          ✨ Cadastro enviado! Entraremos em contato.
+        </div>
+
+        <button type="submit" id="btnEnviarConsultor" class="btn btn-primary btn-block btn-large">
+          Enviar Cadastro
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DE PRIVACIDADE -->
+  <div id="modalPrivacidade" class="modal">
+    <div class="modal-content" style="max-width: 620px;">
+      <span class="close-btn" onclick="fecharModalPrivacidade()">&times;</span>
+      <h2 style="color:var(--primary-dark); margin-bottom:12px; font-size:20px; font-weight:800;">Aviso de Privacidade & LGPD</h2>
+      <div style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 8px;">
+        <p style="margin-bottom: 10px;">A <strong>4G Proteção Veicular</strong> valoriza a sua privacidade e cumpre rigorosamente as diretrizes da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
+        
+        <h4 style="color: var(--primary-dark); margin: 12px 0 4px;">1. Coleta e Finalidade</h4>
+        <p style="margin-bottom: 10px;">Os dados informados (nome, WhatsApp, dados do veículo) destinam-se exclusivamente para elaboração de simulações, atendimento e contato sobre vagas de consultores.</p>
+        
+        <h4 style="color: var(--primary-dark); margin: 12px 0 4px;">2. Compartilhamento</h4>
+        <p style="margin-bottom: 10px;">Seus dados são compartilhados apenas com as associações e seguradoras parceiras indicadas para viabilizar a proposta solicitada.</p>
+        
+        <h4 style="color: var(--primary-dark); margin: 12px 0 4px;">3. Direitos do Titular</h4>
+        <p>Você pode solicitar a alteração ou exclusão de suas informações a qualquer momento entrando em contato pelo nosso canal oficial de suporte.</p>
+      </div>
+      <div style="margin-top: 18px; text-align: right;">
+        <button onclick="fecharModalPrivacidade()" class="btn btn-outline">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
+  <a href="javascript:void(0)" onclick="abrirAtendimento()" class="whatsapp-float-clean" aria-label="Atendimento via WhatsApp">
+    <span class="online-indicator"></span>
+    <span class="icon-badge-white">
+      <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/ZAP.png" alt="WhatsApp">
+    </span>
+    <span>Falar no WhatsApp</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>4G Proteção Veicular</strong>. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="javascript:void(0)" onclick="abrirModalPrivacidade()">Política de Privacidade & LGPD</a>
+        <span>•</span>
+        <a href="javascript:void(0)" onclick="abrirSuporte()">Canal de Atendimento</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ================= CONFIGURAÇÃO ================= */
+    const CONFIG = {
+      NUMERO_COTACAO: "5511957666488",
+      NUMERO_SUPORTE: "5511957883108",
+      URL_PLANILHA_GOOGLE: "https://script.google.com/macros/s/AKfycbwq6moEmuFhJB_Swcnry8ql8R6FMPPzL7vogkVvK5bclVl3i07hyXi6Db95mmMOW9Qh/exec",
+      INSTAGRAM_URL: "https://www.instagram.com/4gprotecaoveicular/",
+      FACEBOOK_URL: "https://www.facebook.com/4gprotecaoveicular"
+    };
+
+    /* ================= FAQ ACCORDION ================= */
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    /* ================= MODAIS ================= */
+    function abrirModalPrivacidade() {
+      document.getElementById("modalPrivacidade").style.display = "flex";
+    }
+    function fecharModalPrivacidade() {
+      document.getElementById("modalPrivacidade").style.display = "none";
+    }
+
+    function abrirModalConsultor() {
+      document.getElementById('modalConsultor').style.display = 'flex';
+    }
+    function fecharModalConsultor() {
+      document.getElementById('modalConsultor').style.display = 'none';
+      document.getElementById('msgConsultorSucesso').style.display = 'none';
+    }
+
+    /* ================= MENU MOBILE ================= */
+    function abrirMenuMobile() {
+      document.getElementById('navMenu').classList.add('active');
+      document.getElementById('navOverlay').classList.add('active');
+      document.body.classList.add('menu-open');
+    }
+
+    function fecharMenuMobile() {
+      document.getElementById('navMenu').classList.remove('active');
+      document.getElementById('navOverlay').classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+
+    /* ================= MÁSCARAS ================= */
+    function aplicarMascaraTelefone(input) {
+      let v = input.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.substring(0, 11);
+      
+      if (v.length > 10) {
+        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+      } else if (v.length > 6) {
+        v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+      } else if (v.length > 2) {
+        v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+      } else {
+        v = v.replace(/^(\d*)$/, "($1");
+      }
+      input.value = v;
+    }
+
+    function aplicarMascaraPlaca(input) {
+      let v = input.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (v.length > 7) v = v.substring(0, 7);
+
+      if (/^[A-Z]{3}\d{4}$/.test(v)) {
+        v = v.replace(/^([A-Z]{3})(\d{4})$/, "$1-$2");
+      }
+      input.value = v;
+    }
+
+    /* ================= FORMULÁRIO DINÂMICO ================= */
+    function focarNoFormulario() {
+      const card = document.getElementById('cotacao');
+      card.scrollIntoView({ behavior: 'smooth' });
+      card.classList.add('highlight-pulse');
+      setTimeout(() => card.classList.remove('highlight-pulse'), 1300);
+      document.getElementById('inline-nome').focus();
+    }
+
+    function exibirTagSelecao(htmlContent) {
+      const tag = document.getElementById('tagSelecaoForm');
+      const texto = document.getElementById('tagSelecaoTexto');
+      texto.innerHTML = htmlContent;
+      tag.classList.add('active');
+    }
+
+    function removerSelecao() {
+      document.getElementById('inline-detalhe-extra').value = "";
+      document.getElementById('tagSelecaoForm').classList.remove('active');
+    }
+
+    function selecionarTipoVeiculoEForm(tipo) {
+      document.getElementById('inline-tipoVeiculo').value = tipo;
+      document.getElementById('inline-detalhe-extra').value = "Tipo Selecionado: " + tipo;
+      exibirTagSelecao(`🚗 Veículo Selecionado: <strong>${tipo}</strong>`);
+      focarNoFormulario();
+    }
+
+    function selecionarParceiroEForm(parceiro) {
+      document.getElementById('inline-detalhe-extra').value = "Interesse no Parceiro: " + parceiro;
+      exibirTagSelecao(`🤝 Parceiro Escolhido: <strong>${parceiro}</strong>`);
+      focarNoFormulario();
+    }
+
+    function selecionarServicoEForm(servico) {
+      document.getElementById('inline-detalhe-extra').value = "Cobertura em Destaque: " + servico;
+      exibirTagSelecao(`⚡ Cobertura Desejada: <strong>${servico}</strong>`);
+      focarNoFormulario();
+    }
+
+    function abrirAtendimento() {
+      const msg = encodeURIComponent("Olá! Gostaria de fazer uma cotação com a 4G Proteção Veicular.");
+      window.open(`https://wa.me/${CONFIG.NUMERO_COTACAO}?text=${msg}`, '_blank');
+    }
+
+    function abrirSuporte() {
+      const msg = encodeURIComponent("Olá! Gostaria de falar com o suporte da 4G Proteção Veicular.");
+      window.open(`https://wa.me/${CONFIG.NUMERO_SUPORTE}?text=${msg}`, '_blank');
+    }
+
+    /* ================= AVALIAÇÕES ================= */
+    const stars = document.querySelectorAll('#starRating i');
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const rating = parseInt(this.getAttribute('data-rating'));
+        document.getElementById('fb-rating').value = rating;
+        stars.forEach((s, idx) => {
+          if (idx < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    /* ================= SUBMISSÕES ================= */
+    function enviarCotacaoInline(e) {
+      e.preventDefault();
+      const nome = document.getElementById('inline-nome').value;
+      const whatsapp = document.getElementById('inline-whatsapp').value;
+      const placa = document.getElementById('inline-placa').value;
+      const tipoVeiculo = document.getElementById('inline-tipoVeiculo').value;
+      const detalheExtra = document.getElementById('inline-detalhe-extra').value;
+
+      const btn = document.getElementById('btnEnviarInline');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      btn.disabled = true;
+
+      const dadosLead = { tipo: "Cotação Direta", nome, whatsapp, placa, tipoVeiculo, detalheExtra };
+
+      let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo de Veículo:* ${tipoVeiculo}`;
+      if (detalheExtra) {
+        texto += `\n*Detalhes:* ${detalheExtra}`;
+      }
+
+      fetch(CONFIG.URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosLead)
+      }).finally(() => {
+        document.getElementById('msgInlineSucesso').style.display = 'block';
+        btn.innerHTML = '<i class="fas fa-check"></i> Cotação Enviada!';
+
+        setTimeout(() => {
+          window.location.href = `https://wa.me/${CONFIG.NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`;
+          document.getElementById('formCotacaoInline').reset();
+          removerSelecao();
+        }, 600);
+      });
+    }
+
+    function enviarConsultor(e) {
+      e.preventDefault();
+      const nome = document.getElementById('cons-nome').value;
+      const whatsapp = document.getElementById('cons-whatsapp').value;
+      const cidade = document.getElementById('cons-cidade').value;
+
+      const btn = document.getElementById('btnEnviarConsultor');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      btn.disabled = true;
+
+      const dadosConsultor = { tipo: "Cadastro Consultor", nome, whatsapp, cidade };
+      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
+
+      fetch(CONFIG.URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosConsultor)
+      }).finally(() => {
+        document.getElementById('msgConsultorSucesso').style.display = 'block';
+        btn.innerHTML = 'Enviado!';
+        btn.disabled = false;
+
+        setTimeout(() => {
+          fecharModalConsultor();
+          window.location.href = `https://wa.me/${CONFIG.NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`;
+          document.getElementById('formConsultor').reset();
+        }, 600);
+      });
+    }
+
+    function enviarFeedback(e) {
+      e.preventDefault();
+      const nome = document.getElementById('fb-nome').value;
+      const rating = document.getElementById('fb-rating').value;
+      const mensagem = document.getElementById('fb-mensagem').value;
+
+      const btn = document.getElementById('btnEnviarFeedback');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      btn.disabled = true;
+
+      const dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
+
+      fetch(CONFIG.URL_PLANILHA_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosFeedback)
+      }).finally(() => {
+        document.getElementById('msgFeedbackSucesso').style.display = 'block';
+        btn.innerText = "Enviar Avaliação";
+        btn.disabled = false;
+        setTimeout(() => {
+          document.getElementById('msgFeedbackSucesso').style.display = 'none';
+          document.getElementById('formFeedback').reset();
+        }, 3000);
+      });
+    }
+
+    window.onclick = function(event) {
+      const modalConsultor = document.getElementById('modalConsultor');
+      const modalPrivacidade = document.getElementById('modalPrivacidade');
+      
+      if (event.target == modalConsultor) fecharModalConsultor();
+      if (event.target == modalPrivacidade) fecharModalPrivacidade();
+    }
+  </script>
 </body>
 </html>
