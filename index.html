@@ -204,6 +204,7 @@
       cursor: pointer;
       padding: 8px;
       border-radius: 8px;
+      z-index: 1600; /* Garante que fique acima da overlay */
     }
 
     .nav-overlay {
@@ -1004,7 +1005,7 @@
         transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         overflow-y: auto;
       }
-      .nav-menu.active { right: 0; }
+      .nav-menu.active { right: 0 !important; }
       .nav-menu a {
         font-size: 16px;
         font-weight: 700;
@@ -1689,15 +1690,20 @@
       document.getElementById('msgConsultorSucesso').style.display = 'none';
     }
 
+    /* CORREÇÃO DO MENU MOBILE */
     function abrirMenuMobile() {
-      document.getElementById('navMenu').classList.add('active');
-      document.getElementById('navOverlay').classList.add('active');
+      const menu = document.getElementById('navMenu');
+      const overlay = document.getElementById('navOverlay');
+      if (menu) menu.classList.add('active');
+      if (overlay) overlay.classList.add('active');
       document.body.classList.add('menu-open');
     }
 
     function fecharMenuMobile() {
-      document.getElementById('navMenu').classList.remove('active');
-      document.getElementById('navOverlay').classList.remove('active');
+      const menu = document.getElementById('navMenu');
+      const overlay = document.getElementById('navOverlay');
+      if (menu) menu.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
       document.body.classList.remove('menu-open');
     }
 
@@ -1866,7 +1872,7 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
       btn.disabled = true;
 
-      const dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
+      The dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
 
       fetch(CONFIG.URL_PLANILHA_GOOGLE, {
         method: "POST",
