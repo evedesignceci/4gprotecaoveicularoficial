@@ -1114,11 +1114,13 @@
         </div>
 
         <form id="formCotacaoInline" onsubmit="enviarCotacaoInline(event)">
+          <!-- Honeypot invisível -->
+          <input type="text" name="website_hp" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
           <input type="hidden" id="inline-detalhe-extra" value="">
 
           <div class="form-group">
             <label for="inline-nome"><i class="fas fa-user" style="color:var(--primary); margin-right:4px;"></i> Seu Nome Completo:</label>
-            <input type="text" id="inline-nome" required placeholder="Ex: Maria Silva">
+            <input type="text" id="inline-nome" required placeholder="Ex: Maria Silva" maxlength="100">
           </div>
 
           <div class="form-group">
@@ -1306,7 +1308,7 @@
         </div>
         <div>
           <h3 style="font-size: 19px; color: var(--primary-dark); font-weight: 700; margin-bottom: 4px;">Planejando conquistar um veículo ou imóvel sem juros?</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin: 0;">Também atuamos com <strong>Consórcio Rodobens</strong> para você adquirir ou renovar sua frota com parcelas acessíveis.</p>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin: 0;">Também atuamos com <strong>Consórcio Rodobens</strong> para você adquirir ou renovar seu patrimônio com facilidade.</p>
         </div>
         <div>
           <button onclick="selecionarConsorcioEForm()" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary); font-weight: 700;">
@@ -1478,9 +1480,12 @@
           </p>
 
           <form id="formFeedback" onsubmit="enviarFeedback(event)">
+            <!-- Honeypot invisível -->
+            <input type="text" name="website_hp" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+
             <div class="form-group">
               <label for="fb-nome">Seu Nome:</label>
-              <input type="text" id="fb-nome" required placeholder="Digite seu nome">
+              <input type="text" id="fb-nome" required placeholder="Digite seu nome" maxlength="100">
             </div>
 
             <div class="form-group" style="text-align: center;">
@@ -1497,7 +1502,7 @@
 
             <div class="form-group">
               <label for="fb-mensagem">Seu Comentário:</label>
-              <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência..."></textarea>
+              <textarea id="fb-mensagem" rows="3" required placeholder="Conte como foi sua experiência..." maxlength="600"></textarea>
             </div>
 
             <div id="msgFeedbackSucesso" style="display:none; color: #16a34a; font-weight:700; margin-bottom:12px; text-align:center; font-size:13.5px;">
@@ -1554,9 +1559,12 @@
       <p style="text-align:center; font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">Preencha seus dados para receber nosso contato:</p>
       
       <form id="formConsultor" onsubmit="enviarConsultor(event)">
+        <!-- Honeypot invisível -->
+        <input type="text" name="website_hp" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+
         <div class="form-group">
           <label for="cons-nome">Seu Nome Completo:</label>
-          <input type="text" id="cons-nome" required placeholder="Digite seu nome">
+          <input type="text" id="cons-nome" required placeholder="Digite seu nome" maxlength="100">
         </div>
 
         <div class="form-group">
@@ -1566,7 +1574,7 @@
 
         <div class="form-group">
           <label for="cons-cidade">Sua Cidade / Região:</label>
-          <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP">
+          <input type="text" id="cons-cidade" required placeholder="Ex: Francisco Morato - SP" maxlength="100">
         </div>
 
         <div class="form-check-lgpd">
@@ -1636,9 +1644,14 @@
       NUMERO_COTACAO: "5511957666488",
       NUMERO_SUPORTE: "5511957883108",
       URL_PLANILHA_GOOGLE: "https://script.google.com/macros/s/AKfycbwq6moEmuFhJB_Swcnry8ql8R6FMPPzL7vogkVvK5bclVl3i07hyXi6Db95mmMOW9Qh/exec",
-      INSTAGRAM_URL: "https://www.instagram.com/4gprotecaoveicular/",
-      FACEBOOK_URL: "https://www.facebook.com/4gprotecaoveicular"
+      SECURITY_TOKEN: "4G_PROT_SECURE_TOKEN_2026"
     };
+
+    // Função de sanitização de texto no cliente
+    function sanitizarInput(str) {
+      if (!str) return "";
+      return String(str).replace(/[<>]/g, "").trim();
+    }
 
     function toggleFaq(element) {
       const item = element.parentElement;
@@ -1757,97 +1770,133 @@
       });
     });
 
+    // 1. Enviar Cotação (Seguro)
     function enviarCotacaoInline(e) {
       e.preventDefault();
-      const nome = document.getElementById('inline-nome').value;
-      const whatsapp = document.getElementById('inline-whatsapp').value;
-      const placa = document.getElementById('inline-placa').value;
-      const tipoVeiculo = document.getElementById('inline-tipoVeiculo').value;
-      const detalheExtra = document.getElementById('inline-detalhe-extra').value;
+      const form = document.getElementById('formCotacaoInline');
+      const hp = form.querySelector('[name="website_hp"]')?.value || "";
+      if (hp !== "") return; // Descarta bot silenciosamente
+
+      const nome = sanitizarInput(document.getElementById('inline-nome').value);
+      const whatsapp = sanitizarInput(document.getElementById('inline-whatsapp').value);
+      const placa = sanitizarInput(document.getElementById('inline-placa').value);
+      const tipoVeiculo = sanitizarInput(document.getElementById('inline-tipoVeiculo').value);
+      const detalheExtra = sanitizarInput(document.getElementById('inline-detalhe-extra').value);
 
       const btn = document.getElementById('btnEnviarInline');
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
       btn.disabled = true;
 
-      const dadosLead = { tipo: "Cotação Direta", nome, whatsapp, placa, tipoVeiculo, detalheExtra };
+      const payload = {
+        tipo: "Cotação Direta",
+        nome,
+        whatsapp,
+        placa,
+        tipoVeiculo,
+        detalheExtra,
+        website_hp: hp,
+        token: CONFIG.SECURITY_TOKEN
+      };
 
-      let texto = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo:* ${tipoVeiculo}`;
-      if (detalheExtra) {
-        texto += `\n*Detalhes:* ${detalheExtra}`;
-      }
+      let textoZap = `Olá! Gostaria de fazer uma cotação.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Placa:* ${placa}\n*Tipo:* ${tipoVeiculo}`;
+      if (detalheExtra) textoZap += `\n*Detalhes:* ${detalheExtra}`;
 
       fetch(CONFIG.URL_PLANILHA_GOOGLE, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dadosLead)
+        body: JSON.stringify(payload)
       }).finally(() => {
         document.getElementById('msgInlineSucesso').style.display = 'block';
         btn.innerHTML = '<i class="fas fa-check"></i> Cotação Enviada!';
 
         setTimeout(() => {
-          window.location.href = `https://wa.me/${CONFIG.NUMERO_COTACAO}?text=${encodeURIComponent(texto)}`;
-          document.getElementById('formCotacaoInline').reset();
+          window.location.href = `https://wa.me/${CONFIG.NUMERO_COTACAO}?text=${encodeURIComponent(textoZap)}`;
+          form.reset();
           removerSelecao();
         }, 600);
       });
     }
 
+    // 2. Enviar Consultor (Seguro)
     function enviarConsultor(e) {
       e.preventDefault();
-      const nome = document.getElementById('cons-nome').value;
-      const whatsapp = document.getElementById('cons-whatsapp').value;
-      const cidade = document.getElementById('cons-cidade').value;
+      const form = document.getElementById('formConsultor');
+      const hp = form.querySelector('[name="website_hp"]')?.value || "";
+      if (hp !== "") return;
+
+      const nome = sanitizarInput(document.getElementById('cons-nome').value);
+      const whatsapp = sanitizarInput(document.getElementById('cons-whatsapp').value);
+      const cidade = sanitizarInput(document.getElementById('cons-cidade').value);
 
       const btn = document.getElementById('btnEnviarConsultor');
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
       btn.disabled = true;
 
-      const dadosConsultor = { tipo: "Cadastro Consultor", nome, whatsapp, cidade };
-      let texto = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
+      const payload = {
+        tipo: "Cadastro Consultor",
+        nome,
+        whatsapp,
+        cidade,
+        website_hp: hp,
+        token: CONFIG.SECURITY_TOKEN
+      };
+
+      let textoZap = `Olá! Gostaria de me cadastrar como Consultor 4G.\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*Cidade/Região:* ${cidade}`;
 
       fetch(CONFIG.URL_PLANILHA_GOOGLE, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dadosConsultor)
+        body: JSON.stringify(payload)
       }).finally(() => {
         document.getElementById('msgConsultorSucesso').style.display = 'block';
         btn.innerHTML = 'Enviado!';
-        btn.disabled = false;
 
         setTimeout(() => {
           fecharModalConsultor();
-          window.location.href = `https://wa.me/${CONFIG.NUMERO_SUPORTE}?text=${encodeURIComponent(texto)}`;
-          document.getElementById('formConsultor').reset();
+          window.location.href = `https://wa.me/${CONFIG.NUMERO_SUPORTE}?text=${encodeURIComponent(textoZap)}`;
+          form.reset();
         }, 600);
       });
     }
 
+    // 3. Enviar Feedback (Seguro)
     function enviarFeedback(e) {
       e.preventDefault();
-      const nome = document.getElementById('fb-nome').value;
+      const form = document.getElementById('formFeedback');
+      const hp = form.querySelector('[name="website_hp"]')?.value || "";
+      if (hp !== "") return;
+
+      const nome = sanitizarInput(document.getElementById('fb-nome').value);
       const rating = document.getElementById('fb-rating').value;
-      const mensagem = document.getElementById('fb-mensagem').value;
+      const mensagem = sanitizarInput(document.getElementById('fb-mensagem').value);
 
       const btn = document.getElementById('btnEnviarFeedback');
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
       btn.disabled = true;
 
-      const dadosFeedback = { tipo: "Feedback", nome, rating, mensagem };
+      const payload = {
+        tipo: "Feedback",
+        nome,
+        rating,
+        mensagem,
+        website_hp: hp,
+        token: CONFIG.SECURITY_TOKEN
+      };
 
       fetch(CONFIG.URL_PLANILHA_GOOGLE, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dadosFeedback)
+        body: JSON.stringify(payload)
       }).finally(() => {
         document.getElementById('msgFeedbackSucesso').style.display = 'block';
         btn.innerText = "Enviar Avaliação";
         btn.disabled = false;
         setTimeout(() => {
           document.getElementById('msgFeedbackSucesso').style.display = 'none';
-          document.getElementById('formFeedback').reset();
+          form.reset();
         }, 3000);
       });
     }
